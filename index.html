@@ -17,6 +17,7 @@
 }
 body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
 
+/* AUTH */
 #authView{max-width:380px;margin:0 auto;padding:60px 24px;}
 .auth-logo{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:400;letter-spacing:1px;margin-bottom:6px;}
 .auth-sub{font-size:12px;color:var(--text3);letter-spacing:2px;text-transform:uppercase;margin-bottom:40px;}
@@ -32,8 +33,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .auth-err{font-size:12px;color:#DC2626;margin-top:10px;text-align:center;min-height:18px;}
 .auth-note{font-size:12px;color:var(--text3);margin-top:16px;text-align:center;line-height:1.6;}
 
+/* APP */
 #appView{display:none;max-width:420px;margin:0 auto;padding-bottom:80px;}
-
 .header{padding:24px 20px 10px;display:flex;justify-content:space-between;align-items:flex-end;border-bottom:1px solid var(--border);}
 .logo-name{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:400;letter-spacing:1px;line-height:1;}
 .logo-sub{font-size:10px;color:var(--text3);letter-spacing:2px;text-transform:uppercase;margin-top:2px;}
@@ -41,6 +42,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .header-count{font-size:12px;color:var(--text3);}
 .logout-btn{font-size:11px;color:var(--text3);background:none;border:1px solid var(--border);border-radius:20px;padding:4px 10px;cursor:pointer;}
 
+/* PUBLIC VIEW */
 #publicView{display:none;max-width:420px;margin:0 auto;padding-bottom:40px;}
 .public-header{padding:28px 20px 16px;border-bottom:1px solid var(--border);}
 .public-logo{font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--text3);letter-spacing:2px;text-transform:uppercase;margin-bottom:16px;}
@@ -53,7 +55,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .public-login-btn{font-size:12px;padding:6px 14px;background:var(--text);color:var(--bg);border:none;border-radius:20px;cursor:pointer;white-space:nowrap;}
 .public-desire-list{display:flex;flex-direction:column;margin-top:4px;}
 .public-desire-row{border-bottom:1px solid var(--border);}
-.public-desire-card{padding:14px 20px;display:flex;align-items:center;gap:14px;}
+.public-desire-card{padding:14px 20px;display:flex;align-items:center;gap:14px;cursor:pointer;}
 .public-desire-card.reserved{opacity:.5;}
 .public-desire-img{width:46px;height:46px;border-radius:10px;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;overflow:hidden;color:var(--text3);}
 .public-desire-img img{width:100%;height:100%;object-fit:cover;}
@@ -65,10 +67,45 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .reserve-btn:hover{border-color:var(--accent);color:var(--accent-dark);}
 .reserve-btn.mine{background:var(--accent-light);border-color:var(--accent);color:var(--accent-dark);}
 .reserved-tag{font-size:11px;color:var(--text3);white-space:nowrap;flex-shrink:0;}
-.public-footer{text-align:center;padding:32px 20px 0;color:var(--text3);}
+.public-footer{text-align:center;padding:32px 20px 0;}
 .public-footer a{color:var(--accent-dark);text-decoration:none;font-size:13px;}
-.public-footer p{font-size:12px;margin-bottom:8px;}
+.public-footer p{font-size:12px;color:var(--text3);margin-bottom:8px;}
 
+/* PROFILE VIEW */
+#profileView{display:none;max-width:420px;margin:0 auto;padding-bottom:40px;}
+.profile-header{padding:28px 20px 20px;border-bottom:1px solid var(--border);}
+.profile-logo{font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--text3);letter-spacing:2px;text-transform:uppercase;margin-bottom:20px;}
+.profile-title{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;line-height:1.2;}
+.profile-subtitle{font-size:12px;color:var(--text3);margin-top:6px;}
+.profile-wl-grid{padding:16px 20px;display:flex;flex-direction:column;gap:1px;}
+.profile-wl-row{border-bottom:1px solid var(--border);}
+.profile-wl-card{padding:14px 0;display:flex;align-items:center;gap:14px;cursor:pointer;}
+.profile-wl-card:active{opacity:.7;}
+.profile-wl-icon{width:46px;height:46px;border-radius:12px;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;overflow:hidden;}
+.profile-wl-icon img{width:100%;height:100%;object-fit:cover;border-radius:12px;}
+.profile-wl-info{flex:1;}
+.profile-wl-name{font-size:15px;font-weight:500;}
+.profile-wl-count{font-size:12px;color:var(--text3);margin-top:2px;}
+
+/* DESIRE DETAIL VIEW */
+#desireDetailView{display:none;max-width:420px;margin:0 auto;padding-bottom:40px;}
+.desire-detail-header{padding:14px 18px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--border);}
+.desire-detail-img{width:100%;max-height:260px;object-fit:cover;display:block;}
+.desire-detail-img-placeholder{width:100%;height:160px;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:48px;}
+.desire-detail-body{padding:20px;}
+.desire-detail-name{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;line-height:1.3;margin-bottom:6px;}
+.desire-detail-book{font-size:13px;color:var(--accent-dark);font-style:italic;margin-bottom:12px;}
+.desire-detail-price{font-size:22px;font-weight:500;color:var(--text);margin-bottom:16px;}
+.desire-detail-meta{display:flex;flex-direction:column;gap:10px;padding:16px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:16px;}
+.desire-detail-row{display:flex;justify-content:space-between;align-items:center;}
+.desire-detail-label{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;}
+.desire-detail-value{font-size:13px;color:var(--text2);}
+.desire-detail-link{display:block;width:100%;padding:13px;background:var(--text);color:var(--bg);border:none;border-radius:var(--radiusS);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;text-align:center;text-decoration:none;margin-bottom:10px;}
+.desire-detail-edit{display:block;width:100%;padding:12px;background:transparent;color:var(--text2);border:1px solid var(--border);border-radius:var(--radiusS);font-family:'DM Sans',sans-serif;font-size:14px;cursor:pointer;text-align:center;}
+.reserve-detail-btn{display:block;width:100%;padding:13px;background:var(--accent-light);color:var(--accent-dark);border:1px solid var(--accent);border-radius:var(--radiusS);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;text-align:center;margin-bottom:10px;}
+.reserve-detail-btn.mine{background:var(--surface2);color:var(--text2);border-color:var(--border);}
+
+/* FAB */
 .fab{position:fixed;bottom:24px;right:24px;z-index:100;}
 .fab-main{width:50px;height:50px;border-radius:50%;background:var(--text);color:var(--bg);border:none;cursor:pointer;font-size:22px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,0.2);transition:transform .15s,background .15s;}
 .fab-main:hover{transform:scale(1.06);background:var(--accent-dark);}
@@ -90,7 +127,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .wl-meta{font-size:12px;color:var(--text3);margin-top:3px;display:flex;align-items:center;gap:6px;}
 .vis-dot{width:5px;height:5px;border-radius:50%;display:inline-block;}
 .vis-pub{background:#4CAF50;}.vis-priv{background:var(--accent);}
-
 .swipe-actions{position:absolute;right:0;top:0;bottom:0;display:flex;z-index:0;}
 .sw-btn{display:flex;flex-direction:column;align-items:center;justify-content:center;width:64px;gap:2px;cursor:pointer;font-size:11px;font-weight:500;}
 .sw-edit{background:#F0F4FF;color:#1A56DB;}
@@ -103,14 +139,13 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .back-btn{width:34px;height:34px;border-radius:50%;border:1px solid var(--border);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--text);}
 .detail-title{font-family:'Cormorant Garamond',serif;font-size:20px;flex:1;}
 .share-btn{width:34px;height:34px;border-radius:50%;border:1px solid var(--border);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--text2);}
-
 .sort-bar{padding:10px 16px;display:flex;gap:8px;border-bottom:1px solid var(--border);}
 .sort-chip{flex:1;font-size:11px;padding:6px 4px;border-radius:20px;border:1px solid var(--border);background:var(--surface);cursor:pointer;color:var(--text2);text-align:center;white-space:nowrap;transition:all .15s;}
 .sort-chip.active{background:var(--text);color:var(--bg);border-color:var(--text);}
 
 .desire-list{display:flex;flex-direction:column;}
 .desire-row{position:relative;overflow:hidden;border-bottom:1px solid var(--border);}
-.desire-card{background:var(--surface);padding:12px 18px;display:flex;align-items:center;gap:12px;position:relative;z-index:1;}
+.desire-card{background:var(--surface);padding:12px 18px;display:flex;align-items:center;gap:12px;position:relative;z-index:1;cursor:pointer;}
 .desire-img{width:46px;height:46px;border-radius:10px;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;overflow:hidden;color:var(--text3);}
 .desire-img img{width:100%;height:100%;object-fit:cover;}
 .desire-info{flex:1;min-width:0;}
@@ -122,6 +157,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .prio-medio{background:var(--accent-light);color:var(--accent-dark);}
 .prio-basso{background:#F0FDF4;color:#15803D;}
 
+/* MODALS */
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,0.35);z-index:200;display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity .2s;}
 .overlay.open{opacity:1;pointer-events:all;}
 .modal{background:var(--surface);border-radius:22px 22px 0 0;width:100%;max-width:420px;padding:20px 20px 32px;max-height:88vh;overflow-y:auto;transform:translateY(20px);transition:transform .2s;}
@@ -134,25 +170,28 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .field input:focus,.field textarea:focus,.field select:focus{border-color:var(--accent);}
 .field textarea{resize:none;height:68px;}
 
+/* ICON PICKER CATEGORIZZATO */
+.icon-cat-tabs{display:flex;gap:6px;overflow-x:auto;margin-bottom:10px;scrollbar-width:none;}
+.icon-cat-tabs::-webkit-scrollbar{display:none;}
+.icon-cat-tab{font-size:11px;padding:4px 12px;border-radius:20px;border:1px solid var(--border);background:var(--bg);cursor:pointer;white-space:nowrap;color:var(--text2);flex-shrink:0;}
+.icon-cat-tab.active{background:var(--text);color:var(--bg);border-color:var(--text);}
+.icon-grid{display:flex;flex-wrap:wrap;gap:7px;}
+.icon-opt{width:42px;height:42px;border-radius:10px;border:1.5px solid var(--border);background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:20px;cursor:pointer;transition:border-color .15s,background .15s;}
+.icon-opt.selected{border-color:var(--accent);background:var(--accent-light);}
+
 /* FETCH BOX */
 .fetch-box{border:1px solid var(--border);border-radius:var(--radiusS);overflow:hidden;margin-bottom:14px;}
-.fetch-input-row{display:flex;align-items:center;gap:0;}
+.fetch-input-row{display:flex;}
 .fetch-input-row input{border:none;border-radius:0;background:var(--bg);flex:1;padding:10px 12px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--text);outline:none;}
-.fetch-btn{padding:10px 14px;background:var(--text);color:var(--bg);border:none;font-size:12px;cursor:pointer;white-space:nowrap;transition:background .15s;font-family:'DM Sans',sans-serif;}
-.fetch-btn:hover{background:var(--accent-dark);}
+.fetch-btn{padding:10px 14px;background:var(--text);color:var(--bg);border:none;font-size:12px;cursor:pointer;white-space:nowrap;font-family:'DM Sans',sans-serif;}
 .fetch-btn:disabled{opacity:.5;cursor:not-allowed;}
 .fetch-preview{padding:10px 12px;border-top:1px solid var(--border);display:none;gap:10px;align-items:center;}
 .fetch-preview.show{display:flex;}
 .fetch-preview-img{width:40px;height:40px;border-radius:6px;object-fit:cover;flex-shrink:0;background:var(--surface2);}
 .fetch-preview-info{flex:1;min-width:0;}
 .fetch-preview-title{font-size:13px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.fetch-preview-price{font-size:11px;color:var(--accent-dark);margin-top:2px;}
 .fetch-preview-note{font-size:11px;color:var(--text3);margin-top:2px;}
 .fetch-use-btn{font-size:11px;padding:5px 10px;border-radius:20px;border:1px solid var(--accent);background:var(--accent-light);color:var(--accent-dark);cursor:pointer;white-space:nowrap;}
-
-.icon-picker{display:flex;flex-wrap:wrap;gap:7px;margin-top:6px;}
-.icon-opt{width:42px;height:42px;border-radius:10px;border:1.5px solid var(--border);background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:18px;cursor:pointer;transition:border-color .15s,background .15s;}
-.icon-opt.selected{border-color:var(--accent);background:var(--accent-light);}
 
 .img-upload-area{border:1.5px dashed var(--border);border-radius:var(--radiusS);padding:14px;text-align:center;cursor:pointer;transition:border-color .15s;margin-top:6px;}
 .img-upload-area:hover{border-color:var(--accent);}
@@ -189,7 +228,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .empty{text-align:center;padding:52px 20px;color:var(--text3);}
 .empty .e-icon{font-size:32px;margin-bottom:12px;opacity:.5;}
 .empty p{font-size:13px;line-height:1.8;}
-
 .toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:var(--text);color:var(--bg);padding:10px 22px;border-radius:20px;font-size:13px;z-index:300;opacity:0;transition:opacity .3s;pointer-events:none;white-space:nowrap;}
 .toast.show{opacity:1;}
 .spinner{display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .6s linear infinite;vertical-align:middle;margin-right:6px;}
@@ -199,6 +237,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 </head>
 <body>
 
+<!-- AUTH -->
 <div id="authView">
   <div class="auth-logo">Wishful</div>
   <div class="auth-sub">Le tue wishlist</div>
@@ -206,19 +245,14 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
     <div class="auth-tab active" onclick="switchTab('login')">Accedi</div>
     <div class="auth-tab" onclick="switchTab('signup')">Registrati</div>
   </div>
-  <div class="auth-field">
-    <label>Email</label>
-    <input type="email" id="authEmail" placeholder="tu@email.com" onkeydown="if(event.key==='Enter')authSubmit()">
-  </div>
-  <div class="auth-field">
-    <label>Password</label>
-    <input type="password" id="authPassword" placeholder="••••••••" onkeydown="if(event.key==='Enter')authSubmit()">
-  </div>
+  <div class="auth-field"><label>Email</label><input type="email" id="authEmail" placeholder="tu@email.com" onkeydown="if(event.key==='Enter')authSubmit()"></div>
+  <div class="auth-field"><label>Password</label><input type="password" id="authPassword" placeholder="••••••••" onkeydown="if(event.key==='Enter')authSubmit()"></div>
   <button class="auth-btn" id="authBtn" onclick="authSubmit()">Accedi</button>
   <div class="auth-err" id="authErr"></div>
   <div class="auth-note" id="authNote"></div>
 </div>
 
+<!-- PUBLIC WISHLIST VIEW -->
 <div id="publicView">
   <div class="public-header">
     <div class="public-logo">Wishful</div>
@@ -233,12 +267,38 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
   </div>
   <div id="pubLoading" class="loading">Caricamento...</div>
   <div class="public-desire-list" id="pubDesireList"></div>
-  <div class="public-footer">
-    <p>Creata con</p>
-    <a href="javascript:showAppFromPublic()">Wishful — crea la tua wishlist gratis</a>
+  <div class="public-footer"><p>Creata con</p><a href="javascript:showAppFromPublic()">Wishful — crea la tua wishlist gratis</a></div>
+</div>
+
+<!-- PUBLIC DESIRE DETAIL -->
+<div id="desireDetailView">
+  <div class="desire-detail-header">
+    <button class="back-btn" id="desireDetailBack">←</button>
+    <div style="flex:1;font-family:'Cormorant Garamond',serif;font-size:18px;" id="desireDetailWlName"></div>
+  </div>
+  <div id="desireDetailImgWrap"></div>
+  <div class="desire-detail-body">
+    <div class="desire-detail-name" id="desireDetailName"></div>
+    <div class="desire-detail-book" id="desireDetailBook"></div>
+    <div class="desire-detail-price" id="desireDetailPrice"></div>
+    <div class="desire-detail-meta" id="desireDetailMeta"></div>
+    <div id="desireDetailActions"></div>
   </div>
 </div>
 
+<!-- PUBLIC PROFILE VIEW -->
+<div id="profileView">
+  <div class="public-header">
+    <div class="public-logo">Wishful</div>
+    <div id="profileTitle" class="public-wl-name" style="margin-top:8px;"></div>
+    <div id="profileSubtitle" class="public-wl-meta" style="margin-top:6px;"></div>
+  </div>
+  <div id="profileLoading" class="loading">Caricamento...</div>
+  <div class="profile-wl-grid" id="profileWlGrid"></div>
+  <div class="public-footer"><p>Creata con</p><a href="javascript:showAppFromPublic()">Wishful — crea la tua wishlist gratis</a></div>
+</div>
+
+<!-- APP -->
 <div id="appView">
   <div class="home-view" id="homeView">
     <div class="header">
@@ -248,16 +308,14 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
       </div>
       <div class="header-right">
         <span class="header-count" id="totalBadge"></span>
+        <button class="logout-btn" onclick="showProfileSetup()">Profilo</button>
         <button class="logout-btn" onclick="logout()">Esci</button>
       </div>
     </div>
     <div class="section-label">Wishlist</div>
     <div id="wlLoading" class="loading">Caricamento...</div>
     <div class="wl-list" id="wlList"></div>
-    <div id="wlEmpty" class="empty" style="display:none;">
-      <div class="e-icon">✦</div>
-      <p>Nessuna wishlist ancora.<br>Creane una con il tasto +</p>
-    </div>
+    <div id="wlEmpty" class="empty" style="display:none;"><div class="e-icon">✦</div><p>Nessuna wishlist ancora.<br>Creane una con il tasto +</p></div>
   </div>
 
   <div class="detail-view" id="detailView">
@@ -274,22 +332,13 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
     </div>
     <div id="desireLoading" class="loading" style="display:none;">Caricamento...</div>
     <div class="desire-list" id="desireList"></div>
-    <div id="desireEmpty" class="empty" style="display:none;">
-      <div class="e-icon">♡</div>
-      <p>Nessun desiderio ancora.<br>Aggiungine uno con il tasto +</p>
-    </div>
+    <div id="desireEmpty" class="empty" style="display:none;"><div class="e-icon">♡</div><p>Nessun desiderio ancora.<br>Aggiungine uno con il tasto +</p></div>
   </div>
 
   <div class="fab">
     <div class="fab-menu" id="fabMenu">
-      <div class="fab-item" onclick="openModal('desire')">
-        <span class="lbl">Nuovo desiderio</span>
-        <div class="ic">♡</div>
-      </div>
-      <div class="fab-item" onclick="openModal('wishlist')">
-        <span class="lbl">Nuova wishlist</span>
-        <div class="ic">✦</div>
-      </div>
+      <div class="fab-item" onclick="openModal('desire')"><span class="lbl">Nuovo desiderio</span><div class="ic">♡</div></div>
+      <div class="fab-item" onclick="openModal('wishlist')"><span class="lbl">Nuova wishlist</span><div class="ic">✦</div></div>
     </div>
     <button class="fab-main" id="fabBtn" onclick="toggleFab()">+</button>
   </div>
@@ -300,13 +349,11 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
   <div class="modal">
     <div class="modal-handle"></div>
     <div class="modal-title" id="wlModalTitle">Nuova wishlist</div>
-    <div class="field">
-      <label>Nome</label>
-      <input type="text" id="wlName" placeholder="Es. Compleanno 2025">
-    </div>
+    <div class="field"><label>Nome</label><input type="text" id="wlName" placeholder="Es. Compleanno 2025"></div>
     <div class="field">
       <label>Icona categoria</label>
-      <div class="icon-picker" id="iconPicker"></div>
+      <div class="icon-cat-tabs" id="iconCatTabs"></div>
+      <div class="icon-grid" id="iconGrid"></div>
     </div>
     <div class="field">
       <label>Immagine di copertina</label>
@@ -318,16 +365,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
       <div class="img-or">oppure</div>
       <input type="url" id="wlImgUrl" placeholder="URL immagine https://...">
     </div>
-    <div class="field">
-      <label>Descrizione evento (opzionale)</label>
-      <textarea id="wlDesc" placeholder="Per chi è? Quando?"></textarea>
-    </div>
-    <div class="field">
-      <div class="toggle-row">
-        <span>Lista privata</span>
-        <div class="toggle" id="wlToggle" onclick="this.classList.toggle('on')"><div class="toggle-thumb"></div></div>
-      </div>
-    </div>
+    <div class="field"><label>Descrizione evento (opzionale)</label><textarea id="wlDesc" placeholder="Per chi è? Quando?"></textarea></div>
+    <div class="field"><div class="toggle-row"><span>Lista privata</span><div class="toggle" id="wlToggle" onclick="this.classList.toggle('on')"><div class="toggle-thumb"></div></div></div></div>
     <div class="modal-actions">
       <button class="btn-secondary" onclick="closeModal('overlayWL')">Annulla</button>
       <button class="btn-primary" id="wlSaveBtn" onclick="saveWishlist()">Salva</button>
@@ -340,45 +379,28 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
   <div class="modal">
     <div class="modal-handle"></div>
     <div class="modal-title" id="dModalTitle">Nuovo desiderio</div>
-
-    <!-- FETCH BOX -->
     <div class="field">
       <label>Importa da link</label>
       <div class="fetch-box">
         <div class="fetch-input-row">
-          <input type="url" id="fetchUrl" placeholder="Incolla link prodotto o libro..." onkeydown="if(event.key==='Enter'){event.preventDefault();fetchMeta()}">
+          <input type="url" id="fetchUrl" placeholder="Incolla link prodotto..." onkeydown="if(event.key==='Enter'){event.preventDefault();fetchMeta()}">
           <button class="fetch-btn" id="fetchBtn" onclick="fetchMeta()">Importa</button>
         </div>
         <div class="fetch-preview" id="fetchPreview">
           <img class="fetch-preview-img" id="fetchPreviewImg" src="" alt="">
           <div class="fetch-preview-info">
             <div class="fetch-preview-title" id="fetchPreviewTitle"></div>
-            <div class="fetch-preview-price" id="fetchPreviewPrice"></div>
             <div class="fetch-preview-note" id="fetchPreviewNote"></div>
           </div>
           <button class="fetch-use-btn" onclick="applyFetch()">Usa ✓</button>
         </div>
       </div>
     </div>
-
-    <div class="book-toggle-row" onclick="toggleBookFields()">
-      <span>📖 È un libro?</span>
-      <div class="toggle" id="bookToggle" onclick="event.stopPropagation();toggleBookFields()"><div class="toggle-thumb"></div></div>
-    </div>
-
-    <div class="field">
-      <label>Titolo *</label>
-      <input type="text" id="dName" placeholder="Es. Il barone rampante">
-    </div>
+    <div class="book-toggle-row" onclick="toggleBookFields()"><span>📖 È un libro?</span><div class="toggle" id="bookToggle" onclick="event.stopPropagation();toggleBookFields()"><div class="toggle-thumb"></div></div></div>
+    <div class="field"><label>Titolo *</label><input type="text" id="dName" placeholder="Es. Il barone rampante"></div>
     <div class="book-fields" id="bookFields">
-      <div class="field">
-        <label>Autore</label>
-        <input type="text" id="dAuthor" placeholder="Es. Italo Calvino">
-      </div>
-      <div class="field">
-        <label>Editore</label>
-        <input type="text" id="dPublisher" placeholder="Es. Einaudi">
-      </div>
+      <div class="field"><label>Autore</label><input type="text" id="dAuthor" placeholder="Es. Italo Calvino"></div>
+      <div class="field"><label>Editore</label><input type="text" id="dPublisher" placeholder="Es. Einaudi"></div>
     </div>
     <div class="field">
       <label>Immagine</label>
@@ -390,35 +412,30 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
       <div class="img-or">oppure</div>
       <input type="url" id="dImg" placeholder="URL immagine https://...">
     </div>
-    <div class="field">
-      <label>Link prodotto</label>
-      <input type="url" id="dLink" placeholder="https://...">
-    </div>
-    <div class="field">
-      <label>Wishlist</label>
-      <select id="dWishlist"></select>
-    </div>
-    <div class="field">
-      <label>Priorità</label>
-      <div class="prio-row">
-        <div class="prio-opt" data-p="alto" onclick="selPrio(this)">Alto</div>
-        <div class="prio-opt" data-p="medio" onclick="selPrio(this)">Medio</div>
-        <div class="prio-opt" data-p="basso" onclick="selPrio(this)">Basso</div>
-      </div>
-    </div>
-    <div class="field">
-      <label>Prezzo (€)</label>
-      <input type="number" id="dPrice" placeholder="0.00" step="0.01" min="0">
-    </div>
-    <div class="field">
-      <div class="toggle-row">
-        <span>Desiderio privato</span>
-        <div class="toggle" id="dToggle" onclick="this.classList.toggle('on')"><div class="toggle-thumb"></div></div>
-      </div>
-    </div>
+    <div class="field"><label>Link prodotto</label><input type="url" id="dLink" placeholder="https://..."></div>
+    <div class="field"><label>Wishlist</label><select id="dWishlist"></select></div>
+    <div class="field"><label>Priorità</label><div class="prio-row"><div class="prio-opt" data-p="alto" onclick="selPrio(this)">Alto</div><div class="prio-opt" data-p="medio" onclick="selPrio(this)">Medio</div><div class="prio-opt" data-p="basso" onclick="selPrio(this)">Basso</div></div></div>
+    <div class="field"><label>Prezzo (€)</label><input type="number" id="dPrice" placeholder="0.00" step="0.01" min="0"></div>
+    <div class="field"><div class="toggle-row"><span>Desiderio privato</span><div class="toggle" id="dToggle" onclick="this.classList.toggle('on')"><div class="toggle-thumb"></div></div></div></div>
     <div class="modal-actions">
       <button class="btn-secondary" onclick="closeModal('overlayD')">Annulla</button>
       <button class="btn-primary" id="dSaveBtn" onclick="saveDesire()">Salva</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL PROFILO -->
+<div class="overlay" id="overlayProfile">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <div class="modal-title">Il tuo profilo</div>
+    <div class="field"><label>Nome visualizzato</label><input type="text" id="profileDisplayName" placeholder="Es. Laura"></div>
+    <div class="field"><label>Username (per il link pubblico)</label><input type="text" id="profileUsername" placeholder="Es. laura" oninput="this.value=this.value.toLowerCase().replace(/[^a-z0-9_]/g,'')"></div>
+    <div id="profileUrlPreview" style="font-size:12px;color:var(--text3);margin-top:-8px;margin-bottom:14px;"></div>
+    <div class="field"><div class="toggle-row"><span>Profilo pubblico</span><div class="toggle" id="profileToggle" onclick="this.classList.toggle('on')"><div class="toggle-thumb"></div></div></div></div>
+    <div class="modal-actions">
+      <button class="btn-secondary" onclick="closeModal('overlayProfile')">Annulla</button>
+      <button class="btn-primary" id="profileSaveBtn" onclick="saveProfile()">Salva</button>
     </div>
   </div>
 </div>
@@ -430,30 +447,50 @@ const SUPABASE_URL='https://gcxrootmhemvlvcpcydn.supabase.co';
 const SUPABASE_KEY='sb_publishable_bZRBU4kXiEsc19c5kZJFrQ_Hs8RkjcH';
 const sb=supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
 
-const ICONS=[
-  {e:'📚',l:'Libri'},{e:'✈️',l:'Viaggi'},{e:'👗',l:'Moda'},{e:'💄',l:'Beauty'},
-  {e:'🎮',l:'Gaming'},{e:'🏠',l:'Casa'},{e:'🍽️',l:'Cibo'},{e:'🎵',l:'Musica'},
-  {e:'🌿',l:'Natura'},{e:'💻',l:'Tech'},{e:'🎨',l:'Arte'},{e:'🐾',l:'Animali'}
+// ICON CATEGORIES
+const ICON_CATS=[
+  {label:'Generale', icons:['📚','✈️','👗','💄','🎮','🏠','🍽️','🎵','🌿','💻','🎨','🐾']},
+  {label:'Occasioni', icons:['🎂','🎄','💍','🎓','🥂','🎁','💝','🌸','🪄','🏆','🎭','✨']},
+  {label:'Stile', icons:['👠','👜','💎','🧴','🪞','🕶️','🧣','💅','🛍️','👒','🌂','🧤']},
+  {label:'Sport', icons:['🏋️','🚴','🧘','⛷️','🏊','🎾','🥾','🏄','🎿','🧗','🏇','⚽']},
+  {label:'Casa', icons:['🛋️','🪴','🕯️','🍳','☕','🛁','📷','🎸','🖼️','🪑','🧺','🔑']},
+  {label:'Cultura', icons:['📖','🎬','🎤','🎺','🖋️','🗺️','🏛️','🔭','🎲','♟️','🧩','🎧']}
 ];
+let currentIconCat=0;
 
+function buildIconPicker(){
+  const tabs=document.getElementById('iconCatTabs');
+  const grid=document.getElementById('iconGrid');
+  tabs.innerHTML=ICON_CATS.map((c,i)=>`<div class="icon-cat-tab${i===currentIconCat?' active':''}" onclick="switchIconCat(${i})">${c.label}</div>`).join('');
+  grid.innerHTML=ICON_CATS[currentIconCat].icons.map(e=>
+    `<div class="icon-opt${e===selIcon?' selected':''}" onclick="pickIcon(this,'${e}')">${e}</div>`
+  ).join('');
+}
+function switchIconCat(i){
+  currentIconCat=i;buildIconPicker();
+}
+function pickIcon(el,e){
+  selIcon=e;
+  document.querySelectorAll('.icon-opt').forEach(x=>x.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+const SUPABASE_URL_KEY=SUPABASE_URL;
 let currentUser=null,wls=[],desires=[],editingWL=null,editingD=null;
 let currentWL=null,fabOpen=false;
-let dPrio='medio',selIcon=ICONS[0].e;
+let dPrio='medio',selIcon=ICON_CATS[0].icons[0];
 let wlImgData='',dImgData='',isBook=false;
-let authMode='login',pendingShareId=null;
-let fetchedData=null; // dati fetchati in attesa di applicazione
+let authMode='login',pendingShareId=null,pendingUserId=null;
+let fetchedData=null,userProfile=null;
+let currentDesireId=null,desireDetailFrom=null;
 
 const sortState={date:'desc',price:'asc',prio:'desc'};
 let activeSort='date';
-const sortLabels={
-  date:{asc:'Recenti ↑',desc:'Recenti ↓'},
-  price:{asc:'Prezzo ↑',desc:'Prezzo ↓'},
-  prio:{asc:'Priorità ↑',desc:'Priorità ↓'}
-};
+const sortLabels={date:{asc:'Recenti ↑',desc:'Recenti ↓'},price:{asc:'Prezzo ↑',desc:'Prezzo ↓'},prio:{asc:'Priorità ↑',desc:'Priorità ↓'}};
 
 function toggleSort(key){
-  if(activeSort===key){sortState[key]=sortState[key]==='asc'?'desc':'asc';}
-  else{activeSort=key;}
+  if(activeSort===key)sortState[key]=sortState[key]==='asc'?'desc':'asc';
+  else activeSort=key;
   updateSortChips();renderDetail();
 }
 function updateSortChips(){
@@ -465,51 +502,28 @@ function updateSortChips(){
   });
 }
 
-// ── FETCH METADATA ──
+// ── FETCH ──
 async function fetchMeta(){
   const url=document.getElementById('fetchUrl').value.trim();
   if(!url){showToast('Incolla un link prima');return;}
   const btn=document.getElementById('fetchBtn');
-  btn.disabled=true;
-  btn.innerHTML='<span class="spinner-dark"></span>';
-  fetchedData=null;
-  document.getElementById('fetchPreview').classList.remove('show');
-
+  btn.disabled=true;btn.innerHTML='<span class="spinner-dark"></span>';
+  fetchedData=null;document.getElementById('fetchPreview').classList.remove('show');
   try{
-    // prova prima Open Library se sembra un libro o se è un link IBS/Feltrinelli/Libraccio
-    const isBookSite=/ibs\.it|feltrinelli|libraccio|mondadoristore|bookdepo|amazon.*dp/i.test(url);
-    let title='',image='',price='',note='';
-
     const res=await fetch(`https://api.microlink.io?url=${encodeURIComponent(url)}&palette=false&audio=false&video=false&iframe=false`);
     const data=await res.json();
-
-    if(data.status==='success'){
-      title=data.data?.title||'';
-      image=data.data?.image?.url||data.data?.logo?.url||'';
-      // prova a estrarre prezzo da description o title
-      const desc=data.data?.description||'';
-      const priceMatch=(title+' '+desc).match(/€\s?[\d,.]+|[\d,.]+\s?€|EUR\s?[\d,.]+/i);
-      if(priceMatch)price=priceMatch[0].replace(/[^\d,.]/g,'').replace(',','.');
-      note=isBookSite?'Sito libro rilevato — attiva "È un libro?" se vuoi aggiungere autore':'';
-    }
-
-    if(!title){
-      btn.disabled=false;btn.textContent='Importa';
-      showToast('Nessun dato trovato per questo link');return;
-    }
-
-    fetchedData={title,image,price,link:url};
-    const prevImg=document.getElementById('fetchPreviewImg');
-    prevImg.src=image||'';
-    prevImg.style.display=image?'block':'none';
-    document.getElementById('fetchPreviewTitle').textContent=title;
-    document.getElementById('fetchPreviewPrice').textContent=price?`€${price}`:'';
-    document.getElementById('fetchPreviewNote').textContent=note;
-    document.getElementById('fetchPreview').classList.add('show');
-
-  } catch(e){
-    showToast('Errore di connessione');
-  }
+    if(data.status==='success'&&data.data?.title){
+      const title=data.data.title;
+      const image=data.data?.image?.url||data.data?.logo?.url||'';
+      const isBookSite=/ibs\.it|feltrinelli|libraccio|mondadoristore|bookdepo/i.test(url);
+      fetchedData={title,image,link:url};
+      const prevImg=document.getElementById('fetchPreviewImg');
+      prevImg.src=image||'';prevImg.style.display=image?'block':'none';
+      document.getElementById('fetchPreviewTitle').textContent=title;
+      document.getElementById('fetchPreviewNote').textContent=isBookSite?'Sito libro rilevato':'';
+      document.getElementById('fetchPreview').classList.add('show');
+    } else showToast('Nessun dato trovato');
+  } catch(e){showToast('Errore di connessione');}
   btn.disabled=false;btn.textContent='Importa';
 }
 
@@ -517,23 +531,111 @@ function applyFetch(){
   if(!fetchedData)return;
   if(fetchedData.title)document.getElementById('dName').value=fetchedData.title;
   if(fetchedData.link)document.getElementById('dLink').value=fetchedData.link;
-  if(fetchedData.price)document.getElementById('dPrice').value=fetchedData.price;
   if(fetchedData.image){
     document.getElementById('dImg').value=fetchedData.image;
     const prev=document.getElementById('dPreview');
     prev.src=fetchedData.image;prev.style.display='block';
   }
-  // rileva se è probabile un libro
   const isBookSite=/ibs\.it|feltrinelli|libraccio|mondadoristore|bookdepo/i.test(fetchedData.link);
-  if(isBookSite&&!isBook){
-    isBook=true;
-    document.getElementById('bookToggle').classList.add('on');
-    document.getElementById('bookFields').classList.add('open');
-  }
+  if(isBookSite&&!isBook){isBook=true;document.getElementById('bookToggle').classList.add('on');document.getElementById('bookFields').classList.add('open');}
   document.getElementById('fetchPreview').classList.remove('show');
   document.getElementById('fetchUrl').value='';
-  fetchedData=null;
-  showToast('Dati importati ✓');
+  fetchedData=null;showToast('Dati importati ✓');
+}
+
+// ── DESIRE DETAIL ──
+function openDesireDetail(desireId, fromContext){
+  const d=desires.find(x=>x.id===desireId);
+  if(!d)return;
+  currentDesireId=desireId;
+  desireDetailFrom=fromContext; // 'owner', 'public', 'profile'
+
+  const imgSrc=d.img_data||d.img_url||d.fetched_image||'';
+  const wrap=document.getElementById('desireDetailImgWrap');
+  if(imgSrc){wrap.innerHTML=`<img class="desire-detail-img" src="${imgSrc}" onerror="this.parentNode.innerHTML='<div class=\\'desire-detail-img-placeholder\\'>♡</div>'">`;}
+  else wrap.innerHTML=`<div class="desire-detail-img-placeholder">♡</div>`;
+
+  const wl=wls.find(x=>x.id===d.wishlist_id)||(pubWishlist?.id===d.wishlist_id?pubWishlist:null);
+  document.getElementById('desireDetailWlName').textContent=wl?wl.name:'';
+  document.getElementById('desireDetailName').textContent=d.name;
+
+  const bookStr=d.is_book&&d.author?`${d.author}${d.publisher?' · '+d.publisher:''}`:'';
+  const bookEl=document.getElementById('desireDetailBook');
+  bookEl.textContent=bookStr;bookEl.style.display=bookStr?'block':'none';
+
+  const priceEl=document.getElementById('desireDetailPrice');
+  priceEl.textContent=d.price?`€${parseFloat(d.price).toFixed(2)}`:'';
+  priceEl.style.display=d.price?'block':'none';
+
+  // meta
+  const meta=document.getElementById('desireDetailMeta');
+  const rows=[];
+  if(d.priority)rows.push(`<div class="desire-detail-row"><span class="desire-detail-label">Priorità</span><span class="prio-badge prio-${d.priority}">${d.priority}</span></div>`);
+  if(d.is_book&&d.publisher)rows.push(`<div class="desire-detail-row"><span class="desire-detail-label">Editore</span><span class="desire-detail-value">${escHtml(d.publisher)}</span></div>`);
+  meta.innerHTML=rows.join('');
+  meta.style.display=rows.length?'flex':'none';
+
+  // actions
+  const actions=document.getElementById('desireDetailActions');
+  let html='';
+  if(d.link)html+=`<a class="desire-detail-link" href="${d.link}" target="_blank" rel="noopener">Apri link ↗</a>`;
+  if(fromContext==='owner'){
+    html+=`<button class="desire-detail-edit" onclick="editDesireFromDetail('${d.id}')">Modifica</button>`;
+  } else if(fromContext==='public'||fromContext==='profile'){
+    const isReserved=!!d.reserved_by;
+    const isMine=currentUser&&d.reserved_by===currentUser.id;
+    if(isMine)html+=`<button class="reserve-detail-btn mine" onclick="unreserveDetail('${d.id}')">Libera prenotazione ✕</button>`;
+    else if(isReserved)html+=`<div style="text-align:center;font-size:13px;color:var(--text3);padding:12px 0;">Già prenotato</div>`;
+    else if(currentUser)html+=`<button class="reserve-detail-btn" onclick="reserveDetail('${d.id}')">Prenoto questo regalo ♡</button>`;
+    else html+=`<button class="reserve-detail-btn" onclick="showAuthFromPublic()">Accedi per prenotare ♡</button>`;
+  }
+  actions.innerHTML=html;
+
+  document.getElementById('desireDetailBack').onclick=()=>closeDesireDetail();
+
+  hideAllViews();
+  document.getElementById('desireDetailView').style.display='block';
+}
+
+function closeDesireDetail(){
+  document.getElementById('desireDetailView').style.display='none';
+  if(desireDetailFrom==='owner'){
+    document.getElementById('appView').style.display='block';
+    document.getElementById('detailView').classList.add('active');
+    document.getElementById('homeView').classList.add('hidden');
+  } else if(desireDetailFrom==='public'){
+    document.getElementById('publicView').style.display='block';
+  } else if(desireDetailFrom==='profile'){
+    document.getElementById('publicView').style.display='block';
+  }
+}
+
+function editDesireFromDetail(id){
+  document.getElementById('desireDetailView').style.display='none';
+  document.getElementById('appView').style.display='block';
+  document.getElementById('detailView').classList.add('active');
+  document.getElementById('homeView').classList.add('hidden');
+  editDesire(id);
+}
+
+async function reserveDetail(id){
+  if(!currentUser){showAuthFromPublic();return;}
+  const {error}=await sb.from('desires').update({reserved_by:currentUser.id,reserved_at:new Date().toISOString()}).eq('id',id).is('reserved_by',null);
+  if(error){showToast('Errore nella prenotazione');return;}
+  const d=pubDesires.find(x=>x.id===id);if(d)d.reserved_by=currentUser.id;
+  desires=desires.map(x=>x.id===id?{...x,reserved_by:currentUser.id}:x);
+  showToast('Prenotato! 🎁');
+  openDesireDetail(id,desireDetailFrom);
+}
+
+async function unreserveDetail(id){
+  if(!currentUser)return;
+  const {error}=await sb.from('desires').update({reserved_by:null,reserved_at:null}).eq('id',id).eq('reserved_by',currentUser.id);
+  if(error){showToast('Errore');return;}
+  const d=pubDesires.find(x=>x.id===id);if(d)d.reserved_by=null;
+  desires=desires.map(x=>x.id===id?{...x,reserved_by:null}:x);
+  showToast('Prenotazione rimossa');
+  openDesireDetail(id,desireDetailFrom);
 }
 
 // ── AUTH ──
@@ -550,87 +652,96 @@ async function authSubmit(){
   const btn=document.getElementById('authBtn');
   const err=document.getElementById('authErr');
   if(!email||!password){err.textContent='Compila tutti i campi';return;}
-  btn.disabled=true;
-  btn.innerHTML='<span class="spinner"></span>'+(authMode==='login'?'Accesso...':'Registrazione...');
+  btn.disabled=true;btn.innerHTML='<span class="spinner"></span>'+(authMode==='login'?'Accesso...':'Registrazione...');
   err.textContent='';
-  const result=authMode==='login'
-    ?await sb.auth.signInWithPassword({email,password})
-    :await sb.auth.signUp({email,password});
-  btn.disabled=false;
-  btn.textContent=authMode==='login'?'Accedi':'Registrati';
+  const result=authMode==='login'?await sb.auth.signInWithPassword({email,password}):await sb.auth.signUp({email,password});
+  btn.disabled=false;btn.textContent=authMode==='login'?'Accedi':'Registrati';
   if(result.error){
     const msgs={'Invalid login credentials':'Email o password errati','Email not confirmed':'Controlla la email per confermare','User already registered':'Email già registrata, prova ad accedere'};
     err.textContent=msgs[result.error.message]||result.error.message;return;
   }
-  if(authMode==='signup'&&!result.data.session){
-    err.style.color='#15803D';
-    err.textContent='Registrazione completata! Controlla la email per confermare.';return;
-  }
+  if(authMode==='signup'&&!result.data.session){err.style.color='#15803D';err.textContent='Registrazione completata! Controlla la email per confermare.';return;}
   if(result.data.user){
     currentUser=result.data.user;
-    if(pendingShareId){document.getElementById('authView').style.display='none';showPublicView(pendingShareId);}
+    if(pendingShareId){hideAllViews();showPublicView(pendingShareId);}
+    else if(pendingUserId){hideAllViews();showProfileView(pendingUserId);}
     else showApp();
   }
 }
 
 async function logout(){
   await sb.auth.signOut();
-  currentUser=null;wls=[];desires=[];
-  document.getElementById('appView').style.display='none';
+  currentUser=null;wls=[];desires=[];userProfile=null;
+  hideAllViews();
   document.getElementById('authView').style.display='block';
   document.getElementById('authEmail').value='';
   document.getElementById('authPassword').value='';
 }
 
+function hideAllViews(){
+  ['authView','publicView','desireDetailView','profileView','appView'].forEach(id=>{
+    document.getElementById(id).style.display='none';
+  });
+  document.getElementById('detailView').classList.remove('active');
+  document.getElementById('homeView').classList.remove('hidden');
+}
+
 function showApp(){
-  document.getElementById('authView').style.display='none';
-  document.getElementById('publicView').style.display='none';
+  hideAllViews();
   document.getElementById('appView').style.display='block';
   loadWishlists();
 }
 
 function showAuthFromPublic(){
-  document.getElementById('publicView').style.display='none';
+  hideAllViews();
   document.getElementById('authView').style.display='block';
   document.getElementById('authNote').textContent='Accedi per prenotare un regalo nella lista.';
 }
 
 function showAppFromPublic(){
-  pendingShareId=null;
-  document.getElementById('publicView').style.display='none';
+  pendingShareId=null;pendingUserId=null;
+  hideAllViews();
   if(currentUser)showApp();
   else document.getElementById('authView').style.display='block';
 }
 
-// ── PUBLIC VIEW ──
+// ── PUBLIC WISHLIST VIEW ──
+let pubWishlist=null,pubDesires=[];
+
 async function showPublicView(wlId){
-  document.getElementById('authView').style.display='none';
-  document.getElementById('appView').style.display='none';
+  hideAllViews();
   document.getElementById('publicView').style.display='block';
   document.getElementById('pubLoading').style.display='block';
   document.getElementById('pubDesireList').innerHTML='';
   pendingShareId=wlId;
-  const {data:wl,error:wlErr}=await sb.from('wishlists').select('*').eq('id',wlId).eq('is_public',true).single();
-  if(wlErr||!wl){
+
+  const {data:wl,error}=await sb.from('wishlists').select('*').eq('id',wlId).eq('is_public',true).single();
+  if(error||!wl){
     document.getElementById('pubLoading').style.display='none';
     document.getElementById('pubDesireList').innerHTML='<div class="empty"><div class="e-icon">✦</div><p>Lista non trovata o privata.</p></div>';
     return;
   }
+  pubWishlist=wl;
   document.getElementById('pubIcon').textContent=wl.icon||'✦';
   document.getElementById('pubName').textContent=wl.name;
   document.getElementById('pubDesc').textContent=wl.description||'';
   document.getElementById('pubDesc').style.display=wl.description?'block':'none';
+
   const {data:ds}=await sb.from('desires').select('*').eq('wishlist_id',wlId).eq('is_public',true).order('created_at',{ascending:false});
   document.getElementById('pubLoading').style.display='none';
-  const list=ds||[];
-  document.getElementById('pubMeta').textContent=list.length+' '+(list.length===1?'desiderio':'desideri');
+  pubDesires=ds||[];
+  document.getElementById('pubMeta').textContent=pubDesires.length+' '+(pubDesires.length===1?'desiderio':'desideri');
+
   const isOwner=currentUser&&currentUser.id===wl.user_id;
   document.getElementById('pubLoginBanner').style.display=(!currentUser&&!isOwner)?'flex':'none';
-  if(!list.length){
-    document.getElementById('pubDesireList').innerHTML='<div class="empty"><div class="e-icon">♡</div><p>Nessun desiderio in questa lista.</p></div>';
-    return;
-  }
-  document.getElementById('pubDesireList').innerHTML=list.map(d=>{
+
+  if(!pubDesires.length){document.getElementById('pubDesireList').innerHTML='<div class="empty"><div class="e-icon">♡</div><p>Nessun desiderio in questa lista.</p></div>';return;}
+
+  // merge in desires for detail view
+  pubDesires.forEach(d=>{if(!desires.find(x=>x.id===d.id))desires.push(d);});
+  if(!wls.find(x=>x.id===wl.id))wls.push(wl);
+
+  document.getElementById('pubDesireList').innerHTML=pubDesires.map(d=>{
     const imgSrc=d.img_data||d.img_url||d.fetched_image||'';
     const imgContent=imgSrc?`<img src="${imgSrc}" onerror="this.textContent='♡'">`:'♡';
     const priceStr=d.price?`€${parseFloat(d.price).toFixed(2)}`:'';
@@ -639,17 +750,17 @@ async function showPublicView(wlId){
     const isMine=currentUser&&d.reserved_by===currentUser.id;
     let actionHtml='';
     if(isOwner)actionHtml='';
-    else if(isMine)actionHtml=`<button class="reserve-btn mine" onclick="unreserve('${d.id}')">Libera ✕</button>`;
-    else if(isReserved)actionHtml=`<span class="reserved-tag">Già prenotato</span>`;
-    else if(currentUser)actionHtml=`<button class="reserve-btn" onclick="reserve('${d.id}')">Prenoto ♡</button>`;
-    else actionHtml=`<button class="reserve-btn" onclick="showAuthFromPublic()">Prenoto ♡</button>`;
-    return`<div class="public-desire-row" id="pub-${d.id}">
-      <div class="public-desire-card${isReserved&&!isMine?' reserved':''}">
+    else if(isMine)actionHtml=`<button class="reserve-btn mine" onclick="event.stopPropagation();unreserve('${d.id}')">Libera ✕</button>`;
+    else if(isReserved)actionHtml=`<span class="reserved-tag">Prenotato</span>`;
+    else if(currentUser)actionHtml=`<button class="reserve-btn" onclick="event.stopPropagation();reserve('${d.id}')">Prenoto ♡</button>`;
+    else actionHtml=`<button class="reserve-btn" onclick="event.stopPropagation();showAuthFromPublic()">Prenoto ♡</button>`;
+    return`<div class="public-desire-row">
+      <div class="public-desire-card${isReserved&&!isMine?' reserved':''}" onclick="openDesireDetail('${d.id}','${isOwner?'owner':'public'}')">
         <div class="public-desire-img">${imgContent}</div>
         <div class="public-desire-info">
           <div class="public-desire-name">${escHtml(d.name)}</div>
           ${bookStr?`<div class="public-desire-book">${bookStr}</div>`:''}
-          <div class="public-desire-sub">${[priceStr,d.link?'<a href="'+d.link+'" style="color:var(--accent)">Link ↗</a>':''].filter(Boolean).join(' · ')}</div>
+          <div class="public-desire-sub">${priceStr}</div>
         </div>
         ${actionHtml}
       </div>
@@ -663,12 +774,100 @@ async function reserve(id){
   if(error){showToast('Errore nella prenotazione');return;}
   showToast('Prenotato! 🎁');showPublicView(pendingShareId);
 }
-
 async function unreserve(id){
   if(!currentUser)return;
   const {error}=await sb.from('desires').update({reserved_by:null,reserved_at:null}).eq('id',id).eq('reserved_by',currentUser.id);
   if(error){showToast('Errore');return;}
   showToast('Prenotazione rimossa');showPublicView(pendingShareId);
+}
+
+// ── PROFILE VIEW ──
+async function showProfileView(userId){
+  hideAllViews();
+  document.getElementById('profileView').style.display='block';
+  document.getElementById('profileLoading').style.display='block';
+  document.getElementById('profileWlGrid').innerHTML='';
+  pendingUserId=userId;
+
+  const {data:profile}=await sb.from('profiles').select('*').eq('id',userId).single();
+  const displayName=profile?.display_name||'Utente';
+  document.getElementById('profileTitle').textContent='Le wishlist di '+displayName;
+
+  const {data:lists}=await sb.from('wishlists').select('*').eq('user_id',userId).eq('is_public',true).order('created_at',{ascending:false});
+  document.getElementById('profileLoading').style.display='none';
+
+  const pubLists=lists||[];
+  document.getElementById('profileSubtitle').textContent=pubLists.length+' '+(pubLists.length===1?'lista pubblica':'liste pubbliche');
+
+  if(!pubLists.length){document.getElementById('profileWlGrid').innerHTML='<div class="empty"><div class="e-icon">✦</div><p>Nessuna lista pubblica ancora.</p></div>';return;}
+
+  // carica conteggi desideri
+  const ids=pubLists.map(w=>w.id);
+  const {data:allDs}=await sb.from('desires').select('id,wishlist_id').in('wishlist_id',ids).eq('is_public',true);
+  const countMap={};
+  (allDs||[]).forEach(d=>{countMap[d.wishlist_id]=(countMap[d.wishlist_id]||0)+1;});
+
+  document.getElementById('profileWlGrid').innerHTML=pubLists.map(w=>{
+    const imgSrc=w.img_data||w.img_url||'';
+    const iconContent=imgSrc?`<img src="${imgSrc}" onerror="this.style.display='none'">`:`${w.icon}`;
+    const c=countMap[w.id]||0;
+    return`<div class="profile-wl-row">
+      <div class="profile-wl-card" onclick="showPublicView('${w.id}')">
+        <div class="profile-wl-icon">${iconContent}</div>
+        <div class="profile-wl-info">
+          <div class="profile-wl-name">${escHtml(w.name)}</div>
+          <div class="profile-wl-count">${c} ${c===1?'desiderio':'desideri'}</div>
+        </div>
+        <span style="color:var(--text3);font-size:18px;">›</span>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ── PROFILE SETUP ──
+async function showProfileSetup(){
+  if(!currentUser)return;
+  const {data:profile}=await sb.from('profiles').select('*').eq('id',currentUser.id).single();
+  userProfile=profile;
+  document.getElementById('profileDisplayName').value=profile?.display_name||'';
+  document.getElementById('profileUsername').value=profile?.username||'';
+  document.getElementById('profileToggle').classList.toggle('on',profile?.is_public!==false);
+  updateProfileUrlPreview();
+  document.getElementById('overlayProfile').classList.add('open');
+}
+
+function updateProfileUrlPreview(){
+  const un=document.getElementById('profileUsername').value.trim();
+  const preview=document.getElementById('profileUrlPreview');
+  if(un)preview.textContent='Link: '+window.location.origin+window.location.pathname+'?user='+un;
+  else preview.textContent='';
+}
+document.getElementById('profileUsername').addEventListener('input',updateProfileUrlPreview);
+
+async function saveProfile(){
+  const displayName=document.getElementById('profileDisplayName').value.trim();
+  const username=document.getElementById('profileUsername').value.trim();
+  const isPublic=document.getElementById('profileToggle').classList.contains('on');
+  if(!displayName){showToast('Inserisci un nome');return;}
+  const btn=document.getElementById('profileSaveBtn');
+  btn.disabled=true;btn.innerHTML='<span class="spinner"></span>Salvo...';
+  const obj={id:currentUser.id,display_name:displayName,username:username||null,is_public:isPublic};
+  const {error}=await sb.from('profiles').upsert(obj,{onConflict:'id'});
+  btn.disabled=false;btn.textContent='Salva';
+  if(error){showToast(error.message.includes('unique')?'Username già in uso':'Errore: '+error.message);return;}
+  userProfile={...obj};
+  showToast('Profilo salvato ✓');
+  closeModal('overlayProfile');
+  if(username&&isPublic){
+    const shareUrl=window.location.origin+window.location.pathname+'?user='+username;
+    navigator.clipboard?.writeText(shareUrl).then(()=>showToast('Link profilo copiato! ⎙'));
+  }
+}
+
+function shareProfile(){
+  if(!userProfile?.username){showProfileSetup();return;}
+  const url=window.location.origin+window.location.pathname+'?user='+userProfile.username;
+  navigator.clipboard?.writeText(url).then(()=>showToast('Link profilo copiato! ⎙')).catch(()=>showToast('Link: '+url));
 }
 
 // ── DATA ──
@@ -681,6 +880,9 @@ async function loadWishlists(){
   if(error){showToast('Errore caricamento');return;}
   wls=data||[];
   await loadAllDesires();
+  // carica profilo
+  const {data:profile}=await sb.from('profiles').select('*').eq('id',currentUser.id).single();
+  userProfile=profile;
   renderHome();
 }
 
@@ -754,12 +956,12 @@ function renderDetail(){
         <div class="sw-btn sw-edit" onclick="editDesire('${d.id}')"><span>✎</span><span>Modifica</span></div>
         <div class="sw-btn sw-del" onclick="deleteDesire('${d.id}')"><span>✕</span><span>Elimina</span></div>
       </div>
-      <div class="desire-card" data-rowid="${d.id}">
+      <div class="desire-card" onclick="openDesireDetail('${d.id}','owner')" data-rowid="${d.id}">
         <div class="desire-img">${imgContent}</div>
         <div class="desire-info">
           <div class="desire-name">${escHtml(d.name)}</div>
           ${bookStr?`<div class="desire-book">${bookStr}</div>`:''}
-          <div class="desire-sub">${[priceStr,d.link?'<a href="'+d.link+'" target="_blank" rel="noopener" style="color:var(--accent)">Apri link ↗</a>':''].filter(Boolean).join(' · ')}</div>
+          <div class="desire-sub">${priceStr}</div>
         </div>
         <span class="prio-badge prio-${d.priority}">${d.priority}</span>
       </div>
@@ -800,12 +1002,12 @@ function toggleFab(){
 function openModal(type){
   if(fabOpen)toggleFab();
   if(type==='wishlist'){
-    editingWL=null;wlImgData='';
+    editingWL=null;wlImgData='';currentIconCat=0;
     document.getElementById('wlModalTitle').textContent='Nuova wishlist';
     ['wlName','wlDesc','wlImgUrl'].forEach(id=>document.getElementById(id).value='');
     document.getElementById('wlPreview').style.display='none';
     document.getElementById('wlToggle').classList.remove('on');
-    selIcon=ICONS[0].e;buildIconPicker();
+    selIcon=ICON_CATS[0].icons[0];buildIconPicker();
     document.getElementById('overlayWL').classList.add('open');
   } else {
     editingD=null;dImgData='';isBook=false;fetchedData=null;
@@ -836,18 +1038,6 @@ function handleImgUpload(input,previewId,ctx){
     if(ctx==='wl')wlImgData=e.target.result;else dImgData=e.target.result;
   };
   reader.readAsDataURL(file);
-}
-
-function buildIconPicker(){
-  document.getElementById('iconPicker').innerHTML=ICONS.map(i=>
-    `<div class="icon-opt${i.e===selIcon?' selected':''}" title="${i.l}" onclick="pickIcon(this,'${i.e}')">${i.e}</div>`
-  ).join('');
-}
-
-function pickIcon(el,e){
-  selIcon=e;
-  document.querySelectorAll('.icon-opt').forEach(x=>x.classList.remove('selected'));
-  el.classList.add('selected');
 }
 
 function selPrio(el){
@@ -899,25 +1089,13 @@ async function saveDesire(){
   const name=document.getElementById('dName').value.trim();
   const wlId=document.getElementById('dWishlist').value;
   if(!name){showToast('Inserisci un titolo');return;}
-  if(!wlId){showToast('Seleziona una wishlist');return;}
+  if(!wlId||wlId==='__new__'){showToast('Seleziona una wishlist');return;}
   const btn=document.getElementById('dSaveBtn');
   btn.disabled=true;btn.innerHTML='<span class="spinner"></span>Salvo...';
   const isPrivate=document.getElementById('dToggle').classList.contains('on');
   const priceVal=document.getElementById('dPrice').value;
   const imgUrl=document.getElementById('dImg').value.trim();
-  const obj={
-    name,
-    img_data:dImgData||null,
-    img_url:imgUrl||null,
-    fetched_image:(!dImgData&&!imgUrl&&fetchedData?.image)?fetchedData.image:null,
-    link:document.getElementById('dLink').value.trim()||null,
-    wishlist_id:wlId,priority:dPrio,
-    price:priceVal?parseFloat(priceVal):null,
-    is_public:!isPrivate,is_book:isBook,
-    author:document.getElementById('dAuthor').value.trim()||null,
-    publisher:document.getElementById('dPublisher').value.trim()||null,
-    user_id:currentUser.id
-  };
+  const obj={name,img_data:dImgData||null,img_url:imgUrl||null,fetched_image:(!dImgData&&!imgUrl&&fetchedData?.image)?fetchedData.image:null,link:document.getElementById('dLink').value.trim()||null,wishlist_id:wlId,priority:dPrio,price:priceVal?parseFloat(priceVal):null,is_public:!isPrivate,is_book:isBook,author:document.getElementById('dAuthor').value.trim()||null,publisher:document.getElementById('dPublisher').value.trim()||null,user_id:currentUser.id};
   let error;
   if(editingD){
     ({error}=await sb.from('desires').update(obj).eq('id',editingD));
@@ -934,7 +1112,7 @@ async function saveDesire(){
 
 function editWL(id){
   const w=wls.find(x=>x.id===id);if(!w)return;
-  editingWL=id;selIcon=w.icon;wlImgData=w.img_data||'';
+  editingWL=id;selIcon=w.icon;wlImgData=w.img_data||'';currentIconCat=0;
   document.getElementById('wlModalTitle').textContent='Modifica wishlist';
   document.getElementById('wlName').value=w.name;
   document.getElementById('wlDesc').value=w.description||'';
@@ -976,8 +1154,7 @@ async function deleteWL(id){
   if(!confirm('Eliminare questa wishlist e tutti i suoi desideri?'))return;
   const {error}=await sb.from('wishlists').delete().eq('id',id);
   if(error){showToast('Errore eliminazione');return;}
-  wls=wls.filter(x=>x.id!==id);
-  desires=desires.filter(x=>x.wishlist_id!==id);
+  wls=wls.filter(x=>x.id!==id);desires=desires.filter(x=>x.wishlist_id!==id);
   renderHome();
 }
 
@@ -985,8 +1162,7 @@ async function deleteDesire(id){
   if(!confirm('Eliminare questo desiderio?'))return;
   const {error}=await sb.from('desires').delete().eq('id',id);
   if(error){showToast('Errore eliminazione');return;}
-  desires=desires.filter(x=>x.id!==id);
-  renderDetail();
+  desires=desires.filter(x=>x.id!==id);renderDetail();
 }
 
 function shareList(){
@@ -1022,25 +1198,34 @@ function resetSwipe(rowId){
   if(card){card.style.transform='';card.style.transition='transform .2s';}
 }
 
-function escHtml(s){
-  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-}
+function escHtml(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 
 document.querySelectorAll('.overlay').forEach(o=>{
   o.addEventListener('click',e=>{if(e.target===o)o.classList.remove('open');});
 });
 
+// ── INIT ──
 (async()=>{
   const {data:{session}}=await sb.auth.getSession();
   if(session?.user)currentUser=session.user;
   const params=new URLSearchParams(window.location.search);
   const shareId=params.get('share');
+  const userId=params.get('user');
+
   if(shareId){
     if(currentUser){
       const {data:wl}=await sb.from('wishlists').select('user_id').eq('id',shareId).single();
       if(wl&&wl.user_id===currentUser.id){showApp();return;}
     }
     showPublicView(shareId);
+  } else if(userId){
+    // cerca per username o id
+    let resolvedId=userId;
+    if(!userId.includes('-')){
+      const {data:profile}=await sb.from('profiles').select('id').eq('username',userId).single();
+      if(profile)resolvedId=profile.id;
+    }
+    showProfileView(resolvedId);
   } else if(currentUser){
     showApp();
   }
