@@ -287,7 +287,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 <!-- AUTH -->
 <div id="authView">
   <div class="auth-logo">Listea</div>
-  <div class="auth-sub">Le tue wishlist</div>
+  <div class="auth-sub">Desidera. Condividi. Sorprendi.</div>
   <div class="auth-tabs">
     <div class="auth-tab active" onclick="switchTab('login')">Accedi</div>
     <div class="auth-tab" onclick="switchTab('signup')">Registrati</div>
@@ -380,7 +380,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
   <div class="app-header">
     <div>
       <div class="logo-name">Listea</div>
-      <div class="logo-sub">Le tue wishlist</div>
+      <div class="logo-sub">Desidera. Condividi. Sorprendi.</div>
     </div>
   </div>
 
@@ -604,6 +604,11 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
   <div class="modal">
     <div class="modal-handle"></div>
     <div class="modal-title">Cambia password</div>
+    <div class="field" style="position:relative;">
+      <label>Password attuale</label>
+      <input type="password" id="currentPasswordInput" placeholder="••••••••">
+      <span class="pw-eye" onclick="togglePwCurrent()">👁</span>
+    </div>
     <div class="field" style="position:relative;">
       <label>Nuova password</label>
       <input type="password" id="changePasswordInput" placeholder="••••••••">
@@ -927,13 +932,19 @@ function openChangeEmailModal(){
   document.getElementById('overlayChangeEmail').classList.add('open');
 }
 function openChangePasswordModal(){
+  document.getElementById('currentPasswordInput').value='';
   document.getElementById('changePasswordInput').value='';
   document.getElementById('changePasswordErr').textContent='';
+  document.getElementById('currentPasswordInput').type='password';
   document.getElementById('changePasswordInput').type='password';
   document.getElementById('overlayChangePassword').classList.add('open');
 }
 function togglePwChange(){
   const inp=document.getElementById('changePasswordInput');
+  inp.type=inp.type==='password'?'text':'password';
+}
+function togglePwCurrent(){
+  const inp=document.getElementById('currentPasswordInput');
   inp.type=inp.type==='password'?'text':'password';
 }
 async function changeEmail(){
@@ -951,12 +962,22 @@ async function changeEmail(){
   setTimeout(()=>closeModal('overlayChangeEmail'),2500);
 }
 async function changePassword(){
+  const currentPw=document.getElementById('currentPasswordInput').value;
   const pw=document.getElementById('changePasswordInput').value;
   const err=document.getElementById('changePasswordErr');
-  if(!pw||pw.length<6){err.textContent='Almeno 6 caratteri';return;}
+  if(!currentPw){err.textContent='Inserisci la password attuale';return;}
+  if(!pw||pw.length<6){err.textContent='La nuova password deve avere almeno 6 caratteri';return;}
+  if(currentPw===pw){err.textContent='La nuova password deve essere diversa da quella attuale';return;}
   const btn=document.getElementById('changePasswordBtn');
-  btn.disabled=true;btn.innerHTML='<span class="spinner"></span>Salvo...';
+  btn.disabled=true;btn.innerHTML='<span class="spinner"></span>Verifico...';
   err.textContent='';
+  // verifica password attuale ri-autenticando
+  const {error:signInErr}=await sb.auth.signInWithPassword({email:currentUser.email,password:currentPw});
+  if(signInErr){
+    btn.disabled=false;btn.textContent='Salva';
+    err.textContent='Password attuale errata';return;
+  }
+  btn.innerHTML='<span class="spinner"></span>Salvo...';
   const {error}=await sb.auth.updateUser({password:pw});
   btn.disabled=false;btn.textContent='Salva';
   if(error){err.textContent='Errore: '+error.message;return;}
@@ -984,7 +1005,10 @@ function openDesireDetail(desireId,fromContext){
   const actions=document.getElementById('desireDetailActions');
   let html='';
   if(d.link)html+=`<a class="desire-detail-link" href="${d.link}" target="_blank" rel="noopener">Apri link ↗</a>`;
-  if(fromContext==='owner'){html+=`<button class="desire-detail-edit" onclick="editDesireFromDetail('${d.id}')">Modifica</button>`;}
+  if(fromContext==='owner'){
+    html+=`<button class="desire-detail-edit" onclick="editDesireFromDetail('${d.id}')">Modifica</button>`;
+    html+=`<button class="desire-detail-edit" style="color:#DC2626;border-color:#FCA5A5;margin-top:8px;" onclick="deleteDesireFromDetail('${d.id}')">Elimina desiderio</button>`;
+  }
   else{
     const isReserved=!!d.reserved_by;const isMine=currentUser&&d.reserved_by===currentUser.id;
     if(isMine)html+=`<button class="reserve-detail-btn reserved-mine" onclick="unreserveDetail('${d.id}')">Libera prenotazione ✕</button>`;
@@ -1013,6 +1037,24 @@ function editDesireFromDetail(id){
   document.getElementById('tabLists').style.display='block';
   document.getElementById('tabHome').style.display='none';
   editDesire(id);
+}
+async function deleteDesireFromDetail(id){
+  if(!confirm('Eliminare questo desiderio?'))return;
+  const {error}=await sb.from('desires').delete().eq('id',id);
+  if(error){showToast('Errore eliminazione');return;}
+  desires=desires.filter(x=>x.id!==id);
+  document.getElementById('desireDetailView').style.display='none';
+  document.getElementById('appView').style.display='block';
+  if(currentWL){
+    document.getElementById('tabLists').style.display='block';
+    document.getElementById('tabHome').style.display='none';
+    renderDetail();
+  } else {
+    document.getElementById('tabHome').style.display='block';
+    renderHome();
+  }
+  renderTopDesires();
+  showToast('Desiderio eliminato');
 }
 
 async function reserveDetail(id){
