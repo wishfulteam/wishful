@@ -14,88 +14,144 @@
   --text:#111110;--text2:#6B6860;--text3:#A8A69E;
   --accent:#B8860B;--accent-light:#F7F0DC;--accent-dark:#7A5A00;
   --border:#E4E1D9;--radius:14px;--radiusS:8px;
+  --nav-h:64px;
 }
 body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
 
-/* AUTH */
-#authView{max-width:380px;margin:0 auto;padding:60px 24px;}
+/* ── AUTH ── */
+#authView{max-width:380px;margin:0 auto;padding:60px 24px;display:none;}
 .auth-logo{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:400;letter-spacing:1px;margin-bottom:6px;}
 .auth-sub{font-size:12px;color:var(--text3);letter-spacing:2px;text-transform:uppercase;margin-bottom:40px;}
 .auth-tabs{display:flex;border:1px solid var(--border);border-radius:var(--radiusS);overflow:hidden;margin-bottom:24px;}
 .auth-tab{flex:1;padding:10px;text-align:center;font-size:13px;cursor:pointer;background:var(--surface);color:var(--text2);transition:all .15s;}
 .auth-tab.active{background:var(--text);color:var(--bg);}
-.auth-field{margin-bottom:14px;}
+.auth-field{margin-bottom:14px;position:relative;}
 .auth-field label{font-size:11px;color:var(--text2);display:block;margin-bottom:5px;letter-spacing:.5px;text-transform:uppercase;}
-.auth-field input{width:100%;padding:11px 14px;border:1px solid var(--border);border-radius:var(--radiusS);background:var(--bg);font-family:'DM Sans',sans-serif;font-size:14px;color:var(--text);outline:none;transition:border-color .15s;}
+.auth-field input{width:100%;padding:11px 44px 11px 14px;border:1px solid var(--border);border-radius:var(--radiusS);background:var(--bg);font-family:'DM Sans',sans-serif;font-size:14px;color:var(--text);outline:none;transition:border-color .15s;}
 .auth-field input:focus{border-color:var(--accent);}
+.pw-eye{position:absolute;right:12px;bottom:11px;cursor:pointer;font-size:16px;color:var(--text3);user-select:none;}
 .auth-btn{width:100%;padding:13px;background:var(--text);color:var(--bg);border:none;border-radius:var(--radiusS);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;margin-top:6px;transition:background .15s;}
 .auth-btn:hover{background:var(--accent-dark);}
 .auth-err{font-size:12px;color:#DC2626;margin-top:10px;text-align:center;min-height:18px;}
 .auth-note{font-size:12px;color:var(--text3);margin-top:16px;text-align:center;line-height:1.6;}
 
-/* APP */
-#appView{display:none;max-width:420px;margin:0 auto;padding-bottom:80px;}
-.header{padding:24px 20px 10px;display:flex;justify-content:space-between;align-items:flex-end;border-bottom:1px solid var(--border);}
-.logo-name{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:400;letter-spacing:1px;line-height:1;}
+/* ── APP SHELL ── */
+#appView{display:none;max-width:420px;margin:0 auto;}
+.app-header{padding:20px 20px 10px;display:flex;justify-content:space-between;align-items:flex-end;border-bottom:1px solid var(--border);}
+.logo-name{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:400;letter-spacing:1px;line-height:1;}
 .logo-sub{font-size:10px;color:var(--text3);letter-spacing:2px;text-transform:uppercase;margin-top:2px;}
-.header-right{display:flex;align-items:center;gap:10px;}
-.header-count{font-size:12px;color:var(--text3);}
-.logout-btn{font-size:11px;color:var(--text3);background:none;border:1px solid var(--border);border-radius:20px;padding:4px 10px;cursor:pointer;}
 
-/* PUBLIC VIEW */
-#publicView{display:none;max-width:420px;margin:0 auto;padding-bottom:40px;}
-.public-header{padding:28px 20px 16px;border-bottom:1px solid var(--border);}
-.public-logo{font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--text3);letter-spacing:2px;text-transform:uppercase;margin-bottom:16px;}
-.public-wl-icon{font-size:32px;margin-bottom:8px;}
-.public-wl-name{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:400;}
-.public-wl-desc{font-size:13px;color:var(--text2);margin-top:6px;line-height:1.6;}
-.public-wl-meta{font-size:12px;color:var(--text3);margin-top:8px;}
-.public-login-banner{margin:16px 20px 0;padding:12px 16px;background:var(--accent-light);border-radius:var(--radiusS);display:flex;justify-content:space-between;align-items:center;gap:12px;}
-.public-login-banner p{font-size:12px;color:var(--accent-dark);line-height:1.5;}
-.public-login-btn{font-size:12px;padding:6px 14px;background:var(--text);color:var(--bg);border:none;border-radius:20px;cursor:pointer;white-space:nowrap;}
-.public-desire-list{display:flex;flex-direction:column;margin-top:4px;}
-.public-desire-row{border-bottom:1px solid var(--border);}
-.public-desire-card{padding:14px 20px;display:flex;align-items:center;gap:14px;cursor:pointer;}
-.public-desire-card.reserved{opacity:.5;}
-.public-desire-img{width:46px;height:46px;border-radius:10px;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;overflow:hidden;color:var(--text3);}
-.public-desire-img img{width:100%;height:100%;object-fit:cover;}
-.public-desire-info{flex:1;min-width:0;}
-.public-desire-name{font-size:14px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.public-desire-sub{font-size:11px;color:var(--text3);margin-top:3px;}
-.public-desire-book{font-size:11px;color:var(--accent-dark);font-style:italic;margin-top:1px;}
-.reserve-btn{font-size:11px;padding:6px 12px;border-radius:20px;border:1px solid var(--border);background:var(--surface);cursor:pointer;white-space:nowrap;color:var(--text2);transition:all .15s;flex-shrink:0;}
-.reserve-btn:hover{border-color:var(--accent);color:var(--accent-dark);}
-.reserve-btn.mine{background:var(--accent-light);border-color:var(--accent);color:var(--accent-dark);}
-.reserved-tag{font-size:11px;color:var(--text3);white-space:nowrap;flex-shrink:0;}
-.public-footer{text-align:center;padding:32px 20px 0;}
-.public-footer a{color:var(--accent-dark);text-decoration:none;font-size:13px;}
-.public-footer p{font-size:12px;color:var(--text3);margin-bottom:8px;}
+/* ── BOTTOM NAV ── */
+.bottom-nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:420px;height:var(--nav-h);background:var(--surface);border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-around;z-index:50;}
+.nav-btn{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;cursor:pointer;padding:8px 0;color:var(--text3);transition:color .15s;}
+.nav-btn.active{color:var(--text);}
+.nav-btn svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;}
+.nav-btn span{font-size:10px;letter-spacing:.3px;}
+.nav-fab{width:52px;height:52px;border-radius:50%;background:var(--text);color:var(--bg);border:none;cursor:pointer;font-size:24px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,0.18);transition:transform .15s,background .15s;flex-shrink:0;}
+.nav-fab:hover{transform:scale(1.06);background:var(--accent-dark);}
 
-/* PROFILE VIEW */
-#profileView{display:none;max-width:420px;margin:0 auto;padding-bottom:40px;}
-.profile-header{padding:28px 20px 20px;border-bottom:1px solid var(--border);}
-.profile-logo{font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--text3);letter-spacing:2px;text-transform:uppercase;margin-bottom:20px;}
-.profile-title{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;line-height:1.2;}
-.profile-subtitle{font-size:12px;color:var(--text3);margin-top:6px;}
-.profile-wl-grid{padding:16px 20px;display:flex;flex-direction:column;gap:1px;}
-.profile-wl-row{border-bottom:1px solid var(--border);}
-.profile-wl-card{padding:14px 0;display:flex;align-items:center;gap:14px;cursor:pointer;}
-.profile-wl-card:active{opacity:.7;}
-.profile-wl-icon{width:46px;height:46px;border-radius:12px;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;overflow:hidden;}
-.profile-wl-icon img{width:100%;height:100%;object-fit:cover;border-radius:12px;}
-.profile-wl-info{flex:1;}
-.profile-wl-name{font-size:15px;font-weight:500;}
-.profile-wl-count{font-size:12px;color:var(--text3);margin-top:2px;}
+/* FAB MENU */
+.fab-menu{position:fixed;bottom:calc(var(--nav-h) + 12px);left:50%;transform:translateX(-50%);display:flex;flex-direction:column;gap:8px;align-items:center;opacity:0;pointer-events:none;transition:opacity .2s;z-index:49;}
+.fab-menu.open{opacity:1;pointer-events:all;}
+.fab-item{display:flex;align-items:center;gap:10px;cursor:pointer;}
+.fab-item span.lbl{background:var(--text);color:var(--bg);font-size:12px;padding:5px 14px;border-radius:20px;white-space:nowrap;}
+.fab-item .ic{width:36px;height:36px;border-radius:50%;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:15px;}
 
-/* DESIRE DETAIL VIEW */
-#desireDetailView{display:none;max-width:420px;margin:0 auto;padding-bottom:40px;}
-.desire-detail-header{padding:14px 18px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--border);}
+/* ── TAB CONTENT ── */
+.tab-content{padding-bottom:calc(var(--nav-h) + 16px);}
+
+/* TAB: HOME */
+#tabHome{display:block;}
+.section-label{font-size:10px;letter-spacing:2px;color:var(--text3);text-transform:uppercase;padding:16px 20px 8px;}
+
+/* wishlist cards */
+.wl-list{display:flex;flex-direction:column;}
+.wl-row{position:relative;overflow:hidden;border-bottom:1px solid var(--border);}
+.wl-card{background:var(--surface);padding:13px 18px;display:flex;align-items:center;gap:13px;cursor:pointer;transition:background .12s;position:relative;z-index:1;}
+.wl-card:active{background:var(--surface2);}
+.wl-icon{width:46px;height:46px;border-radius:11px;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;overflow:hidden;}
+.wl-icon img{width:100%;height:100%;object-fit:cover;border-radius:11px;}
+.wl-info{flex:1;min-width:0;}
+.wl-name{font-size:14px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.wl-meta{font-size:11px;color:var(--text3);margin-top:2px;display:flex;align-items:center;gap:5px;}
+.vis-dot{width:5px;height:5px;border-radius:50%;display:inline-block;}
+.vis-pub{background:#4CAF50;}.vis-priv{background:var(--accent);}
+
+/* top desires */
+.top-filter-bar{padding:8px 16px;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid var(--border);}
+.top-filter-bar::-webkit-scrollbar{display:none;}
+.filter-chip{font-size:11px;padding:4px 12px;border-radius:20px;border:1px solid var(--border);background:var(--surface);cursor:pointer;white-space:nowrap;color:var(--text2);flex-shrink:0;}
+.filter-chip.active{background:var(--text);color:var(--bg);border-color:var(--text);}
+.top-desire-row{border-bottom:1px solid var(--border);}
+.top-desire-card{padding:11px 18px;display:flex;align-items:center;gap:12px;cursor:pointer;}
+.top-desire-card:active{background:var(--surface2);}
+.top-desire-img{width:40px;height:40px;border-radius:9px;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;overflow:hidden;color:var(--text3);}
+.top-desire-img img{width:100%;height:100%;object-fit:cover;}
+.top-desire-info{flex:1;min-width:0;}
+.top-desire-name{font-size:13px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.top-desire-sub{font-size:11px;color:var(--text3);margin-top:2px;}
+.prio-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
+.prio-dot-alto{background:#DC2626;}
+.prio-dot-medio{background:var(--accent);}
+.prio-dot-basso{background:#15803D;}
+.see-all-btn{display:block;text-align:center;padding:12px;font-size:12px;color:var(--accent-dark);cursor:pointer;border-bottom:1px solid var(--border);}
+
+/* TAB: LISTS DETAIL */
+#tabLists{display:none;}
+.detail-header{padding:13px 18px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--border);}
+.back-btn{width:32px;height:32px;border-radius:50%;border:1px solid var(--border);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:15px;color:var(--text);}
+.detail-title{font-family:'Cormorant Garamond',serif;font-size:19px;flex:1;}
+.share-btn{width:32px;height:32px;border-radius:50%;border:1px solid var(--border);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--text2);}
+.sort-bar{padding:9px 16px;display:flex;gap:7px;border-bottom:1px solid var(--border);}
+.sort-chip{flex:1;font-size:11px;padding:5px 4px;border-radius:20px;border:1px solid var(--border);background:var(--surface);cursor:pointer;color:var(--text2);text-align:center;white-space:nowrap;transition:all .15s;}
+.sort-chip.active{background:var(--text);color:var(--bg);border-color:var(--text);}
+.desire-list{display:flex;flex-direction:column;}
+.desire-row{position:relative;overflow:hidden;border-bottom:1px solid var(--border);}
+.desire-card{background:var(--surface);padding:11px 18px;display:flex;align-items:center;gap:11px;position:relative;z-index:1;cursor:pointer;}
+.desire-img{width:44px;height:44px;border-radius:9px;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;overflow:hidden;color:var(--text3);}
+.desire-img img{width:100%;height:100%;object-fit:cover;}
+.desire-info{flex:1;min-width:0;}
+.desire-name{font-size:13px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.desire-sub{font-size:11px;color:var(--text3);margin-top:2px;}
+.desire-book{font-size:11px;color:var(--accent-dark);font-style:italic;margin-top:1px;}
+.prio-badge{font-size:10px;padding:2px 7px;border-radius:7px;font-weight:500;white-space:nowrap;}
+.prio-alto{background:#FEF2F2;color:#DC2626;}
+.prio-medio{background:var(--accent-light);color:var(--accent-dark);}
+.prio-basso{background:#F0FDF4;color:#15803D;}
+.swipe-actions{position:absolute;right:0;top:0;bottom:0;display:flex;z-index:0;}
+.sw-btn{display:flex;flex-direction:column;align-items:center;justify-content:center;width:62px;gap:2px;cursor:pointer;font-size:11px;font-weight:500;}
+.sw-edit{background:#F0F4FF;color:#1A56DB;}
+.sw-del{background:#FEF2F2;color:#DC2626;}
+
+/* TAB: PROFILE */
+#tabProfile{display:none;padding:0 0 20px;}
+.profile-header{padding:24px 20px 20px;border-bottom:1px solid var(--border);}
+.profile-avatar{width:64px;height:64px;border-radius:50%;background:var(--accent-light);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:26px;color:var(--accent-dark);margin-bottom:12px;}
+.profile-name{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:400;}
+.profile-username{font-size:12px;color:var(--text3);margin-top:3px;}
+.profile-link-row{display:flex;align-items:center;gap:8px;margin-top:12px;}
+.profile-link{font-size:12px;color:var(--accent-dark);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.profile-copy-btn{font-size:11px;padding:5px 12px;border-radius:20px;border:1px solid var(--accent);background:var(--accent-light);color:var(--accent-dark);cursor:pointer;white-space:nowrap;}
+.profile-section{padding:16px 20px 0;}
+.profile-section-title{font-size:10px;letter-spacing:2px;color:var(--text3);text-transform:uppercase;margin-bottom:12px;}
+.profile-action-row{display:flex;align-items:center;justify-content:space-between;padding:13px 0;border-bottom:1px solid var(--border);cursor:pointer;}
+.profile-action-label{font-size:14px;color:var(--text);}
+.profile-action-sub{font-size:12px;color:var(--text3);margin-top:2px;}
+.profile-action-arrow{color:var(--text3);font-size:16px;}
+.donate-banner{margin:20px;padding:16px;background:var(--accent-light);border-radius:var(--radius);text-align:center;}
+.donate-banner p{font-size:13px;color:var(--accent-dark);line-height:1.6;margin-bottom:12px;}
+.donate-btn{display:inline-block;padding:10px 24px;background:var(--text);color:var(--bg);border:none;border-radius:var(--radiusS);font-family:'DM Sans',sans-serif;font-size:13px;cursor:pointer;text-decoration:none;}
+.logout-row{margin:16px 20px 0;padding:13px 0;border-top:1px solid var(--border);cursor:pointer;text-align:center;font-size:13px;color:#DC2626;}
+
+/* ── DESIRE DETAIL VIEW ── */
+#desireDetailView{display:none;max-width:420px;margin:0 auto;padding-bottom:calc(var(--nav-h)+16px);}
+.desire-detail-header{padding:13px 18px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--border);}
 .desire-detail-img{width:100%;max-height:260px;object-fit:cover;display:block;}
 .desire-detail-img-placeholder{width:100%;height:160px;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:48px;}
 .desire-detail-body{padding:20px;}
 .desire-detail-name{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;line-height:1.3;margin-bottom:6px;}
 .desire-detail-book{font-size:13px;color:var(--accent-dark);font-style:italic;margin-bottom:12px;}
-.desire-detail-price{font-size:22px;font-weight:500;color:var(--text);margin-bottom:16px;}
+.desire-detail-price{font-size:22px;font-weight:500;margin-bottom:16px;}
 .desire-detail-meta{display:flex;flex-direction:column;gap:10px;padding:16px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:16px;}
 .desire-detail-row{display:flex;justify-content:space-between;align-items:center;}
 .desire-detail-label{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;}
@@ -103,61 +159,46 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .desire-detail-link{display:block;width:100%;padding:13px;background:var(--text);color:var(--bg);border:none;border-radius:var(--radiusS);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;text-align:center;text-decoration:none;margin-bottom:10px;}
 .desire-detail-edit{display:block;width:100%;padding:12px;background:transparent;color:var(--text2);border:1px solid var(--border);border-radius:var(--radiusS);font-family:'DM Sans',sans-serif;font-size:14px;cursor:pointer;text-align:center;}
 .reserve-detail-btn{display:block;width:100%;padding:13px;background:var(--accent-light);color:var(--accent-dark);border:1px solid var(--accent);border-radius:var(--radiusS);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;text-align:center;margin-bottom:10px;}
-.reserve-detail-btn.mine{background:var(--surface2);color:var(--text2);border-color:var(--border);}
+.reserve-detail-btn.reserved-mine{background:var(--surface2);color:var(--text2);border-color:var(--border);}
 
-/* FAB */
-.fab{position:fixed;bottom:24px;right:24px;z-index:100;}
-.fab-main{width:50px;height:50px;border-radius:50%;background:var(--text);color:var(--bg);border:none;cursor:pointer;font-size:22px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,0.2);transition:transform .15s,background .15s;}
-.fab-main:hover{transform:scale(1.06);background:var(--accent-dark);}
-.fab-menu{position:absolute;bottom:60px;right:0;display:flex;flex-direction:column;gap:8px;align-items:flex-end;opacity:0;pointer-events:none;transition:opacity .2s;}
-.fab-menu.open{opacity:1;pointer-events:all;}
-.fab-item{display:flex;align-items:center;gap:10px;cursor:pointer;}
-.fab-item span.lbl{background:var(--text);color:var(--bg);font-size:12px;padding:5px 12px;border-radius:20px;white-space:nowrap;}
-.fab-item .ic{width:38px;height:38px;border-radius:50%;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:16px;}
+/* ── PUBLIC VIEWS ── */
+#publicView,#profileView{display:none;max-width:420px;margin:0 auto;padding-bottom:40px;}
+.public-header{padding:28px 20px 16px;border-bottom:1px solid var(--border);}
+.public-logo{font-family:'Cormorant Garamond',serif;font-size:12px;color:var(--text3);letter-spacing:2px;text-transform:uppercase;margin-bottom:16px;}
+.public-wl-icon{font-size:30px;margin-bottom:8px;}
+.public-wl-name{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;}
+.public-wl-desc{font-size:13px;color:var(--text2);margin-top:6px;line-height:1.6;}
+.public-wl-meta{font-size:12px;color:var(--text3);margin-top:8px;}
+.public-login-banner{margin:16px 20px 0;padding:12px 16px;background:var(--accent-light);border-radius:var(--radiusS);display:flex;justify-content:space-between;align-items:center;gap:12px;}
+.public-login-banner p{font-size:12px;color:var(--accent-dark);line-height:1.5;}
+.public-login-btn{font-size:12px;padding:6px 14px;background:var(--text);color:var(--bg);border:none;border-radius:20px;cursor:pointer;white-space:nowrap;}
+.public-desire-list{display:flex;flex-direction:column;margin-top:4px;}
+.public-desire-row{border-bottom:1px solid var(--border);}
+.public-desire-card{padding:13px 20px;display:flex;align-items:center;gap:13px;cursor:pointer;}
+.public-desire-card.reserved{opacity:.5;}
+.public-desire-img{width:44px;height:44px;border-radius:9px;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;overflow:hidden;color:var(--text3);}
+.public-desire-img img{width:100%;height:100%;object-fit:cover;}
+.public-desire-info{flex:1;min-width:0;}
+.public-desire-name{font-size:13px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.public-desire-sub{font-size:11px;color:var(--text3);margin-top:2px;}
+.public-desire-book{font-size:11px;color:var(--accent-dark);font-style:italic;margin-top:1px;}
+.reserve-btn{font-size:11px;padding:5px 11px;border-radius:20px;border:1px solid var(--border);background:var(--surface);cursor:pointer;white-space:nowrap;color:var(--text2);transition:all .15s;flex-shrink:0;}
+.reserve-btn:hover{border-color:var(--accent);color:var(--accent-dark);}
+.reserve-btn.mine{background:var(--accent-light);border-color:var(--accent);color:var(--accent-dark);}
+.reserved-tag{font-size:11px;color:var(--text3);white-space:nowrap;flex-shrink:0;}
+.public-footer{text-align:center;padding:28px 20px 0;}
+.public-footer a{color:var(--accent-dark);text-decoration:none;font-size:13px;}
+.public-footer p{font-size:12px;color:var(--text3);margin-bottom:6px;}
+.profile-wl-grid{padding:4px 20px;}
+.profile-wl-row{border-bottom:1px solid var(--border);}
+.profile-wl-card{padding:13px 0;display:flex;align-items:center;gap:13px;cursor:pointer;}
+.profile-wl-icon{width:44px;height:44px;border-radius:11px;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0;overflow:hidden;}
+.profile-wl-icon img{width:100%;height:100%;object-fit:cover;border-radius:11px;}
+.profile-wl-info{flex:1;}
+.profile-wl-name{font-size:14px;font-weight:500;}
+.profile-wl-count{font-size:11px;color:var(--text3);margin-top:2px;}
 
-.section-label{font-size:10px;letter-spacing:2px;color:var(--text3);text-transform:uppercase;padding:18px 20px 8px;}
-.wl-list{display:flex;flex-direction:column;}
-.wl-row{position:relative;overflow:hidden;border-bottom:1px solid var(--border);}
-.wl-card{background:var(--surface);padding:14px 18px;display:flex;align-items:center;gap:14px;cursor:pointer;transition:background .12s;position:relative;z-index:1;}
-.wl-card:active{background:var(--surface2);}
-.wl-icon{width:50px;height:50px;border-radius:12px;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;overflow:hidden;}
-.wl-icon img{width:100%;height:100%;object-fit:cover;border-radius:12px;}
-.wl-info{flex:1;min-width:0;}
-.wl-name{font-size:15px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.wl-meta{font-size:12px;color:var(--text3);margin-top:3px;display:flex;align-items:center;gap:6px;}
-.vis-dot{width:5px;height:5px;border-radius:50%;display:inline-block;}
-.vis-pub{background:#4CAF50;}.vis-priv{background:var(--accent);}
-.swipe-actions{position:absolute;right:0;top:0;bottom:0;display:flex;z-index:0;}
-.sw-btn{display:flex;flex-direction:column;align-items:center;justify-content:center;width:64px;gap:2px;cursor:pointer;font-size:11px;font-weight:500;}
-.sw-edit{background:#F0F4FF;color:#1A56DB;}
-.sw-del{background:#FEF2F2;color:#DC2626;}
-
-.detail-view{display:none;}
-.detail-view.active{display:block;}
-.home-view.hidden{display:none;}
-.detail-header{padding:14px 18px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--border);}
-.back-btn{width:34px;height:34px;border-radius:50%;border:1px solid var(--border);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--text);}
-.detail-title{font-family:'Cormorant Garamond',serif;font-size:20px;flex:1;}
-.share-btn{width:34px;height:34px;border-radius:50%;border:1px solid var(--border);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--text2);}
-.sort-bar{padding:10px 16px;display:flex;gap:8px;border-bottom:1px solid var(--border);}
-.sort-chip{flex:1;font-size:11px;padding:6px 4px;border-radius:20px;border:1px solid var(--border);background:var(--surface);cursor:pointer;color:var(--text2);text-align:center;white-space:nowrap;transition:all .15s;}
-.sort-chip.active{background:var(--text);color:var(--bg);border-color:var(--text);}
-
-.desire-list{display:flex;flex-direction:column;}
-.desire-row{position:relative;overflow:hidden;border-bottom:1px solid var(--border);}
-.desire-card{background:var(--surface);padding:12px 18px;display:flex;align-items:center;gap:12px;position:relative;z-index:1;cursor:pointer;}
-.desire-img{width:46px;height:46px;border-radius:10px;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;overflow:hidden;color:var(--text3);}
-.desire-img img{width:100%;height:100%;object-fit:cover;}
-.desire-info{flex:1;min-width:0;}
-.desire-name{font-size:14px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.desire-sub{font-size:11px;color:var(--text3);margin-top:3px;}
-.desire-book{font-size:11px;color:var(--accent-dark);font-style:italic;margin-top:1px;}
-.prio-badge{font-size:10px;padding:2px 8px;border-radius:8px;font-weight:500;white-space:nowrap;}
-.prio-alto{background:#FEF2F2;color:#DC2626;}
-.prio-medio{background:var(--accent-light);color:var(--accent-dark);}
-.prio-basso{background:#F0FDF4;color:#15803D;}
-
-/* MODALS */
+/* ── MODALS ── */
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,0.35);z-index:200;display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity .2s;}
 .overlay.open{opacity:1;pointer-events:all;}
 .modal{background:var(--surface);border-radius:22px 22px 0 0;width:100%;max-width:420px;padding:20px 20px 32px;max-height:88vh;overflow-y:auto;transform:translateY(20px);transition:transform .2s;}
@@ -170,7 +211,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .field input:focus,.field textarea:focus,.field select:focus{border-color:var(--accent);}
 .field textarea{resize:none;height:68px;}
 
-/* ICON PICKER CATEGORIZZATO */
+/* icon picker */
 .icon-cat-tabs{display:flex;gap:6px;overflow-x:auto;margin-bottom:10px;scrollbar-width:none;}
 .icon-cat-tabs::-webkit-scrollbar{display:none;}
 .icon-cat-tab{font-size:11px;padding:4px 12px;border-radius:20px;border:1px solid var(--border);background:var(--bg);cursor:pointer;white-space:nowrap;color:var(--text2);flex-shrink:0;}
@@ -179,7 +220,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .icon-opt{width:42px;height:42px;border-radius:10px;border:1.5px solid var(--border);background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:20px;cursor:pointer;transition:border-color .15s,background .15s;}
 .icon-opt.selected{border-color:var(--accent);background:var(--accent-light);}
 
-/* FETCH BOX */
+/* fetch box */
 .fetch-box{border:1px solid var(--border);border-radius:var(--radiusS);overflow:hidden;margin-bottom:14px;}
 .fetch-input-row{display:flex;}
 .fetch-input-row input{border:none;border-radius:0;background:var(--bg);flex:1;padding:10px 12px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--text);outline:none;}
@@ -199,36 +240,32 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .img-preview{width:100%;height:90px;object-fit:cover;border-radius:6px;margin-top:8px;display:none;}
 .img-upload-label{font-size:12px;color:var(--text3);}
 .img-or{font-size:11px;color:var(--text3);text-align:center;margin:8px 0 4px;}
-
 .toggle-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;}
 .toggle-row span{font-size:13px;color:var(--text);}
 .toggle{width:42px;height:23px;border-radius:12px;background:var(--border);position:relative;cursor:pointer;transition:background .2s;}
 .toggle.on{background:var(--text);}
 .toggle-thumb{width:19px;height:19px;border-radius:50%;background:#fff;position:absolute;top:2px;left:2px;transition:left .2s;}
 .toggle.on .toggle-thumb{left:21px;}
-
 .prio-row{display:flex;gap:8px;}
 .prio-opt{flex:1;padding:8px 4px;text-align:center;border-radius:var(--radiusS);border:1.5px solid var(--border);font-size:12px;cursor:pointer;transition:all .15s;color:var(--text2);}
 .prio-opt.sel-alto{background:#FEF2F2;border-color:#FCA5A5;color:#DC2626;}
 .prio-opt.sel-medio{background:var(--accent-light);border-color:#D4A017;color:var(--accent-dark);}
 .prio-opt.sel-basso{background:#F0FDF4;border-color:#86EFAC;color:#15803D;}
-
 .book-toggle-row{display:flex;justify-content:space-between;align-items:center;padding:8px 12px;border-radius:var(--radiusS);background:var(--accent-light);margin-bottom:14px;cursor:pointer;}
 .book-toggle-row span{font-size:13px;color:var(--accent-dark);font-style:italic;}
 .book-fields{display:none;}
 .book-fields.open{display:block;}
-
 .modal-actions{display:flex;gap:10px;margin-top:20px;}
 .btn-primary{flex:1;padding:12px;background:var(--text);color:var(--bg);border:none;border-radius:var(--radiusS);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;transition:background .15s;}
 .btn-primary:hover{background:var(--accent-dark);}
 .btn-primary:disabled{opacity:.5;cursor:not-allowed;}
 .btn-secondary{padding:12px 18px;background:transparent;color:var(--text2);border:1px solid var(--border);border-radius:var(--radiusS);font-family:'DM Sans',sans-serif;font-size:14px;cursor:pointer;}
 
-.loading{text-align:center;padding:40px;color:var(--text3);font-size:13px;}
-.empty{text-align:center;padding:52px 20px;color:var(--text3);}
-.empty .e-icon{font-size:32px;margin-bottom:12px;opacity:.5;}
+.loading{text-align:center;padding:36px;color:var(--text3);font-size:13px;}
+.empty{text-align:center;padding:48px 20px;color:var(--text3);}
+.empty .e-icon{font-size:28px;margin-bottom:10px;opacity:.5;}
 .empty p{font-size:13px;line-height:1.8;}
-.toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:var(--text);color:var(--bg);padding:10px 22px;border-radius:20px;font-size:13px;z-index:300;opacity:0;transition:opacity .3s;pointer-events:none;white-space:nowrap;}
+.toast{position:fixed;bottom:calc(var(--nav-h) + 12px);left:50%;transform:translateX(-50%);background:var(--text);color:var(--bg);padding:10px 22px;border-radius:20px;font-size:13px;z-index:300;opacity:0;transition:opacity .3s;pointer-events:none;white-space:nowrap;}
 .toast.show{opacity:1;}
 .spinner{display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .6s linear infinite;vertical-align:middle;margin-right:6px;}
 .spinner-dark{display:inline-block;width:12px;height:12px;border:2px solid rgba(0,0,0,.15);border-top-color:var(--text2);border-radius:50%;animation:spin .6s linear infinite;vertical-align:middle;}
@@ -246,13 +283,17 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
     <div class="auth-tab" onclick="switchTab('signup')">Registrati</div>
   </div>
   <div class="auth-field"><label>Email</label><input type="email" id="authEmail" placeholder="tu@email.com" onkeydown="if(event.key==='Enter')authSubmit()"></div>
-  <div class="auth-field"><label>Password</label><input type="password" id="authPassword" placeholder="••••••••" onkeydown="if(event.key==='Enter')authSubmit()"></div>
+  <div class="auth-field">
+    <label>Password</label>
+    <input type="password" id="authPassword" placeholder="••••••••" onkeydown="if(event.key==='Enter')authSubmit()">
+    <span class="pw-eye" id="pwEye" onclick="togglePw()">👁</span>
+  </div>
   <button class="auth-btn" id="authBtn" onclick="authSubmit()">Accedi</button>
   <div class="auth-err" id="authErr"></div>
   <div class="auth-note" id="authNote"></div>
 </div>
 
-<!-- PUBLIC WISHLIST VIEW -->
+<!-- PUBLIC WISHLIST -->
 <div id="publicView">
   <div class="public-header">
     <div class="public-logo">Wishful</div>
@@ -270,7 +311,19 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
   <div class="public-footer"><p>Creata con</p><a href="javascript:showAppFromPublic()">Wishful — crea la tua wishlist gratis</a></div>
 </div>
 
-<!-- PUBLIC DESIRE DETAIL -->
+<!-- PUBLIC PROFILE -->
+<div id="profileView">
+  <div class="public-header">
+    <div class="public-logo">Wishful</div>
+    <div id="profilePubTitle" class="public-wl-name" style="margin-top:8px;"></div>
+    <div id="profilePubSubtitle" class="public-wl-meta" style="margin-top:6px;"></div>
+  </div>
+  <div id="profilePubLoading" class="loading">Caricamento...</div>
+  <div class="profile-wl-grid" id="profileWlGrid"></div>
+  <div class="public-footer"><p>Creata con</p><a href="javascript:showAppFromPublic()">Wishful — crea la tua wishlist gratis</a></div>
+</div>
+
+<!-- DESIRE DETAIL -->
 <div id="desireDetailView">
   <div class="desire-detail-header">
     <button class="back-btn" id="desireDetailBack">←</button>
@@ -286,42 +339,35 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
   </div>
 </div>
 
-<!-- PUBLIC PROFILE VIEW -->
-<div id="profileView">
-  <div class="public-header">
-    <div class="public-logo">Wishful</div>
-    <div id="profileTitle" class="public-wl-name" style="margin-top:8px;"></div>
-    <div id="profileSubtitle" class="public-wl-meta" style="margin-top:6px;"></div>
-  </div>
-  <div id="profileLoading" class="loading">Caricamento...</div>
-  <div class="profile-wl-grid" id="profileWlGrid"></div>
-  <div class="public-footer"><p>Creata con</p><a href="javascript:showAppFromPublic()">Wishful — crea la tua wishlist gratis</a></div>
-</div>
-
 <!-- APP -->
 <div id="appView">
-  <div class="home-view" id="homeView">
-    <div class="header">
-      <div>
-        <div class="logo-name">Wishful</div>
-        <div class="logo-sub">Le tue wishlist</div>
-      </div>
-      <div class="header-right">
-        <span class="header-count" id="totalBadge"></span>
-        <button class="logout-btn" onclick="showProfileSetup()">Profilo</button>
-        <button class="logout-btn" onclick="logout()">Esci</button>
-      </div>
+  <div class="app-header">
+    <div>
+      <div class="logo-name">Wishful</div>
+      <div class="logo-sub">Le tue wishlist</div>
     </div>
-    <div class="section-label">Wishlist</div>
+  </div>
+
+  <!-- TAB HOME -->
+  <div id="tabHome" class="tab-content">
+    <div class="section-label">Le mie liste</div>
     <div id="wlLoading" class="loading">Caricamento...</div>
     <div class="wl-list" id="wlList"></div>
     <div id="wlEmpty" class="empty" style="display:none;"><div class="e-icon">✦</div><p>Nessuna wishlist ancora.<br>Creane una con il tasto +</p></div>
+
+    <div id="topDesireSection" style="display:none;">
+      <div class="section-label">Desideri prioritari</div>
+      <div class="top-filter-bar" id="topFilterBar"></div>
+      <div id="topDesireList"></div>
+      <div id="seeAllBtn" class="see-all-btn" style="display:none;" onclick="showAllDesires()">Vedi tutti →</div>
+    </div>
   </div>
 
-  <div class="detail-view" id="detailView">
+  <!-- TAB LISTS DETAIL -->
+  <div id="tabLists" class="tab-content">
     <div class="detail-header">
       <button class="back-btn" onclick="goHome()">←</button>
-      <div id="detailIcon" style="font-size:20px;"></div>
+      <div id="detailIcon" style="font-size:19px;"></div>
       <div class="detail-title" id="detailTitle"></div>
       <button class="share-btn" onclick="shareList()">⎙</button>
     </div>
@@ -335,12 +381,49 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
     <div id="desireEmpty" class="empty" style="display:none;"><div class="e-icon">♡</div><p>Nessun desiderio ancora.<br>Aggiungine uno con il tasto +</p></div>
   </div>
 
-  <div class="fab">
-    <div class="fab-menu" id="fabMenu">
-      <div class="fab-item" onclick="openModal('desire')"><span class="lbl">Nuovo desiderio</span><div class="ic">♡</div></div>
-      <div class="fab-item" onclick="openModal('wishlist')"><span class="lbl">Nuova wishlist</span><div class="ic">✦</div></div>
+  <!-- TAB PROFILE -->
+  <div id="tabProfile" class="tab-content">
+    <div class="profile-header">
+      <div class="profile-avatar" id="profileAvatar">W</div>
+      <div class="profile-name" id="profileNameDisplay">—</div>
+      <div class="profile-username" id="profileUsernameDisplay"></div>
+      <div class="profile-link-row" id="profileLinkRow" style="display:none;">
+        <span class="profile-link" id="profileLinkText"></span>
+        <button class="profile-copy-btn" onclick="copyProfileLink()">Copia ⎙</button>
+      </div>
     </div>
-    <button class="fab-main" id="fabBtn" onclick="toggleFab()">+</button>
+    <div class="profile-section">
+      <div class="profile-section-title">Account</div>
+      <div class="profile-action-row" onclick="openProfileModal()">
+        <div><div class="profile-action-label">Modifica profilo</div><div class="profile-action-sub">Nome, username, visibilità</div></div>
+        <span class="profile-action-arrow">›</span>
+      </div>
+    </div>
+    <div class="donate-banner">
+      <p>Wishful è gratuita e lo resterà sempre.<br>Se ti piace, puoi supportarla con una donazione ♡</p>
+      <a class="donate-btn" href="https://buymeacoffee.com" target="_blank" rel="noopener">Offri un caffè ☕</a>
+    </div>
+    <div class="logout-row" onclick="logout()">Esci dall'account</div>
+  </div>
+
+  <!-- BOTTOM NAV -->
+  <nav class="bottom-nav">
+    <div class="nav-btn active" id="navHome" onclick="switchTab_nav('home')">
+      <svg viewBox="0 0 24 24"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H5a1 1 0 01-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg>
+      <span>Home</span>
+    </div>
+    <div style="flex:1;display:flex;justify-content:center;">
+      <button class="nav-fab" id="navFab" onclick="toggleFab()">+</button>
+    </div>
+    <div class="nav-btn" id="navProfile" onclick="switchTab_nav('profile')">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+      <span>Profilo</span>
+    </div>
+  </nav>
+
+  <div class="fab-menu" id="fabMenu">
+    <div class="fab-item" onclick="openModal('desire')"><span class="lbl">Nuovo desiderio</span><div class="ic">♡</div></div>
+    <div class="fab-item" onclick="openModal('wishlist')"><span class="lbl">Nuova wishlist</span><div class="ic">✦</div></div>
   </div>
 </div>
 
@@ -430,7 +513,10 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
     <div class="modal-handle"></div>
     <div class="modal-title">Il tuo profilo</div>
     <div class="field"><label>Nome visualizzato</label><input type="text" id="profileDisplayName" placeholder="Es. Laura"></div>
-    <div class="field"><label>Username (per il link pubblico)</label><input type="text" id="profileUsername" placeholder="Es. laura" oninput="this.value=this.value.toLowerCase().replace(/[^a-z0-9_]/g,'')"></div>
+    <div class="field">
+      <label>Username</label>
+      <input type="text" id="profileUsername" placeholder="Es. laura" oninput="this.value=this.value.toLowerCase().replace(/[^a-z0-9_]/g,'');updateProfileUrlPreview()">
+    </div>
     <div id="profileUrlPreview" style="font-size:12px;color:var(--text3);margin-top:-8px;margin-bottom:14px;"></div>
     <div class="field"><div class="toggle-row"><span>Profilo pubblico</span><div class="toggle" id="profileToggle" onclick="this.classList.toggle('on')"><div class="toggle-thumb"></div></div></div></div>
     <div class="modal-actions">
@@ -447,47 +533,54 @@ const SUPABASE_URL='https://gcxrootmhemvlvcpcydn.supabase.co';
 const SUPABASE_KEY='sb_publishable_bZRBU4kXiEsc19c5kZJFrQ_Hs8RkjcH';
 const sb=supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
 
-// ICON CATEGORIES
 const ICON_CATS=[
-  {label:'Generale', icons:['📚','✈️','👗','💄','🎮','🏠','🍽️','🎵','🌿','💻','🎨','🐾']},
-  {label:'Occasioni', icons:['🎂','🎄','💍','🎓','🥂','🎁','💝','🌸','🪄','🏆','🎭','✨']},
-  {label:'Stile', icons:['👠','👜','💎','🧴','🪞','🕶️','🧣','💅','🛍️','👒','🌂','🧤']},
-  {label:'Sport', icons:['🏋️','🚴','🧘','⛷️','🏊','🎾','🥾','🏄','🎿','🧗','🏇','⚽']},
-  {label:'Casa', icons:['🛋️','🪴','🕯️','🍳','☕','🛁','📷','🎸','🖼️','🪑','🧺','🔑']},
-  {label:'Cultura', icons:['📖','🎬','🎤','🎺','🖋️','🗺️','🏛️','🔭','🎲','♟️','🧩','🎧']}
+  {label:'Generale',icons:['📚','✈️','👗','💄','🎮','🏠','🍽️','🎵','🌿','💻','🎨','🐾']},
+  {label:'Occasioni',icons:['🎂','🎄','💍','🎓','🥂','🎁','💝','🌸','🪄','🏆','🎭','✨']},
+  {label:'Stile',icons:['👠','👜','💎','🧴','🪞','🕶️','🧣','💅','🛍️','👒','🌂','🧤']},
+  {label:'Sport',icons:['🏋️','🚴','🧘','⛷️','🏊','🎾','🥾','🏄','🎿','🧗','🏇','⚽']},
+  {label:'Casa',icons:['🛋️','🪴','🕯️','🍳','☕','🛁','📷','🎸','🖼️','🪑','🧺','🔑']},
+  {label:'Cultura',icons:['📖','🎬','🎤','🎺','🖋️','🗺️','🏛️','🔭','🎲','♟️','🧩','🎧']}
 ];
 let currentIconCat=0;
 
 function buildIconPicker(){
-  const tabs=document.getElementById('iconCatTabs');
-  const grid=document.getElementById('iconGrid');
-  tabs.innerHTML=ICON_CATS.map((c,i)=>`<div class="icon-cat-tab${i===currentIconCat?' active':''}" onclick="switchIconCat(${i})">${c.label}</div>`).join('');
-  grid.innerHTML=ICON_CATS[currentIconCat].icons.map(e=>
+  document.getElementById('iconCatTabs').innerHTML=ICON_CATS.map((c,i)=>
+    `<div class="icon-cat-tab${i===currentIconCat?' active':''}" onclick="switchIconCat(${i})">${c.label}</div>`
+  ).join('');
+  document.getElementById('iconGrid').innerHTML=ICON_CATS[currentIconCat].icons.map(e=>
     `<div class="icon-opt${e===selIcon?' selected':''}" onclick="pickIcon(this,'${e}')">${e}</div>`
   ).join('');
 }
-function switchIconCat(i){
-  currentIconCat=i;buildIconPicker();
-}
+function switchIconCat(i){currentIconCat=i;buildIconPicker();}
 function pickIcon(el,e){
   selIcon=e;
   document.querySelectorAll('.icon-opt').forEach(x=>x.classList.remove('selected'));
   el.classList.add('selected');
 }
 
-const SUPABASE_URL_KEY=SUPABASE_URL;
 let currentUser=null,wls=[],desires=[],editingWL=null,editingD=null;
-let currentWL=null,fabOpen=false;
+let currentWL=null,fabOpen=false,currentTab='home';
 let dPrio='medio',selIcon=ICON_CATS[0].icons[0];
 let wlImgData='',dImgData='',isBook=false;
 let authMode='login',pendingShareId=null,pendingUserId=null;
 let fetchedData=null,userProfile=null;
-let currentDesireId=null,desireDetailFrom=null;
+let desireDetailFrom=null,currentDesireId=null;
+let topFilterWL='all',showAllTop=false;
+let pubWishlist=null,pubDesires=[];
 
 const sortState={date:'desc',price:'asc',prio:'desc'};
 let activeSort='date';
 const sortLabels={date:{asc:'Recenti ↑',desc:'Recenti ↓'},price:{asc:'Prezzo ↑',desc:'Prezzo ↓'},prio:{asc:'Priorità ↑',desc:'Priorità ↓'}};
 
+// ── PASSWORD TOGGLE ──
+function togglePw(){
+  const inp=document.getElementById('authPassword');
+  const eye=document.getElementById('pwEye');
+  if(inp.type==='password'){inp.type='text';eye.textContent='🙈';}
+  else{inp.type='password';eye.textContent='👁';}
+}
+
+// ── SORT ──
 function toggleSort(key){
   if(activeSort===key)sortState[key]=sortState[key]==='asc'?'desc':'asc';
   else activeSort=key;
@@ -526,16 +619,11 @@ async function fetchMeta(){
   } catch(e){showToast('Errore di connessione');}
   btn.disabled=false;btn.textContent='Importa';
 }
-
 function applyFetch(){
   if(!fetchedData)return;
   if(fetchedData.title)document.getElementById('dName').value=fetchedData.title;
   if(fetchedData.link)document.getElementById('dLink').value=fetchedData.link;
-  if(fetchedData.image){
-    document.getElementById('dImg').value=fetchedData.image;
-    const prev=document.getElementById('dPreview');
-    prev.src=fetchedData.image;prev.style.display='block';
-  }
+  if(fetchedData.image){document.getElementById('dImg').value=fetchedData.image;const prev=document.getElementById('dPreview');prev.src=fetchedData.image;prev.style.display='block';}
   const isBookSite=/ibs\.it|feltrinelli|libraccio|mondadoristore|bookdepo/i.test(fetchedData.link);
   if(isBookSite&&!isBook){isBook=true;document.getElementById('bookToggle').classList.add('on');document.getElementById('bookFields').classList.add('open');}
   document.getElementById('fetchPreview').classList.remove('show');
@@ -543,56 +631,144 @@ function applyFetch(){
   fetchedData=null;showToast('Dati importati ✓');
 }
 
+// ── TOP DESIRES ──
+function renderTopDesires(){
+  const section=document.getElementById('topDesireSection');
+  if(!desires.length){section.style.display='none';return;}
+  section.style.display='block';
+
+  // filter bar
+  const filterBar=document.getElementById('topFilterBar');
+  filterBar.innerHTML=`<div class="filter-chip${topFilterWL==='all'?' active':''}" onclick="setTopFilter('all')">Tutte</div>`
+    +wls.map(w=>`<div class="filter-chip${topFilterWL===w.id?' active':''}" onclick="setTopFilter('${w.id}')">${w.icon} ${escHtml(w.name)}</div>`).join('');
+
+  const pMap={alto:3,medio:2,basso:1};
+  let ds=desires.filter(d=>topFilterWL==='all'||d.wishlist_id===topFilterWL);
+  ds=ds.slice().sort((a,b)=>(pMap[b.priority]||2)-(pMap[a.priority]||2));
+  const MAX=10;
+  const visible=showAllTop?ds:ds.slice(0,MAX);
+
+  document.getElementById('seeAllBtn').style.display=(!showAllTop&&ds.length>MAX)?'block':'none';
+
+  document.getElementById('topDesireList').innerHTML=visible.map(d=>{
+    const imgSrc=d.img_data||d.img_url||d.fetched_image||'';
+    const imgContent=imgSrc?`<img src="${imgSrc}" onerror="this.textContent='♡'">`:'♡';
+    const priceStr=d.price?`€${parseFloat(d.price).toFixed(2)}`:'';
+    const wl=wls.find(x=>x.id===d.wishlist_id);
+    return`<div class="top-desire-row">
+      <div class="top-desire-card" onclick="openDesireDetail('${d.id}','owner')">
+        <div class="top-desire-img">${imgContent}</div>
+        <div class="top-desire-info">
+          <div class="top-desire-name">${escHtml(d.name)}</div>
+          <div class="top-desire-sub">${[wl?wl.icon+' '+escHtml(wl.name):'',priceStr].filter(Boolean).join(' · ')}</div>
+        </div>
+        <div class="prio-dot prio-dot-${d.priority}"></div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function setTopFilter(wlId){topFilterWL=wlId;showAllTop=false;renderTopDesires();}
+function showAllDesires(){showAllTop=true;renderTopDesires();}
+
+// ── BOTTOM NAV ──
+function switchTab_nav(tab){
+  if(fabOpen)toggleFab();
+  currentTab=tab;
+  document.getElementById('tabHome').style.display=tab==='home'?'block':'none';
+  document.getElementById('tabLists').style.display='none';
+  document.getElementById('tabProfile').style.display=tab==='profile'?'block':'none';
+  document.getElementById('navHome').classList.toggle('active',tab==='home');
+  document.getElementById('navProfile').classList.toggle('active',tab==='profile');
+  if(tab==='profile')renderProfileTab();
+}
+
+// ── PROFILE TAB ──
+function renderProfileTab(){
+  const name=userProfile?.display_name||currentUser?.email?.split('@')[0]||'Utente';
+  const username=userProfile?.username||'';
+  document.getElementById('profileAvatar').textContent=name.charAt(0).toUpperCase();
+  document.getElementById('profileNameDisplay').textContent=name;
+  document.getElementById('profileUsernameDisplay').textContent=username?'@'+username:'';
+  const linkRow=document.getElementById('profileLinkRow');
+  if(username&&userProfile?.is_public!==false){
+    const url=window.location.origin+window.location.pathname+'?user='+username;
+    document.getElementById('profileLinkText').textContent=url;
+    linkRow.style.display='flex';
+  } else linkRow.style.display='none';
+}
+
+function copyProfileLink(){
+  const username=userProfile?.username;
+  if(!username){showToast('Imposta prima uno username');return;}
+  const url=window.location.origin+window.location.pathname+'?user='+username;
+  navigator.clipboard?.writeText(url).then(()=>showToast('Link copiato! ⎙'));
+}
+
+function openProfileModal(){
+  document.getElementById('profileDisplayName').value=userProfile?.display_name||'';
+  document.getElementById('profileUsername').value=userProfile?.username||'';
+  document.getElementById('profileToggle').classList.toggle('on',userProfile?.is_public!==false);
+  updateProfileUrlPreview();
+  document.getElementById('overlayProfile').classList.add('open');
+}
+
+function updateProfileUrlPreview(){
+  const un=document.getElementById('profileUsername').value.trim();
+  const preview=document.getElementById('profileUrlPreview');
+  preview.textContent=un?'Link: '+window.location.origin+window.location.pathname+'?user='+un:'';
+}
+
+async function saveProfile(){
+  const displayName=document.getElementById('profileDisplayName').value.trim();
+  const username=document.getElementById('profileUsername').value.trim();
+  const isPublic=document.getElementById('profileToggle').classList.contains('on');
+  if(!displayName){showToast('Inserisci un nome');return;}
+  const btn=document.getElementById('profileSaveBtn');
+  btn.disabled=true;btn.innerHTML='<span class="spinner"></span>Salvo...';
+  const obj={id:currentUser.id,display_name:displayName,username:username||null,is_public:isPublic};
+  const {error}=await sb.from('profiles').upsert(obj,{onConflict:'id'});
+  btn.disabled=false;btn.textContent='Salva';
+  if(error){showToast(error.message.includes('unique')?'Username già in uso':'Errore: '+error.message);return;}
+  userProfile={...userProfile,...obj};
+  renderProfileTab();
+  showToast('Profilo salvato ✓');
+  closeModal('overlayProfile');
+}
+
 // ── DESIRE DETAIL ──
-function openDesireDetail(desireId, fromContext){
+function openDesireDetail(desireId,fromContext){
   const d=desires.find(x=>x.id===desireId);
   if(!d)return;
-  currentDesireId=desireId;
-  desireDetailFrom=fromContext; // 'owner', 'public', 'profile'
-
+  currentDesireId=desireId;desireDetailFrom=fromContext;
   const imgSrc=d.img_data||d.img_url||d.fetched_image||'';
   const wrap=document.getElementById('desireDetailImgWrap');
-  if(imgSrc){wrap.innerHTML=`<img class="desire-detail-img" src="${imgSrc}" onerror="this.parentNode.innerHTML='<div class=\\'desire-detail-img-placeholder\\'>♡</div>'">`;}
-  else wrap.innerHTML=`<div class="desire-detail-img-placeholder">♡</div>`;
-
+  wrap.innerHTML=imgSrc?`<img class="desire-detail-img" src="${imgSrc}" onerror="this.parentNode.innerHTML='<div class=\\'desire-detail-img-placeholder\\'>♡</div>'">`:`<div class="desire-detail-img-placeholder">♡</div>`;
   const wl=wls.find(x=>x.id===d.wishlist_id)||(pubWishlist?.id===d.wishlist_id?pubWishlist:null);
   document.getElementById('desireDetailWlName').textContent=wl?wl.name:'';
   document.getElementById('desireDetailName').textContent=d.name;
-
   const bookStr=d.is_book&&d.author?`${d.author}${d.publisher?' · '+d.publisher:''}`:'';
-  const bookEl=document.getElementById('desireDetailBook');
-  bookEl.textContent=bookStr;bookEl.style.display=bookStr?'block':'none';
-
-  const priceEl=document.getElementById('desireDetailPrice');
-  priceEl.textContent=d.price?`€${parseFloat(d.price).toFixed(2)}`:'';
-  priceEl.style.display=d.price?'block':'none';
-
-  // meta
+  const bookEl=document.getElementById('desireDetailBook');bookEl.textContent=bookStr;bookEl.style.display=bookStr?'block':'none';
+  const priceEl=document.getElementById('desireDetailPrice');priceEl.textContent=d.price?`€${parseFloat(d.price).toFixed(2)}`:'';priceEl.style.display=d.price?'block':'none';
   const meta=document.getElementById('desireDetailMeta');
   const rows=[];
   if(d.priority)rows.push(`<div class="desire-detail-row"><span class="desire-detail-label">Priorità</span><span class="prio-badge prio-${d.priority}">${d.priority}</span></div>`);
   if(d.is_book&&d.publisher)rows.push(`<div class="desire-detail-row"><span class="desire-detail-label">Editore</span><span class="desire-detail-value">${escHtml(d.publisher)}</span></div>`);
-  meta.innerHTML=rows.join('');
-  meta.style.display=rows.length?'flex':'none';
-
-  // actions
+  meta.innerHTML=rows.join('');meta.style.display=rows.length?'flex':'none';
   const actions=document.getElementById('desireDetailActions');
   let html='';
   if(d.link)html+=`<a class="desire-detail-link" href="${d.link}" target="_blank" rel="noopener">Apri link ↗</a>`;
   if(fromContext==='owner'){
     html+=`<button class="desire-detail-edit" onclick="editDesireFromDetail('${d.id}')">Modifica</button>`;
-  } else if(fromContext==='public'||fromContext==='profile'){
-    const isReserved=!!d.reserved_by;
-    const isMine=currentUser&&d.reserved_by===currentUser.id;
-    if(isMine)html+=`<button class="reserve-detail-btn mine" onclick="unreserveDetail('${d.id}')">Libera prenotazione ✕</button>`;
+  } else {
+    const isReserved=!!d.reserved_by;const isMine=currentUser&&d.reserved_by===currentUser.id;
+    if(isMine)html+=`<button class="reserve-detail-btn reserved-mine" onclick="unreserveDetail('${d.id}')">Libera prenotazione ✕</button>`;
     else if(isReserved)html+=`<div style="text-align:center;font-size:13px;color:var(--text3);padding:12px 0;">Già prenotato</div>`;
     else if(currentUser)html+=`<button class="reserve-detail-btn" onclick="reserveDetail('${d.id}')">Prenoto questo regalo ♡</button>`;
     else html+=`<button class="reserve-detail-btn" onclick="showAuthFromPublic()">Accedi per prenotare ♡</button>`;
   }
   actions.innerHTML=html;
-
   document.getElementById('desireDetailBack').onclick=()=>closeDesireDetail();
-
   hideAllViews();
   document.getElementById('desireDetailView').style.display='block';
 }
@@ -601,41 +777,35 @@ function closeDesireDetail(){
   document.getElementById('desireDetailView').style.display='none';
   if(desireDetailFrom==='owner'){
     document.getElementById('appView').style.display='block';
-    document.getElementById('detailView').classList.add('active');
-    document.getElementById('homeView').classList.add('hidden');
-  } else if(desireDetailFrom==='public'){
-    document.getElementById('publicView').style.display='block';
-  } else if(desireDetailFrom==='profile'){
-    document.getElementById('publicView').style.display='block';
-  }
+    if(currentWL){document.getElementById('tabLists').style.display='block';document.getElementById('tabHome').style.display='none';}
+    else{document.getElementById('tabHome').style.display='block';}
+  } else if(desireDetailFrom==='public'){document.getElementById('publicView').style.display='block';}
+  else if(desireDetailFrom==='profile'){document.getElementById('publicView').style.display='block';}
 }
 
 function editDesireFromDetail(id){
   document.getElementById('desireDetailView').style.display='none';
   document.getElementById('appView').style.display='block';
-  document.getElementById('detailView').classList.add('active');
-  document.getElementById('homeView').classList.add('hidden');
+  document.getElementById('tabLists').style.display='block';
+  document.getElementById('tabHome').style.display='none';
   editDesire(id);
 }
 
 async function reserveDetail(id){
   if(!currentUser){showAuthFromPublic();return;}
   const {error}=await sb.from('desires').update({reserved_by:currentUser.id,reserved_at:new Date().toISOString()}).eq('id',id).is('reserved_by',null);
-  if(error){showToast('Errore nella prenotazione');return;}
+  if(error){showToast('Errore');return;}
   const d=pubDesires.find(x=>x.id===id);if(d)d.reserved_by=currentUser.id;
   desires=desires.map(x=>x.id===id?{...x,reserved_by:currentUser.id}:x);
-  showToast('Prenotato! 🎁');
-  openDesireDetail(id,desireDetailFrom);
+  showToast('Prenotato! 🎁');openDesireDetail(id,desireDetailFrom);
 }
-
 async function unreserveDetail(id){
   if(!currentUser)return;
   const {error}=await sb.from('desires').update({reserved_by:null,reserved_at:null}).eq('id',id).eq('reserved_by',currentUser.id);
   if(error){showToast('Errore');return;}
   const d=pubDesires.find(x=>x.id===id);if(d)d.reserved_by=null;
   desires=desires.map(x=>x.id===id?{...x,reserved_by:null}:x);
-  showToast('Prenotazione rimossa');
-  openDesireDetail(id,desireDetailFrom);
+  showToast('Prenotazione rimossa');openDesireDetail(id,desireDetailFrom);
 }
 
 // ── AUTH ──
@@ -676,19 +846,23 @@ async function logout(){
   document.getElementById('authView').style.display='block';
   document.getElementById('authEmail').value='';
   document.getElementById('authPassword').value='';
+  document.getElementById('authPassword').type='password';
+  document.getElementById('pwEye').textContent='👁';
 }
 
 function hideAllViews(){
-  ['authView','publicView','desireDetailView','profileView','appView'].forEach(id=>{
-    document.getElementById(id).style.display='none';
-  });
-  document.getElementById('detailView').classList.remove('active');
-  document.getElementById('homeView').classList.remove('hidden');
+  ['authView','publicView','profileView','desireDetailView','appView'].forEach(id=>document.getElementById(id).style.display='none');
 }
 
 function showApp(){
   hideAllViews();
   document.getElementById('appView').style.display='block';
+  currentTab='home';
+  document.getElementById('tabHome').style.display='block';
+  document.getElementById('tabLists').style.display='none';
+  document.getElementById('tabProfile').style.display='none';
+  document.getElementById('navHome').classList.add('active');
+  document.getElementById('navProfile').classList.remove('active');
   loadWishlists();
 }
 
@@ -705,73 +879,56 @@ function showAppFromPublic(){
   else document.getElementById('authView').style.display='block';
 }
 
-// ── PUBLIC WISHLIST VIEW ──
-let pubWishlist=null,pubDesires=[];
-
+// ── PUBLIC WISHLIST ──
 async function showPublicView(wlId){
   hideAllViews();
   document.getElementById('publicView').style.display='block';
   document.getElementById('pubLoading').style.display='block';
   document.getElementById('pubDesireList').innerHTML='';
   pendingShareId=wlId;
-
   const {data:wl,error}=await sb.from('wishlists').select('*').eq('id',wlId).eq('is_public',true).single();
-  if(error||!wl){
-    document.getElementById('pubLoading').style.display='none';
-    document.getElementById('pubDesireList').innerHTML='<div class="empty"><div class="e-icon">✦</div><p>Lista non trovata o privata.</p></div>';
-    return;
-  }
+  if(error||!wl){document.getElementById('pubLoading').style.display='none';document.getElementById('pubDesireList').innerHTML='<div class="empty"><div class="e-icon">✦</div><p>Lista non trovata o privata.</p></div>';return;}
   pubWishlist=wl;
   document.getElementById('pubIcon').textContent=wl.icon||'✦';
   document.getElementById('pubName').textContent=wl.name;
   document.getElementById('pubDesc').textContent=wl.description||'';
   document.getElementById('pubDesc').style.display=wl.description?'block':'none';
-
   const {data:ds}=await sb.from('desires').select('*').eq('wishlist_id',wlId).eq('is_public',true).order('created_at',{ascending:false});
   document.getElementById('pubLoading').style.display='none';
   pubDesires=ds||[];
   document.getElementById('pubMeta').textContent=pubDesires.length+' '+(pubDesires.length===1?'desiderio':'desideri');
-
   const isOwner=currentUser&&currentUser.id===wl.user_id;
   document.getElementById('pubLoginBanner').style.display=(!currentUser&&!isOwner)?'flex':'none';
-
-  if(!pubDesires.length){document.getElementById('pubDesireList').innerHTML='<div class="empty"><div class="e-icon">♡</div><p>Nessun desiderio in questa lista.</p></div>';return;}
-
-  // merge in desires for detail view
   pubDesires.forEach(d=>{if(!desires.find(x=>x.id===d.id))desires.push(d);});
   if(!wls.find(x=>x.id===wl.id))wls.push(wl);
-
+  if(!pubDesires.length){document.getElementById('pubDesireList').innerHTML='<div class="empty"><div class="e-icon">♡</div><p>Nessun desiderio in questa lista.</p></div>';return;}
   document.getElementById('pubDesireList').innerHTML=pubDesires.map(d=>{
     const imgSrc=d.img_data||d.img_url||d.fetched_image||'';
     const imgContent=imgSrc?`<img src="${imgSrc}" onerror="this.textContent='♡'">`:'♡';
     const priceStr=d.price?`€${parseFloat(d.price).toFixed(2)}`:'';
     const bookStr=d.is_book&&d.author?`${escHtml(d.author)}${d.publisher?' · '+escHtml(d.publisher):''}`:'';
-    const isReserved=!!d.reserved_by;
-    const isMine=currentUser&&d.reserved_by===currentUser.id;
+    const isReserved=!!d.reserved_by;const isMine=currentUser&&d.reserved_by===currentUser.id;
     let actionHtml='';
     if(isOwner)actionHtml='';
     else if(isMine)actionHtml=`<button class="reserve-btn mine" onclick="event.stopPropagation();unreserve('${d.id}')">Libera ✕</button>`;
     else if(isReserved)actionHtml=`<span class="reserved-tag">Prenotato</span>`;
     else if(currentUser)actionHtml=`<button class="reserve-btn" onclick="event.stopPropagation();reserve('${d.id}')">Prenoto ♡</button>`;
     else actionHtml=`<button class="reserve-btn" onclick="event.stopPropagation();showAuthFromPublic()">Prenoto ♡</button>`;
-    return`<div class="public-desire-row">
-      <div class="public-desire-card${isReserved&&!isMine?' reserved':''}" onclick="openDesireDetail('${d.id}','${isOwner?'owner':'public'}')">
-        <div class="public-desire-img">${imgContent}</div>
-        <div class="public-desire-info">
-          <div class="public-desire-name">${escHtml(d.name)}</div>
-          ${bookStr?`<div class="public-desire-book">${bookStr}</div>`:''}
-          <div class="public-desire-sub">${priceStr}</div>
-        </div>
-        ${actionHtml}
-      </div>
-    </div>`;
+    return`<div class="public-desire-row"><div class="public-desire-card${isReserved&&!isMine?' reserved':''}" onclick="openDesireDetail('${d.id}','${isOwner?'owner':'public'}')">
+      <div class="public-desire-img">${imgContent}</div>
+      <div class="public-desire-info">
+        <div class="public-desire-name">${escHtml(d.name)}</div>
+        ${bookStr?`<div class="public-desire-book">${bookStr}</div>`:''}
+        <div class="public-desire-sub">${priceStr}</div>
+      </div>${actionHtml}
+    </div></div>`;
   }).join('');
 }
 
 async function reserve(id){
   if(!currentUser){showAuthFromPublic();return;}
   const {error}=await sb.from('desires').update({reserved_by:currentUser.id,reserved_at:new Date().toISOString()}).eq('id',id).is('reserved_by',null);
-  if(error){showToast('Errore nella prenotazione');return;}
+  if(error){showToast('Errore');return;}
   showToast('Prenotato! 🎁');showPublicView(pendingShareId);
 }
 async function unreserve(id){
@@ -781,93 +938,34 @@ async function unreserve(id){
   showToast('Prenotazione rimossa');showPublicView(pendingShareId);
 }
 
-// ── PROFILE VIEW ──
+// ── PUBLIC PROFILE ──
 async function showProfileView(userId){
   hideAllViews();
   document.getElementById('profileView').style.display='block';
-  document.getElementById('profileLoading').style.display='block';
+  document.getElementById('profilePubLoading').style.display='block';
   document.getElementById('profileWlGrid').innerHTML='';
   pendingUserId=userId;
-
   const {data:profile}=await sb.from('profiles').select('*').eq('id',userId).single();
   const displayName=profile?.display_name||'Utente';
-  document.getElementById('profileTitle').textContent='Le wishlist di '+displayName;
-
+  document.getElementById('profilePubTitle').textContent='Le wishlist di '+displayName;
   const {data:lists}=await sb.from('wishlists').select('*').eq('user_id',userId).eq('is_public',true).order('created_at',{ascending:false});
-  document.getElementById('profileLoading').style.display='none';
-
+  document.getElementById('profilePubLoading').style.display='none';
   const pubLists=lists||[];
-  document.getElementById('profileSubtitle').textContent=pubLists.length+' '+(pubLists.length===1?'lista pubblica':'liste pubbliche');
-
+  document.getElementById('profilePubSubtitle').textContent=pubLists.length+' '+(pubLists.length===1?'lista pubblica':'liste pubbliche');
   if(!pubLists.length){document.getElementById('profileWlGrid').innerHTML='<div class="empty"><div class="e-icon">✦</div><p>Nessuna lista pubblica ancora.</p></div>';return;}
-
-  // carica conteggi desideri
   const ids=pubLists.map(w=>w.id);
   const {data:allDs}=await sb.from('desires').select('id,wishlist_id').in('wishlist_id',ids).eq('is_public',true);
-  const countMap={};
-  (allDs||[]).forEach(d=>{countMap[d.wishlist_id]=(countMap[d.wishlist_id]||0)+1;});
-
+  const countMap={};(allDs||[]).forEach(d=>{countMap[d.wishlist_id]=(countMap[d.wishlist_id]||0)+1;});
   document.getElementById('profileWlGrid').innerHTML=pubLists.map(w=>{
     const imgSrc=w.img_data||w.img_url||'';
     const iconContent=imgSrc?`<img src="${imgSrc}" onerror="this.style.display='none'">`:`${w.icon}`;
     const c=countMap[w.id]||0;
-    return`<div class="profile-wl-row">
-      <div class="profile-wl-card" onclick="showPublicView('${w.id}')">
-        <div class="profile-wl-icon">${iconContent}</div>
-        <div class="profile-wl-info">
-          <div class="profile-wl-name">${escHtml(w.name)}</div>
-          <div class="profile-wl-count">${c} ${c===1?'desiderio':'desideri'}</div>
-        </div>
-        <span style="color:var(--text3);font-size:18px;">›</span>
-      </div>
-    </div>`;
+    return`<div class="profile-wl-row"><div class="profile-wl-card" onclick="showPublicView('${w.id}')">
+      <div class="profile-wl-icon">${iconContent}</div>
+      <div class="profile-wl-info"><div class="profile-wl-name">${escHtml(w.name)}</div><div class="profile-wl-count">${c} ${c===1?'desiderio':'desideri'}</div></div>
+      <span style="color:var(--text3);font-size:18px;">›</span>
+    </div></div>`;
   }).join('');
-}
-
-// ── PROFILE SETUP ──
-async function showProfileSetup(){
-  if(!currentUser)return;
-  const {data:profile}=await sb.from('profiles').select('*').eq('id',currentUser.id).single();
-  userProfile=profile;
-  document.getElementById('profileDisplayName').value=profile?.display_name||'';
-  document.getElementById('profileUsername').value=profile?.username||'';
-  document.getElementById('profileToggle').classList.toggle('on',profile?.is_public!==false);
-  updateProfileUrlPreview();
-  document.getElementById('overlayProfile').classList.add('open');
-}
-
-function updateProfileUrlPreview(){
-  const un=document.getElementById('profileUsername').value.trim();
-  const preview=document.getElementById('profileUrlPreview');
-  if(un)preview.textContent='Link: '+window.location.origin+window.location.pathname+'?user='+un;
-  else preview.textContent='';
-}
-document.getElementById('profileUsername').addEventListener('input',updateProfileUrlPreview);
-
-async function saveProfile(){
-  const displayName=document.getElementById('profileDisplayName').value.trim();
-  const username=document.getElementById('profileUsername').value.trim();
-  const isPublic=document.getElementById('profileToggle').classList.contains('on');
-  if(!displayName){showToast('Inserisci un nome');return;}
-  const btn=document.getElementById('profileSaveBtn');
-  btn.disabled=true;btn.innerHTML='<span class="spinner"></span>Salvo...';
-  const obj={id:currentUser.id,display_name:displayName,username:username||null,is_public:isPublic};
-  const {error}=await sb.from('profiles').upsert(obj,{onConflict:'id'});
-  btn.disabled=false;btn.textContent='Salva';
-  if(error){showToast(error.message.includes('unique')?'Username già in uso':'Errore: '+error.message);return;}
-  userProfile={...obj};
-  showToast('Profilo salvato ✓');
-  closeModal('overlayProfile');
-  if(username&&isPublic){
-    const shareUrl=window.location.origin+window.location.pathname+'?user='+username;
-    navigator.clipboard?.writeText(shareUrl).then(()=>showToast('Link profilo copiato! ⎙'));
-  }
-}
-
-function shareProfile(){
-  if(!userProfile?.username){showProfileSetup();return;}
-  const url=window.location.origin+window.location.pathname+'?user='+userProfile.username;
-  navigator.clipboard?.writeText(url).then(()=>showToast('Link profilo copiato! ⎙')).catch(()=>showToast('Link: '+url));
 }
 
 // ── DATA ──
@@ -880,7 +978,6 @@ async function loadWishlists(){
   if(error){showToast('Errore caricamento');return;}
   wls=data||[];
   await loadAllDesires();
-  // carica profilo
   const {data:profile}=await sb.from('profiles').select('*').eq('id',currentUser.id).single();
   userProfile=profile;
   renderHome();
@@ -908,8 +1005,7 @@ function renderHome(){
   const list=document.getElementById('wlList');
   const empty=document.getElementById('wlEmpty');
   const count=wls.length;
-  document.getElementById('totalBadge').textContent=count?count+' '+(count===1?'lista':'liste'):'';
-  if(!count){list.innerHTML='';empty.style.display='block';return;}
+  if(!count){list.innerHTML='';empty.style.display='block';document.getElementById('topDesireSection').style.display='none';return;}
   empty.style.display='none';
   list.innerHTML=wls.map(w=>{
     const dc=desires.filter(d=>d.wishlist_id===w.id).length;
@@ -925,16 +1021,14 @@ function renderHome(){
         <div class="wl-icon">${iconContent}</div>
         <div class="wl-info">
           <div class="wl-name">${escHtml(w.name)}</div>
-          <div class="wl-meta">
-            <span>${dc} ${dc===1?'desiderio':'desideri'}</span>
-            <span class="vis-dot ${isPrivate?'vis-priv':'vis-pub'}"></span>
-            <span>${isPrivate?'privata':'pubblica'}</span>
-          </div>
+          <div class="wl-meta"><span>${dc} ${dc===1?'desiderio':'desideri'}</span><span class="vis-dot ${isPrivate?'vis-priv':'vis-pub'}"></span><span>${isPrivate?'privata':'pubblica'}</span></div>
         </div>
       </div>
     </div>`;
   }).join('');
   addSwipe('.wl-card');
+  topFilterWL='all';showAllTop=false;
+  renderTopDesires();
 }
 
 function renderDetail(){
@@ -982,21 +1076,21 @@ function sortDesires(ds){
 
 function openDetail(id){
   currentWL=id;activeSort='date';sortState.date='desc';
-  document.getElementById('homeView').classList.add('hidden');
-  document.getElementById('detailView').classList.add('active');
+  document.getElementById('tabHome').style.display='none';
+  document.getElementById('tabLists').style.display='block';
   updateSortChips();loadDesires(id);
 }
 
 function goHome(){
-  document.getElementById('detailView').classList.remove('active');
-  document.getElementById('homeView').classList.remove('hidden');
+  document.getElementById('tabLists').style.display='none';
+  document.getElementById('tabHome').style.display='block';
   currentWL=null;renderHome();
 }
 
 function toggleFab(){
   fabOpen=!fabOpen;
   document.getElementById('fabMenu').classList.toggle('open',fabOpen);
-  document.getElementById('fabBtn').textContent=fabOpen?'×':'+';
+  document.getElementById('navFab').textContent=fabOpen?'×':'+';
 }
 
 function openModal(type){
@@ -1033,8 +1127,7 @@ function handleImgUpload(input,previewId,ctx){
   const file=input.files[0];if(!file)return;
   const reader=new FileReader();
   reader.onload=e=>{
-    const prev=document.getElementById(previewId);
-    prev.src=e.target.result;prev.style.display='block';
+    const prev=document.getElementById(previewId);prev.src=e.target.result;prev.style.display='block';
     if(ctx==='wl')wlImgData=e.target.result;else dImgData=e.target.result;
   };
   reader.readAsDataURL(file);
@@ -1045,21 +1138,14 @@ function selPrio(el){
   el.parentNode.querySelectorAll('.prio-opt').forEach(x=>{x.className='prio-opt';});
   el.classList.add('sel-'+p);
 }
-
-function clearPrio(){
-  document.querySelectorAll('#overlayD .prio-opt').forEach(x=>{x.className='prio-opt';});
-}
+function clearPrio(){document.querySelectorAll('#overlayD .prio-opt').forEach(x=>{x.className='prio-opt';});}
 
 function fillWLSelect(preselect){
   const sel=document.getElementById('dWishlist');
   const opts=wls.map(w=>`<option value="${w.id}"${w.id===preselect?' selected':''}>${w.icon} ${escHtml(w.name)}</option>`).join('');
   sel.innerHTML=opts+'<option value="__new__">＋ Crea nuova wishlist</option>';
   sel.onchange=function(){
-    if(this.value==='__new__'){
-      this.value=wls.length?wls[0].id:'';
-      closeModal('overlayD');
-      setTimeout(()=>openModal('wishlist'),200);
-    }
+    if(this.value==='__new__'){this.value=wls.length?wls[0].id:'';closeModal('overlayD');setTimeout(()=>openModal('wishlist'),200);}
   };
 }
 
@@ -1106,7 +1192,7 @@ async function saveDesire(){
   }
   btn.disabled=false;btn.textContent='Salva';
   if(error){showToast('Errore: '+error.message);return;}
-  if(currentWL)renderDetail(); else renderHome();
+  if(currentWL){renderDetail();renderTopDesires();}else{renderHome();}
   closeModal('overlayD');
 }
 
@@ -1154,15 +1240,14 @@ async function deleteWL(id){
   if(!confirm('Eliminare questa wishlist e tutti i suoi desideri?'))return;
   const {error}=await sb.from('wishlists').delete().eq('id',id);
   if(error){showToast('Errore eliminazione');return;}
-  wls=wls.filter(x=>x.id!==id);desires=desires.filter(x=>x.wishlist_id!==id);
-  renderHome();
+  wls=wls.filter(x=>x.id!==id);desires=desires.filter(x=>x.wishlist_id!==id);renderHome();
 }
 
 async function deleteDesire(id){
   if(!confirm('Eliminare questo desiderio?'))return;
   const {error}=await sb.from('desires').delete().eq('id',id);
   if(error){showToast('Errore eliminazione');return;}
-  desires=desires.filter(x=>x.id!==id);renderDetail();
+  desires=desires.filter(x=>x.id!==id);renderDetail();renderTopDesires();
 }
 
 function shareList(){
@@ -1171,8 +1256,7 @@ function shareList(){
 }
 
 function showToast(msg){
-  const t=document.getElementById('toast');
-  t.textContent=msg;t.classList.add('show');
+  const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');
   setTimeout(()=>t.classList.remove('show'),2500);
 }
 
@@ -1211,7 +1295,6 @@ document.querySelectorAll('.overlay').forEach(o=>{
   const params=new URLSearchParams(window.location.search);
   const shareId=params.get('share');
   const userId=params.get('user');
-
   if(shareId){
     if(currentUser){
       const {data:wl}=await sb.from('wishlists').select('user_id').eq('id',shareId).single();
@@ -1219,7 +1302,6 @@ document.querySelectorAll('.overlay').forEach(o=>{
     }
     showPublicView(shareId);
   } else if(userId){
-    // cerca per username o id
     let resolvedId=userId;
     if(!userId.includes('-')){
       const {data:profile}=await sb.from('profiles').select('id').eq('username',userId).single();
@@ -1228,6 +1310,8 @@ document.querySelectorAll('.overlay').forEach(o=>{
     showProfileView(resolvedId);
   } else if(currentUser){
     showApp();
+  } else {
+    document.getElementById('authView').style.display='block';
   }
 })();
 </script>
