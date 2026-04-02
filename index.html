@@ -331,6 +331,10 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 
 <!-- PUBLIC WISHLIST -->
 <div id="publicView">
+  <div class="detail-header" id="pubBackHeader" style="display:none;">
+    <button class="back-btn" id="pubBackBtn" onclick="goBackToProfile()" style="display:none;">←</button>
+    <div style="flex:1;"></div>
+  </div>
   <div class="public-header">
     <div class="public-logo">Listea</div>
     <div id="pubIcon" class="public-wl-icon"></div>
@@ -1149,12 +1153,19 @@ function showAppFromPublic(){
 }
 
 // ── PUBLIC WISHLIST ──
-async function showPublicView(wlId){
+async function showPublicView(wlId, fromProfile){
   hideAllViews();
   document.getElementById('publicView').style.display='block';
   document.getElementById('pubLoading').style.display='block';
   document.getElementById('pubDesireList').innerHTML='';
   pendingShareId=wlId;
+  // show back button only if coming from profile
+  const backHeader=document.getElementById('pubBackHeader');
+  const backBtn=document.getElementById('pubBackBtn');
+  if(backHeader&&backBtn){
+    if(fromProfile){backHeader.style.display='flex';backBtn.style.display='flex';}
+    else{backHeader.style.display='none';backBtn.style.display='none';}
+  }
   const {data:wl,error}=await sb.from('wishlists').select('*').eq('id',wlId).eq('is_public',true).single();
   if(error||!wl){document.getElementById('pubLoading').style.display='none';document.getElementById('pubDesireList').innerHTML='<div class="empty"><div class="e-icon">✦</div><p>Lista non trovata o privata.</p></div>';return;}
   pubWishlist=wl;
@@ -1194,6 +1205,10 @@ async function showPublicView(wlId){
   }).join('');
 }
 
+function goBackToProfile(){
+  if(pendingUserId){showProfileView(pendingUserId);}
+  else{hideAllViews();if(currentUser)showApp();else document.getElementById('authView').style.display='block';}
+}
 async function reserve(id){
   if(!currentUser){showAuthFromPublic();return;}
   const {error}=await sb.from('desires').update({reserved_by:currentUser.id,reserved_at:new Date().toISOString()}).eq('id',id).is('reserved_by',null);
@@ -1229,7 +1244,7 @@ async function showProfileView(userId){
     const imgSrc=w.img_data||w.img_url||'';
     const iconContent=imgSrc?`<img src="${imgSrc}" onerror="this.style.display='none'">`:`${w.icon}`;
     const c=countMap[w.id]||0;
-    return`<div class="profile-wl-row"><div class="profile-wl-card" onclick="showPublicView('${w.id}')">
+    return`<div class="profile-wl-row"><div class="profile-wl-card" onclick="showPublicView('${w.id}',true)">
       <div class="profile-wl-icon">${iconContent}</div>
       <div class="profile-wl-info"><div class="profile-wl-name">${escHtml(w.name)}</div><div class="profile-wl-count">${c} ${c===1?'desiderio':'desideri'}</div></div>
       <span style="color:var(--text3);font-size:18px;">›</span>
