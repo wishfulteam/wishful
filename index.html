@@ -759,7 +759,7 @@ function renderDetail(){
         <div class="desire-info">
           <div class="desire-name">${escHtml(d.name)}</div>
           ${bookStr?`<div class="desire-book">${bookStr}</div>`:''}
-          <div class="desire-sub">${[priceStr,d.link?'<a href="'+d.link+'" style="color:var(--accent)">Link ↗</a>':''].filter(Boolean).join(' · ')}</div>
+          <div class="desire-sub">${[priceStr,d.link?'<a href="'+d.link+'" target="_blank" rel="noopener" style="color:var(--accent)">Apri link ↗</a>':''].filter(Boolean).join(' · ')}</div>
         </div>
         <span class="prio-badge prio-${d.priority}">${d.priority}</span>
       </div>
@@ -862,9 +862,15 @@ function clearPrio(){
 
 function fillWLSelect(preselect){
   const sel=document.getElementById('dWishlist');
-  sel.innerHTML=wls.length
-    ?wls.map(w=>`<option value="${w.id}"${w.id===preselect?' selected':''}>${w.icon} ${escHtml(w.name)}</option>`).join('')
-    :'<option value="">— Crea prima una wishlist —</option>';
+  const opts=wls.map(w=>`<option value="${w.id}"${w.id===preselect?' selected':''}>${w.icon} ${escHtml(w.name)}</option>`).join('');
+  sel.innerHTML=opts+'<option value="__new__">＋ Crea nuova wishlist</option>';
+  sel.onchange=function(){
+    if(this.value==='__new__'){
+      this.value=wls.length?wls[0].id:'';
+      closeModal('overlayD');
+      setTimeout(()=>openModal('wishlist'),200);
+    }
+  };
 }
 
 function closeModal(id){document.getElementById(id).classList.remove('open');}
