@@ -426,7 +426,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
         <div class="profile-avatar-edit" onclick="document.getElementById('avatarFileInput').click()">✎</div>
         <input type="file" id="avatarFileInput" accept="image/*" style="display:none;" onchange="handleAvatarUpload(this)">
       </div>
-      <div class="profile-name" id="profileNameDisplay">—</div>
+      <div class="profile-name" id="profileNameDisplay" onclick="openProfileModal()" style="cursor:pointer;" title="Tocca per modificare">—</div>
       <div class="profile-username" id="profileUsernameDisplay"></div>
       <div class="profile-link-row" id="profileLinkRow" style="display:none;">
         <span class="profile-link" id="profileLinkText"></span>
@@ -437,6 +437,14 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
       <div class="profile-section-title">Account</div>
       <div class="profile-action-row" onclick="openProfileModal()">
         <div><div class="profile-action-label">Modifica profilo</div><div class="profile-action-sub">Nome, username, foto, visibilità</div></div>
+        <span class="profile-action-arrow">›</span>
+      </div>
+      <div class="profile-action-row" onclick="openChangeEmailModal()">
+        <div><div class="profile-action-label">Cambia email</div><div class="profile-action-sub" id="currentEmailDisplay"></div></div>
+        <span class="profile-action-arrow">›</span>
+      </div>
+      <div class="profile-action-row" onclick="openChangePasswordModal()">
+        <div><div class="profile-action-label">Cambia password</div><div class="profile-action-sub">Aggiorna la tua password</div></div>
         <span class="profile-action-arrow">›</span>
       </div>
     </div>
@@ -572,6 +580,39 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
     <div class="modal-actions">
       <button class="btn-secondary" onclick="closeModal('overlayProfile')">Annulla</button>
       <button class="btn-primary" id="profileSaveBtn" onclick="saveProfile()">Salva</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL CAMBIA EMAIL -->
+<div class="overlay" id="overlayChangeEmail">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <div class="modal-title">Cambia email</div>
+    <p style="font-size:13px;color:var(--text2);margin-bottom:18px;line-height:1.6;">Inserisci il nuovo indirizzo email. Riceverai una conferma prima che venga aggiornato.</p>
+    <div class="field"><label>Nuova email</label><input type="email" id="newEmail" placeholder="nuova@email.com"></div>
+    <div class="auth-err" id="changeEmailErr"></div>
+    <div class="modal-actions">
+      <button class="btn-secondary" onclick="closeModal('overlayChangeEmail')">Annulla</button>
+      <button class="btn-primary" id="changeEmailBtn" onclick="changeEmail()">Invia conferma</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL CAMBIA PASSWORD -->
+<div class="overlay" id="overlayChangePassword">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <div class="modal-title">Cambia password</div>
+    <div class="field" style="position:relative;">
+      <label>Nuova password</label>
+      <input type="password" id="changePasswordInput" placeholder="••••••••">
+      <span class="pw-eye" onclick="togglePwChange()">👁</span>
+    </div>
+    <div class="auth-err" id="changePasswordErr"></div>
+    <div class="modal-actions">
+      <button class="btn-secondary" onclick="closeModal('overlayChangePassword')">Annulla</button>
+      <button class="btn-primary" id="changePasswordBtn" onclick="changePassword()">Salva</button>
     </div>
   </div>
 </div>
@@ -824,6 +865,7 @@ function renderProfileTab(){
   renderAvatarInTab(avatarData);
   document.getElementById('profileNameDisplay').textContent=name;
   document.getElementById('profileUsernameDisplay').textContent=username?'@'+username:'';
+  const emailEl=document.getElementById('currentEmailDisplay');if(emailEl)emailEl.textContent=currentUser?.email||'';
   const linkRow=document.getElementById('profileLinkRow');
   if(username&&userProfile?.is_public!==false){
     document.getElementById('profileLinkText').textContent=window.location.origin+window.location.pathname+'?user='+username;
@@ -878,6 +920,49 @@ async function saveProfile(){
   closeModal('overlayProfile');
 }
 
+// ── CHANGE EMAIL & PASSWORD ──
+function openChangeEmailModal(){
+  document.getElementById('newEmail').value='';
+  document.getElementById('changeEmailErr').textContent='';
+  document.getElementById('overlayChangeEmail').classList.add('open');
+}
+function openChangePasswordModal(){
+  document.getElementById('changePasswordInput').value='';
+  document.getElementById('changePasswordErr').textContent='';
+  document.getElementById('changePasswordInput').type='password';
+  document.getElementById('overlayChangePassword').classList.add('open');
+}
+function togglePwChange(){
+  const inp=document.getElementById('changePasswordInput');
+  inp.type=inp.type==='password'?'text':'password';
+}
+async function changeEmail(){
+  const newEmail=document.getElementById('newEmail').value.trim();
+  const err=document.getElementById('changeEmailErr');
+  if(!newEmail){err.textContent='Inserisci una email';return;}
+  const btn=document.getElementById('changeEmailBtn');
+  btn.disabled=true;btn.innerHTML='<span class="spinner"></span>Invio...';
+  err.textContent='';
+  const {error}=await sb.auth.updateUser({email:newEmail});
+  btn.disabled=false;btn.textContent='Invia conferma';
+  if(error){err.textContent='Errore: '+error.message;return;}
+  err.style.color='#15803D';
+  err.textContent='Conferma inviata! Controlla la nuova email.';
+  setTimeout(()=>closeModal('overlayChangeEmail'),2500);
+}
+async function changePassword(){
+  const pw=document.getElementById('changePasswordInput').value;
+  const err=document.getElementById('changePasswordErr');
+  if(!pw||pw.length<6){err.textContent='Almeno 6 caratteri';return;}
+  const btn=document.getElementById('changePasswordBtn');
+  btn.disabled=true;btn.innerHTML='<span class="spinner"></span>Salvo...';
+  err.textContent='';
+  const {error}=await sb.auth.updateUser({password:pw});
+  btn.disabled=false;btn.textContent='Salva';
+  if(error){err.textContent='Errore: '+error.message;return;}
+  showToast('Password aggiornata ✓');
+  closeModal('overlayChangePassword');
+}
 // ── DESIRE DETAIL ──
 function openDesireDetail(desireId,fromContext){
   const d=desires.find(x=>x.id===desireId);if(!d)return;
