@@ -19,42 +19,41 @@
   --bg:#F9F8F5;--surface:#FFFFFF;--surface2:#F2F0EB;
   --text:#111110;--text2:#6B6860;--text3:#A8A69E;
   --accent:#B8860B;--accent-light:#F7F0DC;--accent-dark:#7A5A00;
-  --border:#E4E1D9;--radius:14px;--radiusS:8px;
-  --nav-h:64px;
+  --border:#E4E1D9;--radius:14px;--radiusS:8px;--nav-h:64px;
 }
-body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
+body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
 
-/* ── AUTH ── */
+/* AUTH */
 #authView{max-width:380px;margin:0 auto;padding:60px 24px;display:none;}
-.auth-logo{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:400;letter-spacing:1px;margin-bottom:6px;}
+.auth-logo{font-family:"Cormorant Garamond",serif;font-size:42px;font-weight:400;letter-spacing:1px;margin-bottom:6px;}
 .auth-sub{font-size:12px;color:var(--text3);letter-spacing:2px;text-transform:uppercase;margin-bottom:40px;}
 .auth-tabs{display:flex;border:1px solid var(--border);border-radius:var(--radiusS);overflow:hidden;margin-bottom:24px;}
 .auth-tab{flex:1;padding:10px;text-align:center;font-size:13px;cursor:pointer;background:var(--surface);color:var(--text2);transition:all .15s;}
 .auth-tab.active{background:var(--text);color:var(--bg);}
 .auth-field{margin-bottom:14px;position:relative;}
 .auth-field label{font-size:11px;color:var(--text2);display:block;margin-bottom:5px;letter-spacing:.5px;text-transform:uppercase;}
-.auth-field input{width:100%;padding:11px 44px 11px 14px;border:1px solid var(--border);border-radius:var(--radiusS);background:var(--bg);font-family:'DM Sans',sans-serif;font-size:14px;color:var(--text);outline:none;transition:border-color .15s;}
+.auth-field input{width:100%;padding:11px 44px 11px 14px;border:1px solid var(--border);border-radius:var(--radiusS);background:var(--bg);font-family:"DM Sans",sans-serif;font-size:14px;color:var(--text);outline:none;transition:border-color .15s;}
 .auth-field input:focus{border-color:var(--accent);}
 .pw-eye{position:absolute;right:12px;bottom:11px;cursor:pointer;font-size:16px;color:var(--text3);user-select:none;}
-.auth-btn{width:100%;padding:13px;background:var(--text);color:var(--bg);border:none;border-radius:var(--radiusS);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;margin-top:6px;transition:background .15s;}
+.auth-btn{width:100%;padding:13px;background:var(--text);color:var(--bg);border:none;border-radius:var(--radiusS);font-family:"DM Sans",sans-serif;font-size:14px;font-weight:500;cursor:pointer;margin-top:6px;transition:background .15s;}
 .auth-btn:hover{background:var(--accent-dark);}
 .auth-err{font-size:12px;color:#DC2626;margin-top:10px;text-align:center;min-height:18px;}
 .auth-note{font-size:12px;color:var(--text3);margin-top:16px;text-align:center;line-height:1.6;}
 .auth-link{font-size:12px;color:var(--accent-dark);text-align:center;margin-top:14px;cursor:pointer;text-decoration:underline;}
 
-/* ── RESET PASSWORD VIEW ── */
+/* RESET PASSWORD */
 #resetView{max-width:380px;margin:0 auto;padding:60px 24px;display:none;}
 #newPasswordView{max-width:380px;margin:0 auto;padding:60px 24px;display:none;}
 
-/* ── APP SHELL ── */
+/* APP */
 #appView{display:none;max-width:420px;margin:0 auto;}
 .app-header{padding:20px 20px 10px;display:flex;justify-content:space-between;align-items:flex-end;border-bottom:1px solid var(--border);}
-.logo-name{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:400;letter-spacing:1px;line-height:1;}
+.logo-name{font-family:"Cormorant Garamond",serif;font-size:30px;font-weight:400;letter-spacing:1px;line-height:1;}
 .logo-sub{font-size:10px;color:var(--text3);letter-spacing:2px;text-transform:uppercase;margin-top:2px;}
 .logo-icon{width:48px;height:48px;border-radius:11px;overflow:hidden;flex-shrink:0;}
 .logo-icon img{width:100%;height:100%;object-fit:cover;}
 
-/* ── BOTTOM NAV ── */
+/* BOTTOM NAV */
 .bottom-nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:420px;height:var(--nav-h);background:var(--surface);border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-around;z-index:50;}
 .nav-btn{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;cursor:pointer;padding:8px 0;color:var(--text3);transition:color .15s;}
 .nav-btn.active{color:var(--text);}
@@ -68,35 +67,34 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .fab-item span.lbl{background:var(--text);color:var(--bg);font-size:12px;padding:5px 14px;border-radius:20px;white-space:nowrap;}
 .fab-item .ic{width:36px;height:36px;border-radius:50%;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:15px;}
 
-/* ── TAB CONTENT ── */
+/* TAB */
 .tab-content{padding-bottom:calc(var(--nav-h) + 16px);}
 .section-label{font-size:10px;letter-spacing:2px;color:var(--text3);text-transform:uppercase;padding:16px 20px 8px;}
 
-/* wishlist cards */
+/* WISHLIST CARDS */
 .wl-list{display:flex;flex-direction:column;}
-.wl-row{position:relative;overflow:hidden;border-bottom:1px solid var(--border);}
-.wl-card{background:var(--surface);padding:13px 18px;display:flex;align-items:center;gap:13px;cursor:pointer;transition:background .12s;position:relative;z-index:1;}
+.wl-row{border-bottom:1px solid var(--border);}
+.wl-card{background:var(--surface);padding:13px 18px;display:flex;align-items:center;gap:13px;transition:background .12s;}
 .wl-card:active{background:var(--surface2);}
-.wl-icon{width:46px;height:46px;border-radius:11px;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;overflow:hidden;}
+.wl-icon{width:46px;height:46px;border-radius:11px;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;overflow:hidden;cursor:pointer;}
 .wl-icon img{width:100%;height:100%;object-fit:cover;border-radius:11px;}
-.wl-info{flex:1;min-width:0;}
+.wl-info{flex:1;min-width:0;cursor:pointer;}
 .wl-name{font-size:14px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .wl-meta{font-size:11px;color:var(--text3);margin-top:2px;display:flex;align-items:center;gap:5px;}
 .vis-dot{width:5px;height:5px;border-radius:50%;display:inline-block;}
-.drag-handle{display:flex;align-items:center;justify-content:center;width:28px;height:48px;cursor:grab;color:var(--text3);font-size:18px;flex-shrink:0;touch-action:none;user-select:none;}
-.drag-handle:active{cursor:grabbing;}
-.wl-row.sortable-ghost{opacity:.3;}
-.wl-row.sortable-chosen{background:var(--surface2);}
-.wl-menu-btn{width:32px;height:48px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--text3);font-size:18px;flex-shrink:0;position:relative;}
-.wl-menu-btn:hover{color:var(--text);}
-.wl-context-menu{position:absolute;right:0;top:100%;background:var(--surface);border:1px solid var(--border);border-radius:var(--radiusS);box-shadow:0 4px 16px rgba(0,0,0,0.12);z-index:100;min-width:140px;overflow:hidden;display:none;}
-.wl-context-menu.open{display:block;}
-.wl-context-item{padding:11px 16px;font-size:13px;cursor:pointer;color:var(--text);}
-.wl-context-item:hover{background:var(--surface2);}
-.wl-context-item.danger{color:#DC2626;}
 .vis-pub{background:#4CAF50;}.vis-priv{background:var(--accent);}
 
-/* top desires */
+/* WISHLIST CONTEXT MENU */
+.wl-menu-btn{width:36px;height:46px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--text3);font-size:20px;flex-shrink:0;position:relative;letter-spacing:-1px;}
+.wl-menu-btn:hover{color:var(--text);}
+.wl-context-menu{position:absolute;right:4px;top:calc(100% - 4px);background:var(--surface);border:1px solid var(--border);border-radius:var(--radiusS);box-shadow:0 4px 20px rgba(0,0,0,0.15);z-index:200;min-width:160px;overflow:hidden;display:none;}
+.wl-context-menu.open{display:block;}
+.wl-context-item{padding:12px 16px;font-size:13px;cursor:pointer;color:var(--text);white-space:nowrap;}
+.wl-context-item:hover{background:var(--surface2);}
+.wl-context-item:active{background:var(--surface2);}
+.wl-context-item.danger{color:#DC2626;}
+
+/* TOP DESIRES */
 .top-filter-bar{padding:8px 16px;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid var(--border);}
 .top-filter-bar::-webkit-scrollbar{display:none;}
 .filter-chip{font-size:11px;padding:4px 12px;border-radius:20px;border:1px solid var(--border);background:var(--surface);cursor:pointer;white-space:nowrap;color:var(--text2);flex-shrink:0;}
@@ -110,16 +108,14 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .top-desire-name{font-size:13px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .top-desire-sub{font-size:11px;color:var(--text3);margin-top:2px;}
 .prio-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
-.prio-dot-alto{background:#DC2626;}
-.prio-dot-medio{background:var(--accent);}
-.prio-dot-basso{background:#15803D;}
+.prio-dot-alto{background:#DC2626;}.prio-dot-medio{background:var(--accent);}.prio-dot-basso{background:#15803D;}
 .see-all-btn{display:block;text-align:center;padding:12px;font-size:12px;color:var(--accent-dark);cursor:pointer;border-bottom:1px solid var(--border);}
 
-/* detail */
+/* DETAIL */
 #tabLists{display:none;}
 .detail-header{padding:13px 18px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--border);}
 .back-btn{width:32px;height:32px;border-radius:50%;border:1px solid var(--border);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:15px;color:var(--text);}
-.detail-title{font-family:'Cormorant Garamond',serif;font-size:19px;flex:1;}
+.detail-title{font-family:"Cormorant Garamond",serif;font-size:19px;flex:1;}
 .share-btn{width:32px;height:32px;border-radius:50%;border:1px solid var(--border);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--text2);}
 .sort-bar{padding:9px 16px;display:flex;gap:7px;border-bottom:1px solid var(--border);}
 .sort-chip{flex:1;font-size:11px;padding:5px 4px;border-radius:20px;border:1px solid var(--border);background:var(--surface);cursor:pointer;color:var(--text2);text-align:center;white-space:nowrap;transition:all .15s;}
@@ -142,14 +138,14 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .sw-edit{background:#F0F4FF;color:#1A56DB;}
 .sw-del{background:#FEF2F2;color:#DC2626;}
 
-/* profile tab */
+/* PROFILE TAB */
 #tabProfile{display:none;padding:0 0 20px;}
 .profile-header{padding:24px 20px 20px;border-bottom:1px solid var(--border);}
 .profile-avatar-wrap{position:relative;width:72px;height:72px;margin-bottom:14px;}
-.profile-avatar{width:72px;height:72px;border-radius:50%;background:var(--accent-light);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--accent-dark);overflow:hidden;cursor:pointer;}
+.profile-avatar{width:72px;height:72px;border-radius:50%;background:var(--accent-light);display:flex;align-items:center;justify-content:center;font-family:"Cormorant Garamond",serif;font-size:28px;color:var(--accent-dark);overflow:hidden;cursor:pointer;}
 .profile-avatar img{width:100%;height:100%;object-fit:cover;}
 .profile-avatar-edit{position:absolute;bottom:0;right:0;width:22px;height:22px;border-radius:50%;background:var(--text);color:var(--bg);display:flex;align-items:center;justify-content:center;font-size:11px;cursor:pointer;border:2px solid var(--bg);}
-.profile-name{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:400;}
+.profile-name{font-family:"Cormorant Garamond",serif;font-size:24px;font-weight:400;cursor:pointer;}
 .profile-username{font-size:12px;color:var(--text3);margin-top:3px;}
 .profile-link-row{display:flex;align-items:center;gap:8px;margin-top:12px;}
 .profile-link{font-size:12px;color:var(--accent-dark);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
@@ -162,33 +158,33 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .profile-action-arrow{color:var(--text3);font-size:16px;}
 .donate-banner{margin:20px;padding:16px;background:var(--accent-light);border-radius:var(--radius);text-align:center;}
 .donate-banner p{font-size:13px;color:var(--accent-dark);line-height:1.6;margin-bottom:12px;}
-.donate-btn{display:inline-block;padding:10px 24px;background:var(--text);color:var(--bg);border:none;border-radius:var(--radiusS);font-family:'DM Sans',sans-serif;font-size:13px;cursor:pointer;text-decoration:none;}
+.donate-btn{display:inline-block;padding:10px 24px;background:var(--text);color:var(--bg);border:none;border-radius:var(--radiusS);font-family:"DM Sans",sans-serif;font-size:13px;cursor:pointer;text-decoration:none;}
 .logout-row{margin:16px 20px 0;padding:13px 0;border-top:1px solid var(--border);cursor:pointer;text-align:center;font-size:13px;color:#DC2626;}
 
-/* desire detail */
+/* DESIRE DETAIL */
 #desireDetailView{display:none;max-width:420px;margin:0 auto;padding-bottom:calc(var(--nav-h)+16px);}
 .desire-detail-header{padding:13px 18px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--border);}
 .desire-detail-img{width:100%;max-height:260px;object-fit:cover;display:block;}
 .desire-detail-img-placeholder{width:100%;height:160px;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:48px;}
 .desire-detail-body{padding:20px;}
-.desire-detail-name{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;line-height:1.3;margin-bottom:6px;}
+.desire-detail-name{font-family:"Cormorant Garamond",serif;font-size:26px;font-weight:400;line-height:1.3;margin-bottom:6px;}
 .desire-detail-book{font-size:13px;color:var(--accent-dark);font-style:italic;margin-bottom:12px;}
 .desire-detail-price{font-size:22px;font-weight:500;margin-bottom:16px;}
 .desire-detail-meta{display:flex;flex-direction:column;gap:10px;padding:16px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:16px;}
 .desire-detail-row{display:flex;justify-content:space-between;align-items:center;}
 .desire-detail-label{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;}
 .desire-detail-value{font-size:13px;color:var(--text2);}
-.desire-detail-link{display:block;width:100%;padding:13px;background:var(--text);color:var(--bg);border:none;border-radius:var(--radiusS);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;text-align:center;text-decoration:none;margin-bottom:10px;}
-.desire-detail-edit{display:block;width:100%;padding:12px;background:transparent;color:var(--text2);border:1px solid var(--border);border-radius:var(--radiusS);font-family:'DM Sans',sans-serif;font-size:14px;cursor:pointer;text-align:center;}
-.reserve-detail-btn{display:block;width:100%;padding:13px;background:var(--accent-light);color:var(--accent-dark);border:1px solid var(--accent);border-radius:var(--radiusS);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;text-align:center;margin-bottom:10px;}
+.desire-detail-link{display:block;width:100%;padding:13px;background:var(--text);color:var(--bg);border:none;border-radius:var(--radiusS);font-family:"DM Sans",sans-serif;font-size:14px;font-weight:500;cursor:pointer;text-align:center;text-decoration:none;margin-bottom:10px;}
+.desire-detail-edit{display:block;width:100%;padding:12px;background:transparent;color:var(--text2);border:1px solid var(--border);border-radius:var(--radiusS);font-family:"DM Sans",sans-serif;font-size:14px;cursor:pointer;text-align:center;}
+.reserve-detail-btn{display:block;width:100%;padding:13px;background:var(--accent-light);color:var(--accent-dark);border:1px solid var(--accent);border-radius:var(--radiusS);font-family:"DM Sans",sans-serif;font-size:14px;font-weight:500;cursor:pointer;text-align:center;margin-bottom:10px;}
 .reserve-detail-btn.reserved-mine{background:var(--surface2);color:var(--text2);border-color:var(--border);}
 
-/* public views */
+/* PUBLIC VIEWS */
 #publicView,#profileView{display:none;max-width:420px;margin:0 auto;padding-bottom:40px;}
 .public-header{padding:28px 20px 16px;border-bottom:1px solid var(--border);}
-.public-logo{font-family:'Cormorant Garamond',serif;font-size:12px;color:var(--text3);letter-spacing:2px;text-transform:uppercase;margin-bottom:16px;}
+.public-logo{font-family:"Cormorant Garamond",serif;font-size:12px;color:var(--text3);letter-spacing:2px;text-transform:uppercase;margin-bottom:16px;}
 .public-wl-icon{font-size:30px;margin-bottom:8px;}
-.public-wl-name{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;}
+.public-wl-name{font-family:"Cormorant Garamond",serif;font-size:26px;font-weight:400;}
 .public-wl-desc{font-size:13px;color:var(--text2);margin-top:6px;line-height:1.6;}
 .public-wl-meta{font-size:12px;color:var(--text3);margin-top:8px;}
 .public-login-banner{margin:16px 20px 0;padding:12px 16px;background:var(--accent-light);border-radius:var(--radiusS);display:flex;justify-content:space-between;align-items:center;gap:12px;}
@@ -220,27 +216,18 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .profile-wl-name{font-size:14px;font-weight:500;}
 .profile-wl-count{font-size:11px;color:var(--text3);margin-top:2px;}
 
-/* modals */
+/* MODALS */
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,0.35);z-index:200;display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity .2s;}
 .overlay.open{opacity:1;pointer-events:all;}
 .modal{background:var(--surface);border-radius:22px 22px 0 0;width:100%;max-width:420px;padding:20px 20px 32px;max-height:88vh;overflow-y:auto;transform:translateY(20px);transition:transform .2s;}
 .overlay.open .modal{transform:translateY(0);}
 .modal-handle{width:36px;height:3px;background:var(--border);border-radius:2px;margin:0 auto 20px;}
-.modal-title{font-family:'Cormorant Garamond',serif;font-size:22px;margin-bottom:20px;}
+.modal-title{font-family:"Cormorant Garamond",serif;font-size:22px;margin-bottom:20px;}
 .field{margin-bottom:14px;}
 .field label{font-size:11px;color:var(--text2);display:block;margin-bottom:5px;letter-spacing:.5px;text-transform:uppercase;}
-.field input,.field textarea,.field select{width:100%;padding:10px 12px;border:1px solid var(--border);border-radius:var(--radiusS);background:var(--bg);font-family:'DM Sans',sans-serif;font-size:14px;color:var(--text);outline:none;transition:border-color .15s;}
+.field input,.field textarea,.field select{width:100%;padding:10px 12px;border:1px solid var(--border);border-radius:var(--radiusS);background:var(--bg);font-family:"DM Sans",sans-serif;font-size:14px;color:var(--text);outline:none;transition:border-color .15s;}
 .field input:focus,.field textarea:focus,.field select:focus{border-color:var(--accent);}
 .field textarea{resize:none;height:68px;}
-
-/* avatar upload in modal */
-.avatar-upload-wrap{display:flex;align-items:center;gap:16px;margin-bottom:18px;}
-.avatar-preview{width:64px;height:64px;border-radius:50%;background:var(--accent-light);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:24px;color:var(--accent-dark);overflow:hidden;flex-shrink:0;}
-.avatar-preview img{width:100%;height:100%;object-fit:cover;}
-.avatar-upload-btn{font-size:12px;padding:8px 16px;border-radius:20px;border:1px solid var(--border);background:var(--surface);cursor:pointer;color:var(--text2);}
-.avatar-upload-btn:hover{border-color:var(--accent);color:var(--accent-dark);}
-
-/* icon picker */
 .icon-cat-tabs{display:flex;gap:6px;overflow-x:auto;margin-bottom:10px;scrollbar-width:none;}
 .icon-cat-tabs::-webkit-scrollbar{display:none;}
 .icon-cat-tab{font-size:11px;padding:4px 12px;border-radius:20px;border:1px solid var(--border);background:var(--bg);cursor:pointer;white-space:nowrap;color:var(--text2);flex-shrink:0;}
@@ -248,12 +235,10 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .icon-grid{display:flex;flex-wrap:wrap;gap:7px;}
 .icon-opt{width:42px;height:42px;border-radius:10px;border:1.5px solid var(--border);background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:20px;cursor:pointer;transition:border-color .15s,background .15s;}
 .icon-opt.selected{border-color:var(--accent);background:var(--accent-light);}
-
-/* fetch box */
 .fetch-box{border:1px solid var(--border);border-radius:var(--radiusS);overflow:hidden;margin-bottom:14px;}
 .fetch-input-row{display:flex;}
-.fetch-input-row input{border:none;border-radius:0;background:var(--bg);flex:1;padding:10px 12px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--text);outline:none;}
-.fetch-btn{padding:10px 14px;background:var(--text);color:var(--bg);border:none;font-size:12px;cursor:pointer;white-space:nowrap;font-family:'DM Sans',sans-serif;}
+.fetch-input-row input{border:none;border-radius:0;background:var(--bg);flex:1;padding:10px 12px;font-family:"DM Sans",sans-serif;font-size:14px;color:var(--text);outline:none;}
+.fetch-btn{padding:10px 14px;background:var(--text);color:var(--bg);border:none;font-size:12px;cursor:pointer;white-space:nowrap;font-family:"DM Sans",sans-serif;}
 .fetch-btn:disabled{opacity:.5;cursor:not-allowed;}
 .fetch-preview{padding:10px 12px;border-top:1px solid var(--border);display:none;gap:10px;align-items:center;}
 .fetch-preview.show{display:flex;}
@@ -262,7 +247,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .fetch-preview-title{font-size:13px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .fetch-preview-note{font-size:11px;color:var(--text3);margin-top:2px;}
 .fetch-use-btn{font-size:11px;padding:5px 10px;border-radius:20px;border:1px solid var(--accent);background:var(--accent-light);color:var(--accent-dark);cursor:pointer;white-space:nowrap;}
-
 .img-upload-area{border:1.5px dashed var(--border);border-radius:var(--radiusS);padding:14px;text-align:center;cursor:pointer;transition:border-color .15s;margin-top:6px;}
 .img-upload-area:hover{border-color:var(--accent);}
 .img-upload-area input[type=file]{display:none;}
@@ -285,11 +269,14 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .book-fields{display:none;}
 .book-fields.open{display:block;}
 .modal-actions{display:flex;gap:10px;margin-top:20px;}
-.btn-primary{flex:1;padding:12px;background:var(--text);color:var(--bg);border:none;border-radius:var(--radiusS);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;transition:background .15s;}
+.btn-primary{flex:1;padding:12px;background:var(--text);color:var(--bg);border:none;border-radius:var(--radiusS);font-family:"DM Sans",sans-serif;font-size:14px;font-weight:500;cursor:pointer;transition:background .15s;}
 .btn-primary:hover{background:var(--accent-dark);}
 .btn-primary:disabled{opacity:.5;cursor:not-allowed;}
-.btn-secondary{padding:12px 18px;background:transparent;color:var(--text2);border:1px solid var(--border);border-radius:var(--radiusS);font-family:'DM Sans',sans-serif;font-size:14px;cursor:pointer;}
-
+.btn-secondary{padding:12px 18px;background:transparent;color:var(--text2);border:1px solid var(--border);border-radius:var(--radiusS);font-family:"DM Sans",sans-serif;font-size:14px;cursor:pointer;}
+.avatar-upload-wrap{display:flex;align-items:center;gap:16px;margin-bottom:18px;}
+.avatar-preview{width:64px;height:64px;border-radius:50%;background:var(--accent-light);display:flex;align-items:center;justify-content:center;font-family:"Cormorant Garamond",serif;font-size:24px;color:var(--accent-dark);overflow:hidden;flex-shrink:0;}
+.avatar-preview img{width:100%;height:100%;object-fit:cover;}
+.avatar-upload-btn{font-size:12px;padding:8px 16px;border-radius:20px;border:1px solid var(--border);background:var(--surface);cursor:pointer;color:var(--text2);}
 .loading{text-align:center;padding:36px;color:var(--text3);font-size:13px;}
 .empty{text-align:center;padding:48px 20px;color:var(--text3);}
 .empty .e-icon{font-size:28px;margin-bottom:10px;opacity:.5;}
@@ -326,7 +313,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
   <div class="auth-link" id="forgotLink" onclick="showResetView()">Hai dimenticato la password?</div>
 </div>
 
-<!-- RESET PASSWORD REQUEST -->
+<!-- RESET -->
 <div id="resetView">
   <div class="auth-logo">Listea</div>
   <div class="auth-sub" style="margin-bottom:20px;">Reimposta password</div>
@@ -341,7 +328,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 <div id="newPasswordView">
   <div class="auth-logo">Listea</div>
   <div class="auth-sub" style="margin-bottom:20px;">Nuova password</div>
-  <p style="font-size:13px;color:var(--text2);margin-bottom:24px;line-height:1.6;">Scegli una nuova password per il tuo account.</p>
   <div class="auth-field">
     <label>Nuova password</label>
     <input type="password" id="newPassword" placeholder="••••••••" onkeydown="if(event.key==='Enter')updatePassword()">
@@ -413,7 +399,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
     </div>
   </div>
 
-  <!-- TAB HOME -->
   <div id="tabHome" class="tab-content">
     <div class="section-label">Le mie liste</div>
     <div id="wlLoading" class="loading">Caricamento...</div>
@@ -427,7 +412,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
     </div>
   </div>
 
-  <!-- TAB LISTS DETAIL -->
   <div id="tabLists" class="tab-content">
     <div class="detail-header">
       <button class="back-btn" onclick="goHome()">←</button>
@@ -445,7 +429,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
     <div id="desireEmpty" class="empty" style="display:none;"><div class="e-icon">♡</div><p>Nessun desiderio ancora.<br>Aggiungine uno con il tasto +</p></div>
   </div>
 
-  <!-- TAB PROFILE -->
   <div id="tabProfile" class="tab-content">
     <div class="profile-header">
       <div class="profile-avatar-wrap">
@@ -455,7 +438,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
         <div class="profile-avatar-edit" onclick="document.getElementById('avatarFileInput').click()">✎</div>
         <input type="file" id="avatarFileInput" accept="image/*" style="display:none;" onchange="handleAvatarUpload(this)">
       </div>
-      <div class="profile-name" id="profileNameDisplay" onclick="openProfileModal()" style="cursor:pointer;" title="Tocca per modificare">—</div>
+      <div class="profile-name" id="profileNameDisplay" onclick="openProfileModal()">—</div>
       <div class="profile-username" id="profileUsernameDisplay"></div>
       <div class="profile-link-row" id="profileLinkRow" style="display:none;">
         <span class="profile-link" id="profileLinkText"></span>
@@ -476,14 +459,14 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
         <div><div class="profile-action-label">Cambia password</div><div class="profile-action-sub">Aggiorna la tua password</div></div>
         <span class="profile-action-arrow">›</span>
       </div>
+      <div class="profile-action-row" onclick="document.getElementById('overlayAbout').classList.add('open')">
+        <div><div class="profile-action-label">Chi siamo</div><div class="profile-action-sub">Il progetto, la visione, i contatti</div></div>
+        <span class="profile-action-arrow">›</span>
+      </div>
     </div>
     <div class="donate-banner">
       <p>Listea è gratuita e lo resterà sempre.<br>Se ti piace, puoi supportarla con una donazione ♡</p>
       <a class="donate-btn" href="https://ko-fi.com/lexacarson" target="_blank" rel="noopener">Offri un caffè ☕</a>
-    </div>
-    <div class="profile-action-row" style="margin:0 20px;" onclick="document.getElementById('overlayAbout').classList.add('open')">
-      <div><div class="profile-action-label">Chi siamo</div><div class="profile-action-sub">Il progetto, la visione, i contatti</div></div>
-      <span class="profile-action-arrow">›</span>
     </div>
     <div class="logout-row" onclick="logout()">Esci dall'account</div>
   </div>
@@ -598,9 +581,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
     <div class="modal-handle"></div>
     <div class="modal-title">Il tuo profilo</div>
     <div class="avatar-upload-wrap">
-      <div class="avatar-preview" id="modalAvatarPreview">
-        <span id="modalAvatarInitial">L</span>
-      </div>
+      <div class="avatar-preview" id="modalAvatarPreview"><span id="modalAvatarInitial">L</span></div>
       <div>
         <div style="font-size:13px;color:var(--text2);margin-bottom:8px;">Foto profilo</div>
         <button class="avatar-upload-btn" onclick="document.getElementById('modalAvatarFile').click()">Carica foto</button>
@@ -664,32 +645,20 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
   <div class="modal">
     <div class="modal-handle"></div>
     <div class="modal-title">Cos'è Listea</div>
-
     <p style="font-size:13px;color:var(--text2);line-height:1.9;margin-bottom:14px;">Ci sono domande che si ripresentano puntualmente, ogni anno, ogni occasione: <em>cosa vuoi per Natale? Cosa regalo a mia sorella per il suo compleanno? Come faccio sorridere una persona a cui voglio bene?</em></p>
-
     <p style="font-size:13px;color:var(--text2);line-height:1.9;margin-bottom:14px;">Domande semplici, eppure difficili. Perché chi ama fare regali vuole sorprendere, non eseguire una lista della spesa. E chi ama riceverli vuole essere capito, non accontentato.</p>
-
     <p style="font-size:13px;color:var(--text2);line-height:1.9;margin-bottom:14px;">Listea nasce da qui — dalla convinzione che una gift card ti aiuta a raggiungere uno scopo senza sforzo, e senza commettere errori, ma un bel regalo dirà all'altra persona <em>"ho cercato la cosa perfetta per te."</em></p>
-
     <p style="font-size:13px;color:var(--text2);line-height:1.9;margin-bottom:14px;">Con Listea puoi raccogliere i tuoi desideri in liste eleganti e condividerle con chi vuoi. Chi ti vuole bene può sfogliare, scegliere, prenotare — senza spoiler, senza doppioni, senza imbarazzo. E tu puoi continuare ad aspettarti una sorpresa, anche sapendo che sarà quella giusta.</p>
-
     <p style="font-size:13px;color:var(--text2);line-height:1.9;margin-bottom:24px;">Per i lettori che non vogliono ricevere un libro che hanno già letto. Per chi ha gusto e fatica a comunicarlo. Per chi fa regali con cura e non vuole sbagliare.</p>
-
     <div style="border-top:1px solid var(--border);padding-top:20px;margin-bottom:20px;">
       <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;margin-bottom:12px;">Chi sono</div>
       <p style="font-size:13px;color:var(--text2);line-height:1.9;margin-bottom:10px;">Listea è un progetto indipendente creato da Lexa Carson.<br>Nata da una frustrazione reale e costruita con la convinzione che le cose belle meritino strumenti all'altezza.</p>
       <p style="font-size:13px;color:var(--text2);line-height:1.9;">Siamo all'inizio — e ogni feedback conta più di quanto immagini.</p>
     </div>
-
     <div style="display:flex;flex-direction:column;gap:12px;padding-top:4px;">
-      <a href="https://instagram.com/listea.app" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--accent-dark);text-decoration:none;">
-        <span>📎</span> Seguici su Instagram: @listea.app
-      </a>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdNtG0usJjnibrv6O4JWVlL40V0NkC1UuNCE7fbpyKcGPk6Cw/viewform?usp=publish-editor" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--text2);text-decoration:none;">
-        <span>🐛</span> Hai trovato un bug? Scrivici — lo sistemeremo.
-      </a>
+      <a href="https://instagram.com/listea.app" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--accent-dark);text-decoration:none;"><span>📎</span> Seguici su Instagram: @listea.app</a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdNtG0usJjnibrv6O4JWVlL40V0NkC1UuNCE7fbpyKcGPk6Cw/viewform?usp=publish-editor" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--text2);text-decoration:none;"><span>🐛</span> Hai trovato un bug? Scrivici — lo sistemeremo.</a>
     </div>
-
     <div class="modal-actions" style="margin-top:24px;">
       <button class="btn-primary" onclick="document.getElementById('overlayAbout').classList.remove('open')">Chiudi</button>
     </div>
@@ -739,108 +708,97 @@ const sortState={date:'desc',price:'asc',prio:'desc'};
 let activeSort='date';
 const sortLabels={date:{asc:'Recenti ↑',desc:'Recenti ↓'},price:{asc:'Prezzo ↑',desc:'Prezzo ↓'},prio:{asc:'Priorità ↑',desc:'Priorità ↓'}};
 
-// ── PASSWORD ──
-function togglePw(){
-  const inp=document.getElementById('authPassword');
-  const eye=document.getElementById('pwEye');
-  inp.type=inp.type==='password'?'text':'password';
-  eye.textContent=inp.type==='password'?'👁':'🙈';
-}
-function togglePwNew(){
-  const inp=document.getElementById('newPassword');
-  inp.type=inp.type==='password'?'text':'password';
-}
+// PASSWORD
+function togglePw(){const inp=document.getElementById('authPassword');const eye=document.getElementById('pwEye');inp.type=inp.type==='password'?'text':'password';eye.textContent=inp.type==='password'?'👁':'🙈';}
+function togglePwNew(){const inp=document.getElementById('newPassword');inp.type=inp.type==='password'?'text':'password';}
+function togglePwCurrent(){const inp=document.getElementById('currentPasswordInput');inp.type=inp.type==='password'?'text':'password';}
+function togglePwChange(){const inp=document.getElementById('changePasswordInput');inp.type=inp.type==='password'?'text':'password';}
 
-// ── FORGOT PASSWORD ──
-function showResetView(){
-  hideAllViews();
-  document.getElementById('resetView').style.display='block';
-  document.getElementById('forgotLink').style.display='none';
-}
-function showAuthView(){
-  hideAllViews();
-  document.getElementById('authView').style.display='block';
-  document.getElementById('forgotLink').style.display='block';
-}
-
+// RESET PASSWORD
+function showResetView(){hideAllViews();document.getElementById('resetView').style.display='block';}
+function showAuthView(){hideAllViews();document.getElementById('authView').style.display='block';document.getElementById('forgotLink').style.display='block';}
 async function sendReset(){
   const email=document.getElementById('resetEmail').value.trim();
   const err=document.getElementById('resetErr');
   if(!email){err.textContent='Inserisci la tua email';return;}
   const btn=document.getElementById('resetBtn');
   btn.disabled=true;btn.innerHTML='<span class="spinner"></span>Invio...';
-  err.textContent='';
-  const {error}=await sb.auth.resetPasswordForEmail(email,{
-    redirectTo:window.location.origin+window.location.pathname+'?reset=true'
-  });
+  const {error}=await sb.auth.resetPasswordForEmail(email,{redirectTo:window.location.origin+window.location.pathname+'?reset=true'});
   btn.disabled=false;btn.textContent='Invia link';
   if(error){err.textContent='Errore: '+error.message;return;}
-  err.style.color='#15803D';
-  err.textContent='Link inviato! Controlla la tua email.';
+  err.style.color='#15803D';err.textContent='Link inviato! Controlla la tua email.';
 }
-
 async function updatePassword(){
   const pw=document.getElementById('newPassword').value;
   const err=document.getElementById('newPwErr');
   if(!pw||pw.length<6){err.textContent='La password deve essere di almeno 6 caratteri';return;}
   const btn=document.getElementById('newPwBtn');
   btn.disabled=true;btn.innerHTML='<span class="spinner"></span>Salvo...';
-  err.textContent='';
   const {error}=await sb.auth.updateUser({password:pw});
   btn.disabled=false;btn.textContent='Salva password';
   if(error){err.textContent='Errore: '+error.message;return;}
-  err.style.color='#15803D';
-  err.textContent='Password aggiornata! Accedi con la nuova password.';
+  err.style.color='#15803D';err.textContent='Password aggiornata!';
   setTimeout(()=>{hideAllViews();document.getElementById('authView').style.display='block';},2000);
 }
 
-// ── AVATAR ──
-function handleAvatarUpload(input){
-  const file=input.files[0];if(!file)return;
-  const reader=new FileReader();
-  reader.onload=e=>{
-    newAvatarData=e.target.result;
-    renderAvatarInTab(newAvatarData);
-  };
-  reader.readAsDataURL(file);
-  // auto-save avatar
-  saveAvatarOnly();
+// CHANGE EMAIL & PASSWORD
+function openChangeEmailModal(){document.getElementById('newEmail').value='';document.getElementById('changeEmailErr').textContent='';document.getElementById('overlayChangeEmail').classList.add('open');}
+function openChangePasswordModal(){document.getElementById('currentPasswordInput').value='';document.getElementById('changePasswordInput').value='';document.getElementById('changePasswordErr').textContent='';document.getElementById('currentPasswordInput').type='password';document.getElementById('changePasswordInput').type='password';document.getElementById('overlayChangePassword').classList.add('open');}
+async function changeEmail(){
+  const newEmail=document.getElementById('newEmail').value.trim();
+  const err=document.getElementById('changeEmailErr');
+  if(!newEmail){err.textContent='Inserisci una email';return;}
+  const btn=document.getElementById('changeEmailBtn');
+  btn.disabled=true;btn.innerHTML='<span class="spinner"></span>Invio...';
+  const {error}=await sb.auth.updateUser({email:newEmail});
+  btn.disabled=false;btn.textContent='Invia conferma';
+  if(error){err.textContent='Errore: '+error.message;return;}
+  err.style.color='#15803D';err.textContent='Conferma inviata! Controlla la nuova email.';
+  setTimeout(()=>closeModal('overlayChangeEmail'),2500);
+}
+async function changePassword(){
+  const currentPw=document.getElementById('currentPasswordInput').value;
+  const pw=document.getElementById('changePasswordInput').value;
+  const err=document.getElementById('changePasswordErr');
+  if(!currentPw){err.textContent='Inserisci la password attuale';return;}
+  if(!pw||pw.length<6){err.textContent='La nuova password deve avere almeno 6 caratteri';return;}
+  if(currentPw===pw){err.textContent='La nuova password deve essere diversa';return;}
+  const btn=document.getElementById('changePasswordBtn');
+  btn.disabled=true;btn.innerHTML='<span class="spinner"></span>Verifico...';
+  const {error:signInErr}=await sb.auth.signInWithPassword({email:currentUser.email,password:currentPw});
+  if(signInErr){btn.disabled=false;btn.textContent='Salva';err.textContent='Password attuale errata';return;}
+  btn.innerHTML='<span class="spinner"></span>Salvo...';
+  const {error}=await sb.auth.updateUser({password:pw});
+  btn.disabled=false;btn.textContent='Salva';
+  if(error){err.textContent='Errore: '+error.message;return;}
+  showToast('Password aggiornata ✓');closeModal('overlayChangePassword');
 }
 
-function handleModalAvatarUpload(input){
-  const file=input.files[0];if(!file)return;
-  const reader=new FileReader();
-  reader.onload=e=>{
-    modalAvatarData=e.target.result;
-    const prev=document.getElementById('modalAvatarPreview');
-    prev.innerHTML=`<img src="${modalAvatarData}">`;
-  };
-  reader.readAsDataURL(file);
+// WISHLIST MENU & ORDER
+function toggleWlMenu(e,id){
+  e.stopPropagation();
+  const menu=document.getElementById('wlmenu-'+id);
+  if(!menu)return;
+  const isOpen=menu.classList.contains('open');
+  closeAllMenus();
+  if(!isOpen)menu.classList.add('open');
 }
-
-async function saveAvatarOnly(){
-  if(!currentUser||!newAvatarData)return;
-  await sb.from('profiles').upsert({id:currentUser.id,avatar_data:newAvatarData},{onConflict:'id'});
-  if(userProfile)userProfile.avatar_data=newAvatarData;
-  showToast('Foto aggiornata ✓');
+function closeAllMenus(){document.querySelectorAll('.wl-context-menu').forEach(m=>m.classList.remove('open'));}
+async function moveWl(id,dir){
+  const idx=wls.findIndex(w=>w.id===id);
+  const newIdx=idx+dir;
+  if(newIdx<0||newIdx>=wls.length)return;
+  const reordered=[...wls];
+  const [moved]=reordered.splice(idx,1);
+  reordered.splice(newIdx,0,moved);
+  wls=reordered;
+  renderHome();
+  const updates=wls.map((w,i)=>sb.from('wishlists').update({sort_order:i}).eq('id',w.id));
+  await Promise.all(updates);
 }
+document.addEventListener('click',()=>closeAllMenus());
 
-function renderAvatarInTab(avatarData){
-  const avatarEl=document.getElementById('profileAvatar');
-  const initial=document.getElementById('profileAvatarInitial');
-  if(avatarData){
-    initial.style.display='none';
-    const existing=avatarEl.querySelector('img');
-    if(existing)existing.src=avatarData;
-    else{const img=document.createElement('img');img.src=avatarData;avatarEl.appendChild(img);}
-  } else {
-    initial.style.display='';
-    const existing=avatarEl.querySelector('img');
-    if(existing)existing.remove();
-  }
-}
-
-// ── SORT ──
+// SORT
 function toggleSort(key){
   if(activeSort===key)sortState[key]=sortState[key]==='asc'?'desc':'asc';
   else activeSort=key;
@@ -855,7 +813,7 @@ function updateSortChips(){
   });
 }
 
-// ── FETCH ──
+// FETCH
 async function fetchMeta(){
   const url=document.getElementById('fetchUrl').value.trim();
   if(!url){showToast('Incolla un link prima');return;}
@@ -873,12 +831,11 @@ async function fetchMeta(){
       const prevImg=document.getElementById('fetchPreviewImg');
       prevImg.src=image||'';prevImg.style.display=image?'block':'none';
       document.getElementById('fetchPreviewTitle').textContent=title;
-      document.getElementById('fetchPreviewNote').textContent=isBookSite?'Sito libro rilevato — attiva "È un libro?" per aggiungere autore ed editore':'';
+      document.getElementById('fetchPreviewNote').textContent=isBookSite?'Sito libro rilevato':'';
       document.getElementById('fetchPreview').classList.add('show');
     } else {
-      // fallback: precompila solo il link e avvisa
       document.getElementById('dLink').value=url;
-      showToast('Sito non leggibile — link salvato, compila i dettagli manualmente');
+      showToast('Sito non leggibile — link salvato, compila manualmente');
     }
   } catch(e){
     document.getElementById('dLink').value=document.getElementById('fetchUrl').value.trim();
@@ -898,13 +855,13 @@ function applyFetch(){
   fetchedData=null;showToast('Dati importati ✓');
 }
 
-// ── TOP DESIRES ──
+// TOP DESIRES
 function renderTopDesires(){
   const section=document.getElementById('topDesireSection');
   if(!desires.length){section.style.display='none';return;}
   section.style.display='block';
-  const filterBar=document.getElementById('topFilterBar');
-  filterBar.innerHTML=`<div class="filter-chip${topFilterWL==='all'?' active':''}" onclick="setTopFilter('all')">Tutte</div>`
+  document.getElementById('topFilterBar').innerHTML=
+    `<div class="filter-chip${topFilterWL==='all'?' active':''}" onclick="setTopFilter('all')">Tutte</div>`
     +wls.map(w=>`<div class="filter-chip${topFilterWL===w.id?' active':''}" onclick="setTopFilter('${w.id}')">${w.icon} ${escHtml(w.name)}</div>`).join('');
   const pMap={alto:3,medio:2,basso:1};
   let ds=desires.filter(d=>topFilterWL==='all'||d.wishlist_id===topFilterWL);
@@ -930,7 +887,37 @@ function renderTopDesires(){
 function setTopFilter(wlId){topFilterWL=wlId;showAllTop=false;renderTopDesires();}
 function showAllDesires(){showAllTop=true;renderTopDesires();}
 
-// ── BOTTOM NAV ──
+// AVATAR
+function handleAvatarUpload(input){
+  const file=input.files[0];if(!file)return;
+  const reader=new FileReader();
+  reader.onload=e=>{newAvatarData=e.target.result;renderAvatarInTab(newAvatarData);saveAvatarOnly();};
+  reader.readAsDataURL(file);
+}
+function handleModalAvatarUpload(input){
+  const file=input.files[0];if(!file)return;
+  const reader=new FileReader();
+  reader.onload=e=>{modalAvatarData=e.target.result;const prev=document.getElementById('modalAvatarPreview');prev.innerHTML=`<img src="${modalAvatarData}">`;};
+  reader.readAsDataURL(file);
+}
+async function saveAvatarOnly(){
+  if(!currentUser||!newAvatarData)return;
+  await sb.from('profiles').upsert({id:currentUser.id,avatar_data:newAvatarData},{onConflict:'id'});
+  if(userProfile)userProfile.avatar_data=newAvatarData;
+  showToast('Foto aggiornata ✓');
+}
+function renderAvatarInTab(avatarData){
+  const avatarEl=document.getElementById('profileAvatar');
+  const initial=document.getElementById('profileAvatarInitial');
+  if(avatarData){
+    initial.style.display='none';
+    const existing=avatarEl.querySelector('img');
+    if(existing)existing.src=avatarData;
+    else{const img=document.createElement('img');img.src=avatarData;avatarEl.appendChild(img);}
+  } else {initial.style.display='';const existing=avatarEl.querySelector('img');if(existing)existing.remove();}
+}
+
+// BOTTOM NAV
 function switchTab_nav(tab){
   if(fabOpen)toggleFab();
   currentTab=tab;
@@ -942,7 +929,7 @@ function switchTab_nav(tab){
   if(tab==='profile')renderProfileTab();
 }
 
-// ── PROFILE TAB ──
+// PROFILE TAB
 function renderProfileTab(){
   const name=userProfile?.display_name||currentUser?.email?.split('@')[0]||'Utente';
   const username=userProfile?.username||'';
@@ -951,21 +938,20 @@ function renderProfileTab(){
   renderAvatarInTab(avatarData);
   document.getElementById('profileNameDisplay').textContent=name;
   document.getElementById('profileUsernameDisplay').textContent=username?'@'+username:'';
-  const emailEl=document.getElementById('currentEmailDisplay');if(emailEl)emailEl.textContent=currentUser?.email||'';
+  const emailEl=document.getElementById('currentEmailDisplay');
+  if(emailEl)emailEl.textContent=currentUser?.email||'';
   const linkRow=document.getElementById('profileLinkRow');
   if(username&&userProfile?.is_public!==false){
     document.getElementById('profileLinkText').textContent=window.location.origin+window.location.pathname+'?user='+username;
     linkRow.style.display='flex';
   } else linkRow.style.display='none';
 }
-
 function copyProfileLink(){
   const username=userProfile?.username;
   if(!username){showToast('Imposta prima uno username');return;}
   const url=window.location.origin+window.location.pathname+'?user='+username;
   navigator.clipboard?.writeText(url).then(()=>showToast('Link copiato! ⎙'));
 }
-
 function openProfileModal(){
   const name=userProfile?.display_name||'';
   const avatarData=userProfile?.avatar_data||newAvatarData||'';
@@ -974,19 +960,16 @@ function openProfileModal(){
   document.getElementById('profileUsername').value=userProfile?.username||'';
   document.getElementById('profileToggle').classList.toggle('on',userProfile?.is_public!==false);
   updateProfileUrlPreview();
-  // set modal avatar preview
   const prev=document.getElementById('modalAvatarPreview');
   document.getElementById('modalAvatarInitial').textContent=name.charAt(0).toUpperCase()||'L';
-  if(avatarData){prev.innerHTML=`<img src="${avatarData}">`;}
-  else{prev.innerHTML=`<span id="modalAvatarInitial">${name.charAt(0).toUpperCase()||'L'}</span>`;}
+  if(avatarData)prev.innerHTML=`<img src="${avatarData}">`;
+  else prev.innerHTML=`<span id="modalAvatarInitial">${name.charAt(0).toUpperCase()||'L'}</span>`;
   document.getElementById('overlayProfile').classList.add('open');
 }
-
 function updateProfileUrlPreview(){
   const un=document.getElementById('profileUsername').value.trim();
   document.getElementById('profileUrlPreview').textContent=un?'Link: '+window.location.origin+window.location.pathname+'?user='+un:'';
 }
-
 async function saveProfile(){
   const displayName=document.getElementById('profileDisplayName').value.trim();
   const username=document.getElementById('profileUsername').value.trim();
@@ -1001,71 +984,10 @@ async function saveProfile(){
   if(error){showToast(error.message.includes('unique')?'Username già in uso':'Errore: '+error.message);return;}
   userProfile={...userProfile,...obj};
   if(modalAvatarData)newAvatarData=modalAvatarData;
-  renderProfileTab();
-  showToast('Profilo salvato ✓');
-  closeModal('overlayProfile');
+  renderProfileTab();showToast('Profilo salvato ✓');closeModal('overlayProfile');
 }
 
-// ── CHANGE EMAIL & PASSWORD ──
-function openChangeEmailModal(){
-  document.getElementById('newEmail').value='';
-  document.getElementById('changeEmailErr').textContent='';
-  document.getElementById('overlayChangeEmail').classList.add('open');
-}
-function openChangePasswordModal(){
-  document.getElementById('currentPasswordInput').value='';
-  document.getElementById('changePasswordInput').value='';
-  document.getElementById('changePasswordErr').textContent='';
-  document.getElementById('currentPasswordInput').type='password';
-  document.getElementById('changePasswordInput').type='password';
-  document.getElementById('overlayChangePassword').classList.add('open');
-}
-function togglePwChange(){
-  const inp=document.getElementById('changePasswordInput');
-  inp.type=inp.type==='password'?'text':'password';
-}
-function togglePwCurrent(){
-  const inp=document.getElementById('currentPasswordInput');
-  inp.type=inp.type==='password'?'text':'password';
-}
-async function changeEmail(){
-  const newEmail=document.getElementById('newEmail').value.trim();
-  const err=document.getElementById('changeEmailErr');
-  if(!newEmail){err.textContent='Inserisci una email';return;}
-  const btn=document.getElementById('changeEmailBtn');
-  btn.disabled=true;btn.innerHTML='<span class="spinner"></span>Invio...';
-  err.textContent='';
-  const {error}=await sb.auth.updateUser({email:newEmail});
-  btn.disabled=false;btn.textContent='Invia conferma';
-  if(error){err.textContent='Errore: '+error.message;return;}
-  err.style.color='#15803D';
-  err.textContent='Conferma inviata! Controlla la nuova email.';
-  setTimeout(()=>closeModal('overlayChangeEmail'),2500);
-}
-async function changePassword(){
-  const currentPw=document.getElementById('currentPasswordInput').value;
-  const pw=document.getElementById('changePasswordInput').value;
-  const err=document.getElementById('changePasswordErr');
-  if(!currentPw){err.textContent='Inserisci la password attuale';return;}
-  if(!pw||pw.length<6){err.textContent='La nuova password deve avere almeno 6 caratteri';return;}
-  if(currentPw===pw){err.textContent='La nuova password deve essere diversa da quella attuale';return;}
-  const btn=document.getElementById('changePasswordBtn');
-  btn.disabled=true;btn.innerHTML='<span class="spinner"></span>Verifico...';
-  err.textContent='';
-  // verifica password attuale ri-autenticando
-  const {error:signInErr}=await sb.auth.signInWithPassword({email:currentUser.email,password:currentPw});
-  if(signInErr){
-    btn.disabled=false;btn.textContent='Salva';
-    err.textContent='Password attuale errata';return;
-  }
-  btn.innerHTML='<span class="spinner"></span>Salvo...';
-  const {error}=await sb.auth.updateUser({password:pw});
-  btn.disabled=false;btn.textContent='Salva';
-  if(error){err.textContent='Errore: '+error.message;return;}
-  showToast('Password aggiornata ✓');
-  closeModal('overlayChangePassword');
-}
-// ── DESIRE DETAIL ──
+// DESIRE DETAIL
 function openDesireDetail(desireId,fromContext){
   const d=desires.find(x=>x.id===desireId);if(!d)return;
   currentDesireId=desireId;desireDetailFrom=fromContext;
@@ -1091,8 +1013,7 @@ function openDesireDetail(desireId,fromContext){
       <button class="desire-detail-edit" style="flex:1;" onclick="editDesireFromDetail('${d.id}')">✎ Modifica</button>
       <button class="desire-detail-edit" style="color:#DC2626;border-color:#FCA5A5;width:44px;padding:12px 0;" onclick="deleteDesireFromDetail('${d.id}')">✕</button>
     </div>`;
-  }
-  else{
+  } else {
     const isReserved=!!d.reserved_by;const isMine=currentUser&&d.reserved_by===currentUser.id;
     if(isMine)html+=`<button class="reserve-detail-btn reserved-mine" onclick="unreserveDetail('${d.id}')">Libera prenotazione ✕</button>`;
     else if(isReserved)html+=`<div style="text-align:center;font-size:13px;color:var(--text3);padding:12px 0;">Già prenotato</div>`;
@@ -1104,7 +1025,6 @@ function openDesireDetail(desireId,fromContext){
   hideAllViews();
   document.getElementById('desireDetailView').style.display='block';
 }
-
 function closeDesireDetail(){
   document.getElementById('desireDetailView').style.display='none';
   if(desireDetailFrom==='owner'){
@@ -1113,7 +1033,6 @@ function closeDesireDetail(){
     else document.getElementById('tabHome').style.display='block';
   } else document.getElementById('publicView').style.display='block';
 }
-
 function editDesireFromDetail(id){
   document.getElementById('desireDetailView').style.display='none';
   document.getElementById('appView').style.display='block';
@@ -1128,18 +1047,10 @@ async function deleteDesireFromDetail(id){
   desires=desires.filter(x=>x.id!==id);
   document.getElementById('desireDetailView').style.display='none';
   document.getElementById('appView').style.display='block';
-  if(currentWL){
-    document.getElementById('tabLists').style.display='block';
-    document.getElementById('tabHome').style.display='none';
-    renderDetail();
-  } else {
-    document.getElementById('tabHome').style.display='block';
-    renderHome();
-  }
-  renderTopDesires();
-  showToast('Desiderio eliminato');
+  if(currentWL){document.getElementById('tabLists').style.display='block';document.getElementById('tabHome').style.display='none';renderDetail();}
+  else{document.getElementById('tabHome').style.display='block';renderHome();}
+  renderTopDesires();showToast('Desiderio eliminato');
 }
-
 async function reserveDetail(id){
   if(!currentUser){showAuthFromPublic();return;}
   const {error}=await sb.from('desires').update({reserved_by:currentUser.id,reserved_at:new Date().toISOString()}).eq('id',id).is('reserved_by',null);
@@ -1157,7 +1068,7 @@ async function unreserveDetail(id){
   showToast('Prenotazione rimossa');openDesireDetail(id,desireDetailFrom);
 }
 
-// ── AUTH ──
+// AUTH
 function switchTab(mode){
   authMode=mode;
   document.querySelectorAll('.auth-tab').forEach((t,i)=>t.classList.toggle('active',(mode==='login'&&i===0)||(mode==='signup'&&i===1)));
@@ -1165,7 +1076,6 @@ function switchTab(mode){
   document.getElementById('forgotLink').style.display=mode==='login'?'block':'none';
   document.getElementById('authErr').textContent='';
 }
-
 async function authSubmit(){
   const email=document.getElementById('authEmail').value.trim();
   const password=document.getElementById('authPassword').value;
@@ -1183,23 +1093,16 @@ async function authSubmit(){
   if(authMode==='signup'&&!result.data.session){err.style.color='#15803D';err.textContent='Registrazione completata! Controlla la email per confermare.';return;}
   if(result.data.user){
     currentUser=result.data.user;
-    if(authMode==='signup'){await createDefaultWishlist();}
+    if(authMode==='signup')await createDefaultWishlist();
     if(pendingShareId){hideAllViews();showPublicView(pendingShareId);}
     else if(pendingUserId){hideAllViews();showProfileView(pendingUserId);}
     else showApp();
   }
 }
-
 async function createDefaultWishlist(){
-  try{
-    await sb.from('wishlists').insert({
-      name:'Lista libri',icon:'📚',
-      description:null,is_public:false,
-      user_id:currentUser.id
-    });
-  } catch(e){console.log('Default wishlist error',e);}
+  try{await sb.from('wishlists').insert({name:'Lista libri',icon:'📚',description:null,is_public:false,user_id:currentUser.id,sort_order:0});}
+  catch(e){console.log('Default wishlist error',e);}
 }
-
 async function logout(){
   await sb.auth.signOut();
   currentUser=null;wls=[];desires=[];userProfile=null;newAvatarData='';
@@ -1211,11 +1114,9 @@ async function logout(){
   document.getElementById('authPassword').type='password';
   document.getElementById('pwEye').textContent='👁';
 }
-
 function hideAllViews(){
   ['authView','resetView','newPasswordView','publicView','profileView','desireDetailView','appView'].forEach(id=>document.getElementById(id).style.display='none');
 }
-
 function showApp(){
   hideAllViews();
   document.getElementById('appView').style.display='block';
@@ -1227,35 +1128,29 @@ function showApp(){
   document.getElementById('navProfile').classList.remove('active');
   loadWishlists();
 }
-
 function showAuthFromPublic(){
   hideAllViews();
   document.getElementById('authView').style.display='block';
   document.getElementById('forgotLink').style.display='block';
   document.getElementById('authNote').textContent='Accedi per prenotare un regalo nella lista.';
 }
-
 function showAppFromPublic(){
-  pendingShareId=null;pendingUserId=null;
-  hideAllViews();
+  pendingShareId=null;pendingUserId=null;hideAllViews();
   if(currentUser)showApp();
   else{document.getElementById('authView').style.display='block';document.getElementById('forgotLink').style.display='block';}
 }
 
-// ── PUBLIC WISHLIST ──
-async function showPublicView(wlId, fromProfile){
+// PUBLIC WISHLIST
+async function showPublicView(wlId,fromProfile){
   hideAllViews();
   document.getElementById('publicView').style.display='block';
   document.getElementById('pubLoading').style.display='block';
   document.getElementById('pubDesireList').innerHTML='';
   pendingShareId=wlId;
-  // show back button only if coming from profile
   const backHeader=document.getElementById('pubBackHeader');
   const backBtn=document.getElementById('pubBackBtn');
-  if(backHeader&&backBtn){
-    if(fromProfile){backHeader.style.display='flex';backBtn.style.display='flex';}
-    else{backHeader.style.display='none';backBtn.style.display='none';}
-  }
+  if(fromProfile){backHeader.style.display='flex';backBtn.style.display='flex';}
+  else{backHeader.style.display='none';backBtn.style.display='none';}
   const {data:wl,error}=await sb.from('wishlists').select('*').eq('id',wlId).eq('is_public',true).single();
   if(error||!wl){document.getElementById('pubLoading').style.display='none';document.getElementById('pubDesireList').innerHTML='<div class="empty"><div class="e-icon">✦</div><p>Lista non trovata o privata.</p></div>';return;}
   pubWishlist=wl;
@@ -1294,11 +1189,6 @@ async function showPublicView(wlId, fromProfile){
     </div></div>`;
   }).join('');
 }
-
-function goBackToProfile(){
-  if(pendingUserId){showProfileView(pendingUserId);}
-  else{hideAllViews();if(currentUser)showApp();else document.getElementById('authView').style.display='block';}
-}
 async function reserve(id){
   if(!currentUser){showAuthFromPublic();return;}
   const {error}=await sb.from('desires').update({reserved_by:currentUser.id,reserved_at:new Date().toISOString()}).eq('id',id).is('reserved_by',null);
@@ -1311,8 +1201,9 @@ async function unreserve(id){
   if(error){showToast('Errore');return;}
   showToast('Prenotazione rimossa');showPublicView(pendingShareId);
 }
+function goBackToProfile(){if(pendingUserId)showProfileView(pendingUserId);else{hideAllViews();if(currentUser)showApp();else document.getElementById('authView').style.display='block';}}
 
-// ── PUBLIC PROFILE ──
+// PUBLIC PROFILE
 async function showProfileView(userId){
   hideAllViews();
   document.getElementById('profileView').style.display='block';
@@ -1322,7 +1213,7 @@ async function showProfileView(userId){
   const {data:profile}=await sb.from('profiles').select('*').eq('id',userId).single();
   const displayName=profile?.display_name||'Utente';
   document.getElementById('profilePubTitle').textContent='Le wishlist di '+displayName;
-  const {data:lists}=await sb.from('wishlists').select('*').eq('user_id',userId).eq('is_public',true).order('created_at',{ascending:false});
+  const {data:lists}=await sb.from('wishlists').select('*').eq('user_id',userId).eq('is_public',true).order('sort_order',{ascending:true}).order('created_at',{ascending:false});
   document.getElementById('profilePubLoading').style.display='none';
   const pubLists=lists||[];
   document.getElementById('profilePubSubtitle').textContent=pubLists.length+' '+(pubLists.length===1?'lista pubblica':'liste pubbliche');
@@ -1342,7 +1233,7 @@ async function showProfileView(userId){
   }).join('');
 }
 
-// ── DATA ──
+// DATA
 async function loadWishlists(){
   document.getElementById('wlLoading').style.display='block';
   document.getElementById('wlList').innerHTML='';
@@ -1356,14 +1247,12 @@ async function loadWishlists(){
   userProfile=profile;
   renderHome();
 }
-
 async function loadAllDesires(){
   if(!wls.length){desires=[];return;}
   const ids=wls.map(w=>w.id);
   const {data}=await sb.from('desires').select('*').in('wishlist_id',ids);
   desires=data||[];
 }
-
 async function loadDesires(wlId){
   document.getElementById('desireLoading').style.display='block';
   document.getElementById('desireList').innerHTML='';
@@ -1374,12 +1263,11 @@ async function loadDesires(wlId){
   renderDetail();
 }
 
-// ── RENDER ──
+// RENDER
 function renderHome(){
   const list=document.getElementById('wlList');
   const empty=document.getElementById('wlEmpty');
-  const count=wls.length;
-  if(!count){list.innerHTML='';empty.style.display='block';document.getElementById('topDesireSection').style.display='none';return;}
+  if(!wls.length){list.innerHTML='';empty.style.display='block';document.getElementById('topDesireSection').style.display='none';return;}
   empty.style.display='none';
   list.innerHTML=wls.map(w=>{
     const dc=desires.filter(d=>d.wishlist_id===w.id).length;
@@ -1387,27 +1275,20 @@ function renderHome(){
     const iconContent=imgSrc?`<img src="${imgSrc}" onerror="this.style.display='none'">`:`${w.icon}`;
     const isPrivate=w.is_public===false;
     return`<div class="wl-row" id="row-${w.id}" data-id="${w.id}">
-      <div class="wl-card" data-rowid="${w.id}">
+      <div class="wl-card">
         <div class="wl-icon" onclick="openDetail('${w.id}')">${iconContent}</div>
         <div class="wl-info" onclick="openDetail('${w.id}')">
           <div class="wl-name">${escHtml(w.name)}</div>
           <div class="wl-meta"><span>${dc} ${dc===1?'desiderio':'desideri'}</span><span class="vis-dot ${isPrivate?'vis-priv':'vis-pub'}"></span><span>${isPrivate?'privata':'pubblica'}</span></div>
         </div>
-        <div class="wl-menu-btn" onclick="toggleWlMenu(event,'${w.id}')">&#8943;
-          <div class="wl-context-menu" id="menu-${w.id}">
-            <div class="wl-context-item" onclick="event.stopPropagation();closeAllMenus();moveWl('${w.id}',-1)">↑ Sposta su</div>
-            <div class="wl-context-item" onclick="event.stopPropagation();closeAllMenus();moveWl('${w.id}',1)">↓ Sposta giù</div>
-            <div class="wl-context-item" onclick="event.stopPropagation();closeAllMenus();editWL('${w.id}')">✎ Modifica</div>
-            <div class="wl-context-item danger" onclick="event.stopPropagation();closeAllMenus();deleteWL('${w.id}')">✕ Elimina</div>
-          </div>
-        </div>
+        <div class="wl-menu-btn" onclick="toggleWlMenu(event,'${w.id}')">···<div class="wl-context-menu" id="wlmenu-${w.id}"><div class="wl-context-item" onclick="event.stopPropagation();closeAllMenus();moveWl('${w.id}',-1)">↑ Sposta su</div><div class="wl-context-item" onclick="event.stopPropagation();closeAllMenus();moveWl('${w.id}',1)">↓ Sposta giù</div><div class="wl-context-item" onclick="event.stopPropagation();closeAllMenus();editWL('${w.id}')">✎ Modifica</div><div class="wl-context-item danger" onclick="event.stopPropagation();closeAllMenus();deleteWL('${w.id}')">✕ Elimina</div></div></div>
       </div>
     </div>`;
   }).join('');
+  addSwipe('.wl-card');
   topFilterWL='all';showAllTop=false;
   renderTopDesires();
 }
-
 function renderDetail(){
   const w=wls.find(x=>x.id===currentWL);if(!w)return;
   document.getElementById('detailTitle').textContent=w.name;
@@ -1440,7 +1321,6 @@ function renderDetail(){
   }).join('');
   addSwipe('.desire-card');
 }
-
 function sortDesires(ds){
   const pMap={alto:3,medio:2,basso:1};
   return ds.slice().sort((a,b)=>{
@@ -1450,26 +1330,22 @@ function sortDesires(ds){
     return 0;
   });
 }
-
 function openDetail(id){
   currentWL=id;activeSort='date';sortState.date='desc';
   document.getElementById('tabHome').style.display='none';
   document.getElementById('tabLists').style.display='block';
   updateSortChips();loadDesires(id);
 }
-
 function goHome(){
   document.getElementById('tabLists').style.display='none';
   document.getElementById('tabHome').style.display='block';
   currentWL=null;renderHome();
 }
-
 function toggleFab(){
   fabOpen=!fabOpen;
   document.getElementById('fabMenu').classList.toggle('open',fabOpen);
   document.getElementById('navFab').textContent=fabOpen?'×':'+';
 }
-
 function openModal(type){
   if(fabOpen)toggleFab();
   if(type==='wishlist'){
@@ -1493,47 +1369,26 @@ function openModal(type){
     document.getElementById('overlayD').classList.add('open');
   }
 }
-
 function toggleBookFields(){
   isBook=!isBook;
   document.getElementById('bookToggle').classList.toggle('on',isBook);
   document.getElementById('bookFields').classList.toggle('open',isBook);
-  // auto-seleziona lista libri se esiste
-  if(isBook){
-    const bookWl=wls.find(w=>w.name==='Lista libri'||w.icon==='📚');
-    if(bookWl){
-      const sel=document.getElementById('dWishlist');
-      if(sel)sel.value=bookWl.id;
-    }
-  }
+  if(isBook){const bookWl=wls.find(w=>w.name==='Lista libri'||w.icon==='📚');if(bookWl){const sel=document.getElementById('dWishlist');if(sel)sel.value=bookWl.id;}}
 }
-
 function handleImgUpload(input,previewId,ctx){
   const file=input.files[0];if(!file)return;
   const reader=new FileReader();
-  reader.onload=e=>{
-    const prev=document.getElementById(previewId);prev.src=e.target.result;prev.style.display='block';
-    if(ctx==='wl')wlImgData=e.target.result;else dImgData=e.target.result;
-  };
+  reader.onload=e=>{const prev=document.getElementById(previewId);prev.src=e.target.result;prev.style.display='block';if(ctx==='wl')wlImgData=e.target.result;else dImgData=e.target.result;};
   reader.readAsDataURL(file);
 }
-
-function selPrio(el){
-  const p=el.dataset.p;dPrio=p;
-  el.parentNode.querySelectorAll('.prio-opt').forEach(x=>{x.className='prio-opt';});
-  el.classList.add('sel-'+p);
-}
+function selPrio(el){const p=el.dataset.p;dPrio=p;el.parentNode.querySelectorAll('.prio-opt').forEach(x=>{x.className='prio-opt';});el.classList.add('sel-'+p);}
 function clearPrio(){document.querySelectorAll('#overlayD .prio-opt').forEach(x=>{x.className='prio-opt';});}
-
 function fillWLSelect(preselect){
   const sel=document.getElementById('dWishlist');
   const opts=wls.map(w=>`<option value="${w.id}"${w.id===preselect?' selected':''}>${w.icon} ${escHtml(w.name)}</option>`).join('');
   sel.innerHTML=opts+'<option value="__new__">＋ Crea nuova wishlist</option>';
-  sel.onchange=function(){
-    if(this.value==='__new__'){this.value=wls.length?wls[0].id:'';closeModal('overlayD');setTimeout(()=>openModal('wishlist'),200);}
-  };
+  sel.onchange=function(){if(this.value==='__new__'){this.value=wls.length?wls[0].id:'';closeModal('overlayD');setTimeout(()=>openModal('wishlist'),200);}};
 }
-
 function closeModal(id){document.getElementById(id).classList.remove('open');}
 
 async function saveWishlist(){
@@ -1542,15 +1397,10 @@ async function saveWishlist(){
   const btn=document.getElementById('wlSaveBtn');
   btn.disabled=true;btn.innerHTML='<span class="spinner"></span>Salvo...';
   const isPrivate=document.getElementById('wlToggle').classList.contains('on');
-  const obj={name,icon:selIcon,img_data:wlImgData||null,img_url:document.getElementById('wlImgUrl').value.trim()||null,description:document.getElementById('wlDesc').value.trim()||null,is_public:!isPrivate,user_id:currentUser.id};
+  const obj={name,icon:selIcon,img_data:wlImgData||null,img_url:document.getElementById('wlImgUrl').value.trim()||null,description:document.getElementById('wlDesc').value.trim()||null,is_public:!isPrivate,user_id:currentUser.id,sort_order:wls.length};
   let error;
-  if(editingWL){
-    ({error}=await sb.from('wishlists').update(obj).eq('id',editingWL));
-    if(!error){const i=wls.findIndex(x=>x.id===editingWL);if(i>-1)wls[i]={...wls[i],...obj};}
-  } else {
-    const {data,error:e}=await sb.from('wishlists').insert(obj).select().single();
-    error=e;if(!error&&data)wls.unshift(data);
-  }
+  if(editingWL){({error}=await sb.from('wishlists').update(obj).eq('id',editingWL));if(!error){const i=wls.findIndex(x=>x.id===editingWL);if(i>-1)wls[i]={...wls[i],...obj};}}
+  else{const {data,error:e}=await sb.from('wishlists').insert(obj).select().single();error=e;if(!error&&data)wls.push(data);}
   btn.disabled=false;btn.textContent='Salva';
   if(error){showToast('Errore: '+error.message);return;}
   renderHome();closeModal('overlayWL');
@@ -1568,17 +1418,12 @@ async function saveDesire(){
   const imgUrl=document.getElementById('dImg').value.trim();
   const obj={name,img_data:dImgData||null,img_url:imgUrl||null,fetched_image:(!dImgData&&!imgUrl&&fetchedData?.image)?fetchedData.image:null,link:document.getElementById('dLink').value.trim()||null,wishlist_id:wlId,priority:dPrio,price:priceVal?parseFloat(priceVal):null,is_public:!isPrivate,is_book:isBook,author:document.getElementById('dAuthor').value.trim()||null,publisher:document.getElementById('dPublisher').value.trim()||null,user_id:currentUser.id};
   let error;
-  if(editingD){
-    ({error}=await sb.from('desires').update(obj).eq('id',editingD));
-    if(!error){const i=desires.findIndex(x=>x.id===editingD);if(i>-1)desires[i]={...desires[i],...obj};}
-  } else {
-    const {data,error:e}=await sb.from('desires').insert(obj).select().single();
-    error=e;if(!error&&data)desires.unshift(data);
-  }
+  if(editingD){({error}=await sb.from('desires').update(obj).eq('id',editingD));if(!error){const i=desires.findIndex(x=>x.id===editingD);if(i>-1)desires[i]={...desires[i],...obj};}}
+  else{const {data,error:e}=await sb.from('desires').insert(obj).select().single();error=e;if(!error&&data)desires.unshift(data);}
   btn.disabled=false;btn.textContent='Salva';
   if(error){showToast('Errore: '+error.message);return;}
-  if(currentWL){renderDetail();renderTopDesires();}else renderHome();
-  closeModal('overlayD');
+  if(currentWL)renderDetail();else renderHome();
+  renderTopDesires();closeModal('overlayD');
 }
 
 function editWL(id){
@@ -1594,7 +1439,6 @@ function editWL(id){
   document.getElementById('wlToggle').classList.toggle('on',!w.is_public);
   buildIconPicker();
   document.getElementById('overlayWL').classList.add('open');
-  resetSwipe('row-'+id);
 }
 
 function editDesire(id){
@@ -1618,7 +1462,6 @@ function editDesire(id){
   fillWLSelect(d.wishlist_id);clearPrio();
   document.querySelector(`#overlayD .prio-opt[data-p="${dPrio}"]`)?.classList.add('sel-'+dPrio);
   document.getElementById('overlayD').classList.add('open');
-  resetSwipe('drow-'+id);
 }
 
 async function deleteWL(id){
@@ -1627,7 +1470,6 @@ async function deleteWL(id){
   if(error){showToast('Errore eliminazione');return;}
   wls=wls.filter(x=>x.id!==id);desires=desires.filter(x=>x.wishlist_id!==id);renderHome();
 }
-
 async function deleteDesire(id){
   if(!confirm('Eliminare questo desiderio?'))return;
   const {error}=await sb.from('desires').delete().eq('id',id);
@@ -1639,129 +1481,43 @@ function shareList(){
   const url=window.location.origin+window.location.pathname+'?share='+currentWL;
   navigator.clipboard?.writeText(url).then(()=>showToast('Link copiato! ⎙')).catch(()=>showToast('Link: '+url));
 }
-
 function showToast(msg){
   const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');
   setTimeout(()=>t.classList.remove('show'),2500);
 }
-
 function addSwipe(sel){
   document.querySelectorAll(sel).forEach(card=>{
     let sx=0;
     card.addEventListener('touchstart',e=>{sx=e.touches[0].clientX;},{passive:true});
-    card.addEventListener('touchmove',e=>{
-      const dx=e.touches[0].clientX-sx;
-      if(dx<-8){card.style.transform=`translateX(${Math.max(dx,-128)}px)`;card.style.transition='none';}
-    },{passive:true});
-    card.addEventListener('touchend',e=>{
-      const dx=e.changedTouches[0].clientX-sx;
-      card.style.transition='transform .2s';
-      card.style.transform=dx<-60?'translateX(-128px)':'';
-    });
+    card.addEventListener('touchmove',e=>{const dx=e.touches[0].clientX-sx;if(dx<-8){card.style.transform=`translateX(${Math.max(dx,-128)}px)`;card.style.transition='none';}},{passive:true});
+    card.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-sx;card.style.transition='transform .2s';card.style.transform=dx<-60?'translateX(-128px)':'';});
   });
 }
-
-function resetSwipe(rowId){
-  const row=document.getElementById(rowId);if(!row)return;
-  const card=row.querySelector('.wl-card,.desire-card');
-  if(card){card.style.transform='';card.style.transition='transform .2s';}
-}
-
-// ── WISHLIST MENU & ORDINE ──
-function toggleWlMenu(e,id){
-  e.stopPropagation();
-  const menu=document.getElementById('menu-'+id);
-  const isOpen=menu.classList.contains('open');
-  closeAllMenus();
-  if(!isOpen)menu.classList.add('open');
-}
-
-function closeAllMenus(){
-  document.querySelectorAll('.wl-context-menu').forEach(m=>m.classList.remove('open'));
-}
-
-async function moveWl(id,dir){
-  const idx=wls.findIndex(w=>w.id===id);
-  const newIdx=idx+dir;
-  if(newIdx<0||newIdx>=wls.length)return;
-  const reordered=[...wls];
-  const [moved]=reordered.splice(idx,1);
-  reordered.splice(newIdx,0,moved);
-  wls=reordered;
-  renderHome();
-  const updates=wls.map((w,i)=>sb.from('wishlists').update({sort_order:i}).eq('id',w.id));
-  await Promise.all(updates);
-}
-
-document.addEventListener('click',()=>closeAllMenus());
-
 function escHtml(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 
-document.querySelectorAll('.overlay').forEach(o=>{
-  o.addEventListener('click',e=>{if(e.target===o)o.classList.remove('open');});
-});
+document.querySelectorAll('.overlay').forEach(o=>{o.addEventListener('click',e=>{if(e.target===o)o.classList.remove('open');});});
 
-// ── INIT ──
 (async()=>{
   const {data:{session}}=await sb.auth.getSession();
   if(session?.user)currentUser=session.user;
-
   const params=new URLSearchParams(window.location.search);
   const shareId=params.get('share');
   const userId=params.get('user');
   const isReset=params.get('reset');
-
-  // gestione reset password via link email
-  sb.auth.onAuthStateChange((event,session)=>{
-    if(event==='PASSWORD_RECOVERY'){
-      hideAllViews();
-      document.getElementById('newPasswordView').style.display='block';
-    }
-  });
-
-  if(isReset){
-    // il link di reset porta qui — onAuthStateChange gestirà il resto
-    hideAllViews();
-    document.getElementById('newPasswordView').style.display='block';
-  } else if(shareId){
-    if(currentUser){
-      const {data:wl}=await sb.from('wishlists').select('user_id').eq('id',shareId).single();
-      if(wl&&wl.user_id===currentUser.id){showApp();return;}
-    }
+  sb.auth.onAuthStateChange((event,session)=>{if(event==='PASSWORD_RECOVERY'){hideAllViews();document.getElementById('newPasswordView').style.display='block';}});
+  if(isReset){hideAllViews();document.getElementById('newPasswordView').style.display='block';}
+  else if(shareId){
+    if(currentUser){const {data:wl}=await sb.from('wishlists').select('user_id').eq('id',shareId).single();if(wl&&wl.user_id===currentUser.id){showApp();return;}}
     showPublicView(shareId);
   } else if(userId){
     let resolvedId=userId;
-    if(!userId.includes('-')){
-      const {data:profile}=await sb.from('profiles').select('id').eq('username',userId).single();
-      if(profile)resolvedId=profile.id;
-    }
+    if(!userId.includes('-')){const {data:profile}=await sb.from('profiles').select('id').eq('username',userId).single();if(profile)resolvedId=profile.id;}
     showProfileView(resolvedId);
-  } else if(currentUser){
-    showApp();
-  } else {
-    document.getElementById('authView').style.display='block';
-    document.getElementById('forgotLink').style.display='block';
-  }
+  } else if(currentUser){showApp();}
+  else{document.getElementById('authView').style.display='block';document.getElementById('forgotLink').style.display='block';}
 })();
 
-if('serviceWorker' in navigator){
-  window.addEventListener('load',()=>{
-    navigator.serviceWorker.register('/sw.js').then(reg=>{
-      console.log('SW registrato',reg.scope);
-    }).catch(err=>{
-      console.log('SW errore',err);
-    });
-  });
-}
-
-// Handle share target
-const shareUrl=new URLSearchParams(window.location.search).get('fetchUrl');
-if(shareUrl){
-  window.addEventListener('DOMContentLoaded',()=>{
-    const inp=document.getElementById('fetchUrl');
-    if(inp){inp.value=shareUrl;openModal('desire');}
-  });
-}
+if('serviceWorker' in navigator){window.addEventListener('load',()=>{navigator.serviceWorker.register('/sw.js').catch(err=>console.log('SW errore',err));});}
 </script>
 </body>
 </html>
