@@ -13,7 +13,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js"></script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
 :root{
@@ -1402,7 +1401,6 @@ function renderHome(){
       </div>
     </div>`;
   }).join('');
-  initDragDrop();
   topFilterWL='all';showAllTop=false;
   renderTopDesires();
 }
@@ -1666,31 +1664,7 @@ function resetSwipe(rowId){
   if(card){card.style.transform='';card.style.transition='transform .2s';}
 }
 
-// ── DRAG & DROP WISHLIST con Sortable.js ──
-let sortableInstance=null;
-
-function initDragDrop(){
-  const list=document.getElementById('wlList');
-  if(!list)return;
-  if(sortableInstance)sortableInstance.destroy();
-  sortableInstance=new Sortable(list,{
-    handle:'.drag-handle',
-    animation:150,
-    ghostClass:'sortable-ghost',
-    chosenClass:'sortable-chosen',
-    delay:150,
-    delayOnTouchOnly:true,
-    onEnd:async function(evt){
-      const rows=[...list.querySelectorAll('.wl-row[data-id]')];
-      const newOrder=rows.map(r=>r.dataset.id);
-      wls=newOrder.map(id=>wls.find(w=>w.id===id)).filter(Boolean);
-      const updates=wls.map((w,i)=>sb.from('wishlists').update({sort_order:i}).eq('id',w.id));
-      await Promise.all(updates);
-    }
-  });
-}
-
-// ── CONTEXT MENU WISHLIST ──
+// ── WISHLIST MENU & ORDINE ──
 function toggleWlMenu(e,id){
   e.stopPropagation();
   const menu=document.getElementById('menu-'+id);
@@ -1701,6 +1675,19 @@ function toggleWlMenu(e,id){
 
 function closeAllMenus(){
   document.querySelectorAll('.wl-context-menu').forEach(m=>m.classList.remove('open'));
+}
+
+async function moveWl(id,dir){
+  const idx=wls.findIndex(w=>w.id===id);
+  const newIdx=idx+dir;
+  if(newIdx<0||newIdx>=wls.length)return;
+  const reordered=[...wls];
+  const [moved]=reordered.splice(idx,1);
+  reordered.splice(newIdx,0,moved);
+  wls=reordered;
+  renderHome();
+  const updates=wls.map((w,i)=>sb.from('wishlists').update({sort_order:i}).eq('id',w.id));
+  await Promise.all(updates);
 }
 
 document.addEventListener('click',()=>closeAllMenus());
