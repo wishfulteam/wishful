@@ -1517,7 +1517,21 @@ document.querySelectorAll('.overlay').forEach(o=>{o.addEventListener('click',e=>
   else{document.getElementById('authView').style.display='block';document.getElementById('forgotLink').style.display='block';}
 })();
 
-if('serviceWorker' in navigator){window.addEventListener('load',()=>{navigator.serviceWorker.register('/sw.js').catch(err=>console.log('SW errore',err));});}
+if('serviceWorker' in navigator){
+  window.addEventListener('load',async()=>{
+    const reg=await navigator.serviceWorker.register('/sw.js');
+    reg.addEventListener('updatefound',()=>{
+      const newWorker=reg.installing;
+      newWorker.addEventListener('statechange',()=>{
+        if(newWorker.state==='installed'&&navigator.serviceWorker.controller){
+          // nuova versione disponibile — ricarica silenziosamente
+          newWorker.postMessage('skipWaiting');
+          window.location.reload();
+        }
+      });
+    });
+  });
+}
 </script>
 </body>
 </html>
