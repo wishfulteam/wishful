@@ -345,6 +345,7 @@ body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);min
   </div>
   <div class="public-header">
     <div class="public-logo">Listea</div>
+    <div id="pubOwnerAvatar" style="margin-bottom:8px;"></div>
     <div id="pubIcon" class="public-wl-icon"></div>
     <div id="pubName" class="public-wl-name"></div>
     <div id="pubDesc" class="public-wl-desc"></div>
@@ -363,7 +364,8 @@ body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);min
 <div id="profileView">
   <div class="public-header">
     <div class="public-logo">Listea</div>
-    <div id="profilePubTitle" class="public-wl-name" style="margin-top:8px;"></div>
+    <div id="profilePubAvatar"></div>
+    <div id="profilePubTitle" class="public-wl-name"></div>
     <div id="profilePubSubtitle" class="public-wl-meta" style="margin-top:6px;"></div>
   </div>
   <div id="profilePubLoading" class="loading">Caricamento...</div>
@@ -1284,6 +1286,13 @@ async function showPublicView(wlId,fromProfile){
   const {data:wl,error}=await sb.from('wishlists').select('*').eq('id',wlId).eq('is_public',true).single();
   if(error||!wl){document.getElementById('pubLoading').style.display='none';document.getElementById('pubDesireList').innerHTML='<div class="empty"><div class="e-icon">✦</div><p>Lista non trovata o privata.</p></div>';return;}
   pubWishlist=wl;
+  // carica avatar del proprietario
+  const {data:ownerProfile}=await sb.from('profiles').select('avatar_data,display_name').eq('id',wl.user_id).single();
+  if(ownerProfile?.avatar_data){
+    document.getElementById('pubOwnerAvatar').innerHTML=`<img src="${ownerProfile.avatar_data}" style="width:32px;height:32px;border-radius:50%;object-fit:cover;vertical-align:middle;margin-right:8px;"><span style="font-size:12px;color:var(--text3);">di ${ownerProfile.display_name||''}</span>`;
+  } else {
+    document.getElementById('pubOwnerAvatar').innerHTML='';
+  }
   document.getElementById('pubIcon').textContent=wl.icon||'✦';
   document.getElementById('pubName').textContent=wl.name;
   document.getElementById('pubDesc').textContent=wl.description||'';
@@ -1342,6 +1351,10 @@ async function showProfileView(userId){
   pendingUserId=userId;
   const {data:profile}=await sb.from('profiles').select('*').eq('id',userId).single();
   const displayName=profile?.display_name||'Utente';
+  const avatarHtml=profile?.avatar_data
+    ?`<img src="${profile.avatar_data}" style="width:52px;height:52px;border-radius:50%;object-fit:cover;margin-bottom:10px;display:block;">`
+    :`<div style="width:52px;height:52px;border-radius:50%;background:#F7F0DC;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:22px;color:#7A5A00;margin-bottom:10px;">${displayName.charAt(0).toUpperCase()}</div>`;
+  document.getElementById('profilePubAvatar').innerHTML=avatarHtml;
   document.getElementById('profilePubTitle').textContent='Le wishlist di '+displayName;
   const {data:lists}=await sb.from('wishlists').select('*').eq('user_id',userId).eq('is_public',true).order('sort_order',{ascending:true}).order('created_at',{ascending:false});
   document.getElementById('profilePubLoading').style.display='none';
