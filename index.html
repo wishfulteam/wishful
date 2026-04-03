@@ -752,6 +752,13 @@ async function changeEmail(){
   if(!newEmail){err.textContent='Inserisci una email';return;}
   const btn=document.getElementById('changeEmailBtn');
   btn.disabled=true;btn.innerHTML='<span class="spinner"></span>Invio...';
+  err.textContent='';
+  // refresh sessione prima di aggiornare email
+  const {error:refreshErr}=await sb.auth.refreshSession();
+  if(refreshErr){
+    btn.disabled=false;btn.textContent='Invia conferma';
+    err.textContent='Sessione scaduta — esci e accedi di nuovo, poi riprova.';return;
+  }
   const {error}=await sb.auth.updateUser({email:newEmail});
   btn.disabled=false;btn.textContent='Invia conferma';
   if(error){err.textContent='Errore: '+error.message;return;}
