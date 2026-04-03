@@ -444,7 +444,10 @@ body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);min
       <div class="profile-username" id="profileUsernameDisplay"></div>
       <div class="profile-link-row" id="profileLinkRow" style="display:none;">
         <span class="profile-link" id="profileLinkText"></span>
-        <button class="profile-copy-btn" onclick="copyProfileLink()">Copia ⎙</button>
+        <button class="profile-copy-btn" id="profileCopyBtn" onclick="copyProfileLink()" style="display:none;">Copia ⎙</button>
+      </div>
+      <div id="profileLinkHint" style="display:none;margin-top:8px;">
+        <span style="font-size:12px;color:var(--accent-dark);cursor:pointer;text-decoration:underline;" onclick="openProfileModal()">Imposta username →</span>
       </div>
     </div>
     <div class="profile-section">
@@ -1089,8 +1092,17 @@ function renderProfileTab(){
   const linkRow=document.getElementById('profileLinkRow');
   if(username&&userProfile?.is_public!==false){
     document.getElementById('profileLinkText').textContent=window.location.origin+window.location.pathname+'?user='+username;
+    document.getElementById('profileLinkText').style.color='var(--accent-dark)';
+    document.getElementById('profileCopyBtn').style.display='flex';
+    document.getElementById('profileLinkHint').style.display='none';
     linkRow.style.display='flex';
-  } else linkRow.style.display='none';
+  } else {
+    document.getElementById('profileLinkText').textContent='Imposta uno username per ottenere il tuo link personale';
+    document.getElementById('profileLinkText').style.color='var(--text3)';
+    document.getElementById('profileCopyBtn').style.display='none';
+    document.getElementById('profileLinkHint').style.display='block';
+    linkRow.style.display='flex';
+  }
 }
 function copyProfileLink(){
   const username=userProfile?.username;
