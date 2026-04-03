@@ -1034,8 +1034,15 @@ function handleModalAvatarUpload(input){
 }
 async function saveAvatarOnly(){
   if(!currentUser||!newAvatarData)return;
-  await sb.from('profiles').upsert({id:currentUser.id,avatar_data:newAvatarData},{onConflict:'id'});
-  if(userProfile)userProfile.avatar_data=newAvatarData;
+  const {error}=await sb.from('profiles').upsert({
+    id:currentUser.id,
+    avatar_data:newAvatarData,
+    display_name:userProfile?.display_name||currentUser.email.split('@')[0],
+    is_public:userProfile?.is_public!==false
+  },{onConflict:'id'});
+  if(error){showToast('Errore salvataggio foto');console.error(error);return;}
+  if(!userProfile)userProfile={id:currentUser.id};
+  userProfile.avatar_data=newAvatarData;
   showToast('Foto aggiornata ✓');
 }
 function renderAvatarInTab(avatarData){
