@@ -470,6 +470,10 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
       <p>Listea è gratuita e lo resterà sempre.<br>Se ti piace, puoi supportarla con una donazione ♡</p>
       <a class="donate-btn" href="https://buymeacoffee.com" target="_blank" rel="noopener">Offri un caffè ☕</a>
     </div>
+    <div class="profile-action-row" style="margin:0 20px;" onclick="document.getElementById('overlayAbout').classList.add('open')">
+      <div><div class="profile-action-label">Chi siamo</div><div class="profile-action-sub">Il progetto, la visione, i contatti</div></div>
+      <span class="profile-action-arrow">›</span>
+    </div>
     <div class="logout-row" onclick="logout()">Esci dall'account</div>
   </div>
 
@@ -640,6 +644,43 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
     <div class="modal-actions">
       <button class="btn-secondary" onclick="closeModal('overlayChangePassword')">Annulla</button>
       <button class="btn-primary" id="changePasswordBtn" onclick="changePassword()">Salva</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL ABOUT -->
+<div class="overlay" id="overlayAbout">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <div class="modal-title">Cos'è Listea</div>
+
+    <p style="font-size:13px;color:var(--text2);line-height:1.9;margin-bottom:14px;">Ci sono domande che si ripresentano puntualmente, ogni anno, ogni occasione: <em>cosa vuoi per Natale? Cosa regalo a mia sorella per il suo compleanno? Come faccio sorridere una persona a cui voglio bene?</em></p>
+
+    <p style="font-size:13px;color:var(--text2);line-height:1.9;margin-bottom:14px;">Domande semplici, eppure difficili. Perché chi ama fare regali vuole sorprendere, non eseguire una lista della spesa. E chi ama riceverli vuole essere capito, non accontentato.</p>
+
+    <p style="font-size:13px;color:var(--text2);line-height:1.9;margin-bottom:14px;">Listea nasce da qui — dalla convinzione che una gift card ti aiuta a raggiungere uno scopo senza sforzo, e senza commettere errori, ma un bel regalo dirà all'altra persona <em>"ho cercato la cosa perfetta per te."</em></p>
+
+    <p style="font-size:13px;color:var(--text2);line-height:1.9;margin-bottom:14px;">Con Listea puoi raccogliere i tuoi desideri in liste eleganti e condividerle con chi vuoi. Chi ti vuole bene può sfogliare, scegliere, prenotare — senza spoiler, senza doppioni, senza imbarazzo. E tu puoi continuare ad aspettarti una sorpresa, anche sapendo che sarà quella giusta.</p>
+
+    <p style="font-size:13px;color:var(--text2);line-height:1.9;margin-bottom:24px;">Per i lettori che non vogliono ricevere un libro che hanno già letto. Per chi ha gusto e fatica a comunicarlo. Per chi fa regali con cura e non vuole sbagliare.</p>
+
+    <div style="border-top:1px solid var(--border);padding-top:20px;margin-bottom:20px;">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;margin-bottom:12px;">Chi sono</div>
+      <p style="font-size:13px;color:var(--text2);line-height:1.9;margin-bottom:10px;">Listea è un progetto indipendente creato da Lexa Carson. Nata da una frustrazione reale e costruita con la convinzione che le cose belle meritino strumenti all'altezza.</p>
+      <p style="font-size:13px;color:var(--text2);line-height:1.9;">Siamo all'inizio — e ogni feedback conta più di quanto immagini.</p>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:12px;padding-top:4px;">
+      <a href="https://instagram.com/listea.app" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--accent-dark);text-decoration:none;">
+        <span>📎</span> Seguici su Instagram: @listea.app
+      </a>
+      <a href="https://instagram.com/listea.app" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--text2);text-decoration:none;">
+        <span>🐛</span> Hai trovato un bug? Scrivici — lo sistemeremo.
+      </a>
+    </div>
+
+    <div class="modal-actions" style="margin-top:24px;">
+      <button class="btn-primary" onclick="document.getElementById('overlayAbout').classList.remove('open')">Chiudi</button>
     </div>
   </div>
 </div>
