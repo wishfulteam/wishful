@@ -906,6 +906,23 @@ async function fetchOpenLibrary(query){
   return null;
 }
 
+function setFetchStatus(msg){
+  document.getElementById('fetchPreviewNote').textContent=msg;
+  document.getElementById('fetchPreviewTitle').textContent='';
+  document.getElementById('fetchPreviewImg').style.display='none';
+  document.getElementById('fetchPreview').classList.add('show');
+}
+
+async function fetchWithTimeout(url,ms=4000){
+  const controller=new AbortController();
+  const id=setTimeout(()=>controller.abort(),ms);
+  try{
+    const res=await fetch(url,{signal:controller.signal});
+    clearTimeout(id);
+    return res;
+  } catch(e){clearTimeout(id);throw e;}
+}
+
 async function fetchMeta(){
   const url=document.getElementById('fetchUrl').value.trim();
   if(!url){showToast('Incolla un link prima');return;}
@@ -913,25 +930,32 @@ async function fetchMeta(){
   btn.disabled=true;btn.innerHTML='<span class="spinner-dark"></span>';
   fetchedData=null;document.getElementById('fetchPreview').classList.remove('show');
 
+  // ottimismo UI — mostra subito il dominio
+  try{const domain=new URL(url).hostname.replace('www.','');setFetchStatus('Leggo '+domain+'...');}catch(e){}
+
   let title='',image='',price='',author='',publisher='',note='';
   const isBookSite=BOOK_URL.test(url);
 
   try{
-    // 1. Microlink
-    const res=await fetch(`https://api.microlink.io?url=${encodeURIComponent(url)}&palette=false&audio=false&video=false&iframe=false`);
-    const data=await res.json();
-    if(data.status==='success'&&data.data){
-      title=data.data.title||'';
-      image=data.data?.image?.url||data.data?.logo?.url||'';
-      const desc=data.data?.description||'';
-      price=extractPrice(title+' '+desc);
-    }
+    // 1. Microlink con timeout 4s
+    try{
+      setFetchStatus('Cerco informazioni...');
+      const res=await fetchWithTimeout(`https://api.microlink.io?url=${encodeURIComponent(url)}&palette=false&audio=false&video=false&iframe=false`,4000);
+      const data=await res.json();
+      if(data.status==='success'&&data.data){
+        title=data.data.title||'';
+        image=data.data?.image?.url||data.data?.logo?.url||'';
+        const desc=data.data?.description||'';
+        price=extractPrice(title+' '+desc);
+      }
+    } catch(e){}
 
-    // 2. Se è sito libro e mancano dati, prova fetch diretto + JSON-LD
+    // 2. Fallback fetch diretto per siti libro
     if(isBookSite&&(!title||!price)){
       try{
+        setFetchStatus('Cerco dettagli libro...');
         const proxy=`https://api.allorigins.win/get?url=${encodeURIComponent(url)}`;
-        const r=await fetch(proxy);
+        const r=await fetchWithTimeout(proxy,4000);
         const d=await r.json();
         if(d.contents){
           const ld=parseJsonLd(d.contents);
@@ -946,9 +970,10 @@ async function fetchMeta(){
       } catch(e){}
     }
 
-    // 3. Se è sito libro e abbiamo il titolo, cerca su Open Library
+    // 3. Open Library per libri
     if(isBookSite&&title){
       note='Sito libro rilevato';
+      setFetchStatus('Cerco su Open Library...');
       const olData=await fetchOpenLibrary(title);
       if(olData){
         if(!image&&olData.image)image=olData.image;
@@ -964,15 +989,28 @@ async function fetchMeta(){
       const prevImg=document.getElementById('fetchPreviewImg');
       prevImg.src=image||'';prevImg.style.display=image?'block':'none';
       document.getElementById('fetchPreviewTitle').textContent=title;
-      document.getElementById('fetchPreviewNote').textContent=note;
+      document.getElementById('fetchPreviewTitle').style.color='var(--text)';
+      document.getElementById('fetchPreviewNote').textContent=note||'';
+      document.getElementById('fetchPreview').style.background='';
       document.getElementById('fetchPreview').classList.add('show');
     } else {
+      // link salvato automaticamente + avviso visibile
       document.getElementById('dLink').value=url;
-      showToast('Sito non leggibile — link salvato, compila manualmente');
+      document.getElementById('fetchPreviewImg').style.display='none';
+      document.getElementById('fetchPreviewTitle').textContent='Link salvato — compila il resto manualmente.';
+      document.getElementById('fetchPreviewTitle').style.color='var(--accent-dark)';
+      document.getElementById('fetchPreviewNote').textContent='Non ho trovato dati per questo sito.';
+      document.getElementById('fetchPreview').style.background='var(--accent-light)';
+      document.getElementById('fetchPreview').classList.add('show');
     }
   } catch(e){
     document.getElementById('dLink').value=url;
-    showToast('Errore di connessione — link salvato, compila manualmente');
+    document.getElementById('fetchPreviewImg').style.display='none';
+    document.getElementById('fetchPreviewTitle').textContent='Link salvato — compila il resto manualmente.';
+    document.getElementById('fetchPreviewTitle').style.color='var(--accent-dark)';
+    document.getElementById('fetchPreviewNote').textContent='Errore di connessione.';
+    document.getElementById('fetchPreview').style.background='var(--accent-light)';
+    document.getElementById('fetchPreview').classList.add('show');
   }
   btn.disabled=false;btn.textContent='Importa';
 }
