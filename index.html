@@ -337,6 +337,25 @@ body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);min
   <div class="auth-err" id="newPwErr"></div>
 </div>
 
+<!-- ONBOARDING -->
+<div id="onboardingView" style="display:none;max-width:380px;margin:0 auto;padding:60px 24px;">
+  <div style="display:flex;align-items:center;gap:14px;margin-bottom:6px;">
+    <div class="logo-icon"><img src="" alt="Listea" id="onboardingIcon"></div>
+    <div class="auth-logo" style="margin-bottom:0;">Listea</div>
+  </div>
+  <div class="auth-sub" style="margin-bottom:32px;">Desidera. Condividi. Sorprendi.</div>
+  <p style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;color:var(--text);margin-bottom:8px;line-height:1.3;">Scegli il tuo username</p>
+  <p style="font-size:13px;color:var(--text3);margin-bottom:24px;line-height:1.6;">Sarà il tuo link personale per condividere le tue wishlist.</p>
+  <div class="auth-field">
+    <label>Username</label>
+    <input type="text" id="onboardingUsername" placeholder="es. laura" oninput="this.value=this.value.toLowerCase().replace(/[^a-z0-9_]/g,'');updateOnboardingPreview()" onkeydown="if(event.key==='Enter')completeOnboarding()">
+  </div>
+  <div id="onboardingPreview" style="font-size:12px;color:var(--text3);margin-top:-8px;margin-bottom:20px;min-height:18px;"></div>
+  <button class="auth-btn" id="onboardingBtn" onclick="completeOnboarding()">Inizia →</button>
+  <div class="auth-err" id="onboardingErr"></div>
+  <div class="auth-link" onclick="skipOnboarding()" style="margin-top:16px;color:var(--text3);">Salta per ora</div>
+</div>
+
 <!-- PUBLIC WISHLIST -->
 <div id="publicView">
   <div class="detail-header" id="pubBackHeader" style="display:none;">
@@ -1289,10 +1308,16 @@ async function authSubmit(){
   if(authMode==='signup'&&!result.data.session){err.style.color='#15803D';err.textContent='Registrazione completata! Controlla la email per confermare.';return;}
   if(result.data.user){
     currentUser=result.data.user;
-    if(authMode==='signup')await createDefaultWishlist();
-    if(pendingShareId){hideAllViews();showPublicView(pendingShareId);}
-    else if(pendingUserId){hideAllViews();showProfileView(pendingUserId);}
-    else showApp();
+    if(authMode==='signup'){
+      await createDefaultWishlist();
+      if(pendingShareId){hideAllViews();showPublicView(pendingShareId);}
+      else if(pendingUserId){hideAllViews();showProfileView(pendingUserId);}
+      else showOnboarding();
+    } else {
+      if(pendingShareId){hideAllViews();showPublicView(pendingShareId);}
+      else if(pendingUserId){hideAllViews();showProfileView(pendingUserId);}
+      else showApp();
+    }
   }
 }
 async function createDefaultWishlist(){
@@ -1311,7 +1336,7 @@ async function logout(){
   document.getElementById('pwEye').textContent='👁';
 }
 function hideAllViews(){
-  ['authView','resetView','newPasswordView','publicView','profileView','desireDetailView','appView'].forEach(id=>document.getElementById(id).style.display='none');
+  ['authView','resetView','newPasswordView','onboardingView','publicView','profileView','desireDetailView','appView'].forEach(id=>document.getElementById(id).style.display='none');
 }
 function showApp(){
   hideAllViews();
@@ -1700,6 +1725,54 @@ function addSwipe(sel){
     card.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-sx;card.style.transition='transform .2s';card.style.transform=dx<-60?'translateX(-128px)':'';});
   });
 }
+// ONBOARDING
+function showOnboarding(){
+  hideAllViews();
+  // set icon src
+  const iconEl=document.getElementById('onboardingIcon');
+  const appIcon=document.querySelector('.logo-icon img');
+  if(appIcon&&iconEl)iconEl.src=appIcon.src;
+  document.getElementById('onboardingView').style.display='block';
+  document.getElementById('onboardingUsername').focus();
+}
+function updateOnboardingPreview(){
+  const un=document.getElementById('onboardingUsername').value.trim();
+  const prev=document.getElementById('onboardingPreview');
+  prev.textContent=un?window.location.origin+window.location.pathname+'?user='+un:'';
+}
+async function completeOnboarding(){
+  const username=document.getElementById('onboardingUsername').value.trim();
+  const err=document.getElementById('onboardingErr');
+  if(!username){err.textContent='Inserisci uno username per continuare';return;}
+  if(username.length<3){err.textContent='Almeno 3 caratteri';return;}
+  const btn=document.getElementById('onboardingBtn');
+  btn.disabled=true;btn.innerHTML='<span class="spinner"></span>Salvo...';
+  err.textContent='';
+  const {error}=await sb.from('profiles').upsert({
+    id:currentUser.id,
+    username,
+    display_name:currentUser.email.split('@')[0],
+    is_public:true
+  },{onConflict:'id'});
+  btn.disabled=false;btn.textContent='Inizia →';
+  if(error){
+    err.textContent=error.message.includes('unique')?'Username già in uso — scegline un altro':'Errore: '+error.message;
+    return;
+  }
+  userProfile={id:currentUser.id,username,display_name:currentUser.email.split('@')[0],is_public:true};
+  showApp();
+}
+async function skipOnboarding(){
+  // crea profilo vuoto e vai all'app
+  await sb.from('profiles').upsert({
+    id:currentUser.id,
+    display_name:currentUser.email.split('@')[0],
+    is_public:false
+  },{onConflict:'id'});
+  userProfile={id:currentUser.id,display_name:currentUser.email.split('@')[0],is_public:false};
+  showApp();
+}
+
 function escHtml(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 
 document.querySelectorAll('.overlay').forEach(o=>{o.addEventListener('click',e=>{if(e.target===o)o.classList.remove('open');});});
