@@ -940,15 +940,17 @@ function setFetchStatus(msg){
   document.getElementById('fetchPreview').classList.add('show');
 }
 
-async function fetchWithTimeout(url,ms=4000){
+async function fetchWithTimeout(url,ms=4000,opts={}){
   const controller=new AbortController();
   const id=setTimeout(()=>controller.abort(),ms);
   try{
-    const res=await fetch(url,{signal:controller.signal});
+    const res=await fetch(url,{...opts,signal:controller.signal});
     clearTimeout(id);
     return res;
   } catch(e){clearTimeout(id);throw e;}
 }
+
+const EDGE_FETCH='https://gcxrootmhemvlvcpcydn.supabase.co/functions/v1/fetch-meta';
 
 async function fetchMeta(){
   const url=document.getElementById('fetchUrl').value.trim();
@@ -957,89 +959,58 @@ async function fetchMeta(){
   btn.disabled=true;btn.innerHTML='<span class="spinner-dark"></span>';
   fetchedData=null;document.getElementById('fetchPreview').classList.remove('show');
 
-  // ottimismo UI — mostra subito il dominio
   try{const domain=new URL(url).hostname.replace('www.','');setFetchStatus('Leggo '+domain+'...');}catch(e){}
 
   let title='',image='',price='',author='',publisher='',note='';
   const isBookSite=BOOK_URL.test(url);
 
   try{
-    // 1. Microlink con timeout 4s
-    try{
-      setFetchStatus('Cerco informazioni...');
-      const res=await fetchWithTimeout(`https://api.microlink.io?url=${encodeURIComponent(url)}&palette=false&audio=false&video=false&iframe=false`,4000);
-      if(res.ok){
-        const data=await res.json();
-        if(data.status==='success'&&data.data){
-          title=data.data.title||'';
-          image=data.data?.image?.url||data.data?.logo?.url||'';
-          const desc=data.data?.description||'';
-          price=extractPrice(title+' '+desc);
-        }
-      }
-    } catch(e){}
-
-    // 2. Fallback fetch diretto per tutti i siti se mancano dati
-    if(!title){
-      try{
-        setFetchStatus('Provo un altro metodo...');
-        const proxy=`https://api.allorigins.win/get?url=${encodeURIComponent(url)}`;
-        const r=await fetchWithTimeout(proxy,4000);
-        const d=await r.json();
-        if(d.contents){
-          const ld=parseJsonLd(d.contents);
-          const og=parseOG(d.contents);
-          title=ld.title||og.title||'';
-          if(!image)image=ld.image||og.image||'';
-          if(!price&&ld.price)price=ld.price;
-          if(isBookSite){
-            if(ld.author)author=ld.author;
-            if(ld.publisher)publisher=ld.publisher;
-            if(!price)price=extractPrice(d.contents.substring(0,3000));
-          }
-        }
-      } catch(e){}
-    }
-
-    // 3. Open Library per libri
-    if(isBookSite&&title){
-      note='Sito libro rilevato';
-      setFetchStatus('Cerco su Open Library...');
-      const olData=await fetchOpenLibrary(title);
-      if(olData){
-        if(!image&&olData.image)image=olData.image;
-        if(!author&&olData.author)author=olData.author;
-        if(!publisher&&olData.publisher)publisher=olData.publisher;
-        if(olData.title&&!title)title=olData.title;
-        note='Libro trovato su Open Library ✓';
+    setFetchStatus('Cerco informazioni...');
+    const res=await fetchWithTimeout(EDGE_FETCH,6000,{
+      method:'POST',
+      headers:{'Content-Type':'application/json','apikey':SUPABASE_KEY},
+      body:JSON.stringify({url})
+    });
+    if(res.ok){
+      const data=await res.json();
+      if(data.ok&&data.data){
+        title=data.data.title||'';
+        image=data.data.image||'';
+        price=data.data.price||'';
+        author=data.data.author||'';
+        publisher=data.data.publisher||'';
       }
     }
+  } catch(e){}
 
-    if(title){
-      fetchedData={title,image,price,link:url,author,publisher,isBook:isBookSite};
-      const prevImg=document.getElementById('fetchPreviewImg');
-      prevImg.src=image||'';prevImg.style.display=image?'block':'none';
-      document.getElementById('fetchPreviewTitle').textContent=title;
-      document.getElementById('fetchPreviewTitle').style.color='var(--text)';
-      document.getElementById('fetchPreviewNote').textContent=note||'';
-      document.getElementById('fetchPreview').style.background='';
-      document.getElementById('fetchPreview').classList.add('show');
-    } else {
-      // link salvato automaticamente + avviso visibile
-      document.getElementById('dLink').value=url;
-      document.getElementById('fetchPreviewImg').style.display='none';
-      document.getElementById('fetchPreviewTitle').textContent='Link salvato — compila il resto manualmente.';
-      document.getElementById('fetchPreviewTitle').style.color='var(--accent-dark)';
-      document.getElementById('fetchPreviewNote').textContent='Non ho trovato dati per questo sito.';
-      document.getElementById('fetchPreview').style.background='var(--accent-light)';
-      document.getElementById('fetchPreview').classList.add('show');
+  // Open Library per libri come arricchimento
+  if(isBookSite&&title){
+    note='Sito libro rilevato';
+    setFetchStatus('Cerco su Open Library...');
+    const olData=await fetchOpenLibrary(title);
+    if(olData){
+      if(!image&&olData.image)image=olData.image;
+      if(!author&&olData.author)author=olData.author;
+      if(!publisher&&olData.publisher)publisher=olData.publisher;
+      note='Libro trovato su Open Library ✓';
     }
-  } catch(e){
+  }
+
+  if(title){
+    fetchedData={title,image,price,link:url,author,publisher,isBook:isBookSite};
+    const prevImg=document.getElementById('fetchPreviewImg');
+    prevImg.src=image||'';prevImg.style.display=image?'block':'none';
+    document.getElementById('fetchPreviewTitle').textContent=title;
+    document.getElementById('fetchPreviewTitle').style.color='var(--text)';
+    document.getElementById('fetchPreviewNote').textContent=note||'';
+    document.getElementById('fetchPreview').style.background='';
+    document.getElementById('fetchPreview').classList.add('show');
+  } else {
     document.getElementById('dLink').value=url;
     document.getElementById('fetchPreviewImg').style.display='none';
     document.getElementById('fetchPreviewTitle').textContent='Link salvato — compila il resto manualmente.';
     document.getElementById('fetchPreviewTitle').style.color='var(--accent-dark)';
-    document.getElementById('fetchPreviewNote').textContent='Errore di connessione.';
+    document.getElementById('fetchPreviewNote').textContent='Non ho trovato dati per questo sito.';
     document.getElementById('fetchPreview').style.background='var(--accent-light)';
     document.getElementById('fetchPreview').classList.add('show');
   }
