@@ -439,7 +439,12 @@ body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);min
     <div class="wl-list" id="wlList"></div>
     <div id="wlEmpty" class="empty" style="display:none;"><div class="e-icon">✦</div><p>Nessuna wishlist ancora.<br>Creane una con il tasto +</p></div>
     <div id="topDesireSection" style="display:none;">
-      <div class="section-label">Desideri prioritari</div>
+      <div class="section-label">Tutti i desideri</div>
+      <div class="sort-bar" style="border-top:1px solid var(--border);">
+        <div class="sort-chip active" id="topSortPrio" onclick="toggleTopSort('prio')">Priorità ↓</div>
+        <div class="sort-chip" id="topSortDate" onclick="toggleTopSort('date')">Recenti ↓</div>
+        <div class="sort-chip" id="topSortPrice" onclick="toggleTopSort('price')">Prezzo ↑</div>
+      </div>
       <div class="top-filter-bar" id="topFilterBar"></div>
       <div id="topDesireList"></div>
       <div id="seeAllBtn" class="see-all-btn" style="display:none;" onclick="showAllDesires()">Vedi tutti →</div>
@@ -753,7 +758,9 @@ let wlImgData='',dImgData='',isBook=false;
 let authMode='login',pendingShareId=null,pendingUserId=null;
 let fetchedData=null,userProfile=null;
 let desireDetailFrom=null,currentDesireId=null;
-let topFilterWL='all',showAllTop=false;
+let topFilterWL='all',showAllTop=false,topActiveSort='prio';
+const topSortState={date:'desc',price:'asc',prio:'desc'};
+const topSortLabels={date:{asc:'Recenti ↑',desc:'Recenti ↓'},price:{asc:'Prezzo ↑',desc:'Prezzo ↓'},prio:{asc:'Priorità ↑',desc:'Priorità ↓'}};
 let pubWishlist=null,pubDesires=[];
 let newAvatarData='',modalAvatarData='';
 
@@ -1068,7 +1075,12 @@ function renderTopDesires(){
     +wls.map(w=>`<div class="filter-chip${topFilterWL===w.id?' active':''}" onclick="setTopFilter('${w.id}')">${w.icon} ${escHtml(w.name)}</div>`).join('');
   const pMap={alto:3,medio:2,basso:1};
   let ds=desires.filter(d=>topFilterWL==='all'||d.wishlist_id===topFilterWL);
-  ds=ds.slice().sort((a,b)=>(pMap[b.priority]||2)-(pMap[a.priority]||2));
+  ds=ds.slice().sort((a,b)=>{
+    if(topActiveSort==='prio'){const diff=(pMap[b.priority]||2)-(pMap[a.priority]||2);return topSortState.prio==='desc'?diff:-diff;}
+    if(topActiveSort==='date'){const diff=new Date(b.created_at)-new Date(a.created_at);return topSortState.date==='desc'?diff:-diff;}
+    if(topActiveSort==='price'){const diff=(parseFloat(a.price)||0)-(parseFloat(b.price)||0);return topSortState.price==='asc'?diff:-diff;}
+    return 0;
+  });
   const MAX=10;
   const visible=showAllTop?ds:ds.slice(0,MAX);
   document.getElementById('seeAllBtn').style.display=(!showAllTop&&ds.length>MAX)?'block':'none';
@@ -1086,6 +1098,18 @@ function renderTopDesires(){
       <div class="prio-dot prio-dot-${d.priority}"></div>
     </div></div>`;
   }).join('');
+}
+function toggleTopSort(key){
+  if(topActiveSort===key)topSortState[key]=topSortState[key]==='asc'?'desc':'asc';
+  else topActiveSort=key;
+  ['prio','date','price'].forEach(k=>{
+    const chip=document.getElementById('topSort'+k.charAt(0).toUpperCase()+k.slice(1));
+    if(!chip)return;
+    chip.textContent=topSortLabels[k][topSortState[k]];
+    chip.classList.toggle('active',topActiveSort===k);
+  });
+  showAllTop=false;
+  renderTopDesires();
 }
 function setTopFilter(wlId){topFilterWL=wlId;showAllTop=false;renderTopDesires();}
 function showAllDesires(){showAllTop=true;renderTopDesires();}
