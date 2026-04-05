@@ -85,14 +85,14 @@ body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);min
 
 /* WISHLIST CARDS */
 .wl-list{display:flex;flex-direction:column;}
-.wl-row{border-bottom:1px solid var(--border);}
+.wl-row{border-bottom:1px solid var(--border);overflow:visible;}
 .wl-card{background:var(--surface);padding:13px 18px;display:flex;align-items:center;gap:13px;transition:background .12s;}
 .wl-card:active{background:var(--surface2);}
 .wl-icon{width:46px;height:46px;border-radius:11px;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;overflow:hidden;cursor:pointer;}
 .wl-icon img{width:100%;height:100%;object-fit:cover;border-radius:11px;}
 .wl-info{flex:1;min-width:0;cursor:pointer;}
-.wl-name{font-size:14px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.wl-meta{font-size:11px;color:var(--text3);margin-top:2px;display:flex;align-items:center;gap:5px;}
+.wl-name{font-size:15px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.wl-meta{font-size:12px;color:var(--text3);margin-top:2px;display:flex;align-items:center;gap:5px;}
 .vis-dot{width:5px;height:5px;border-radius:50%;display:inline-block;}
 .vis-pub{background:#4CAF50;}.vis-priv{background:var(--accent);}
 
@@ -117,8 +117,8 @@ body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);min
 .top-desire-img{width:40px;height:40px;border-radius:9px;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;overflow:hidden;color:var(--text3);}
 .top-desire-img img{width:100%;height:100%;object-fit:cover;}
 .top-desire-info{flex:1;min-width:0;}
-.top-desire-name{font-size:13px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.top-desire-sub{font-size:11px;color:var(--text3);margin-top:2px;}
+.top-desire-name{font-size:14px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.top-desire-sub{font-size:12px;color:var(--text3);margin-top:2px;}
 .prio-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
 .prio-dot-alto{background:#DC2626;}.prio-dot-medio{background:var(--accent);}.prio-dot-basso{background:#15803D;}
 .see-all-btn{display:block;text-align:center;padding:12px;font-size:12px;color:var(--accent-dark);cursor:pointer;border-bottom:1px solid var(--border);}
@@ -138,8 +138,8 @@ body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);min
 .desire-img{width:44px;height:44px;border-radius:9px;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;overflow:hidden;color:var(--text3);}
 .desire-img img{width:100%;height:100%;object-fit:cover;}
 .desire-info{flex:1;min-width:0;}
-.desire-name{font-size:13px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.desire-sub{font-size:11px;color:var(--text3);margin-top:2px;}
+.desire-name{font-size:14px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.desire-sub{font-size:12px;color:var(--text3);margin-top:2px;}
 .desire-book{font-size:11px;color:var(--accent-dark);font-style:italic;margin-top:1px;}
 .prio-badge{font-size:10px;padding:2px 7px;border-radius:7px;font-weight:500;white-space:nowrap;}
 .prio-alto{background:#FEF2F2;color:#DC2626;}
@@ -176,8 +176,8 @@ body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);min
 /* DESIRE DETAIL */
 #desireDetailView{display:none;max-width:420px;margin:0 auto;padding-bottom:calc(var(--nav-h)+16px);}
 .desire-detail-header{padding:13px 18px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--border);}
-.desire-detail-img{width:100%;max-height:260px;object-fit:cover;display:block;}
-.desire-detail-img-placeholder{width:100%;height:160px;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:48px;}
+.desire-detail-img{width:100%;aspect-ratio:1/1;max-height:420px;object-fit:cover;display:block;}
+.desire-detail-img-placeholder{width:100%;aspect-ratio:1/1;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:48px;}
 .desire-detail-body{padding:20px;}
 .desire-detail-name{font-family:"Cormorant Garamond",serif;font-size:26px;font-weight:400;line-height:1.3;margin-bottom:6px;}
 .desire-detail-book{font-size:13px;color:var(--accent-dark);font-style:italic;margin-bottom:12px;}
@@ -262,7 +262,7 @@ body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);min
 .img-upload-area{border:1.5px dashed var(--border);border-radius:var(--radiusS);padding:14px;text-align:center;cursor:pointer;transition:border-color .15s;margin-top:6px;}
 .img-upload-area:hover{border-color:var(--accent);}
 .img-upload-area input[type=file]{display:none;}
-.img-preview{width:100%;height:90px;object-fit:cover;border-radius:6px;margin-top:8px;display:none;}
+.img-preview{width:100%;aspect-ratio:1/1;max-height:200px;object-fit:cover;border-radius:6px;margin-top:8px;display:none;}
 .img-upload-label{font-size:12px;color:var(--text3);}
 .img-or{font-size:11px;color:var(--text3);text-align:center;margin:8px 0 4px;}
 .toggle-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;}
@@ -600,7 +600,7 @@ body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);min
         <span style="font-style:italic;">Alcuni siti potrebbero non essere supportati.</span>
       </div>
     </div>
-    <div class="field"><label>Titolo *</label><input type="text" id="dName" id="dName" placeholder="Es. Occhiali da sole"></div>
+    <div class="field"><label>Titolo *</label><input type="text" id="dName" placeholder="Es. Occhiali da sole"></div>
     <div class="field">
       <label>Immagine</label>
       <div class="img-upload-area" onclick="document.getElementById('dFileInput').click()">
@@ -1565,6 +1565,7 @@ function renderHome(){
         <div class="wl-info" onclick="openDetail('${w.id}')">
           <div class="wl-name">${escHtml(w.name)}</div>
           <div class="wl-meta"><span>${dc} ${dc===1?'desiderio':'desideri'}</span><span class="vis-dot ${isPrivate?'vis-priv':'vis-pub'}"></span><span>${isPrivate?'privata':'pubblica'}</span></div>
+          ${w.description?`<div style="font-size:11px;color:var(--text3);margin-top:3px;font-style:italic;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${escHtml(w.description)}</div>`:''}`
         </div>
         <div class="wl-menu-btn" onclick="toggleWlMenu(event,'${w.id}')">···<div class="wl-context-menu" id="wlmenu-${w.id}"><div class="wl-context-item" onclick="event.stopPropagation();closeAllMenus();moveWl('${w.id}',-1)">↑ Sposta su</div><div class="wl-context-item" onclick="event.stopPropagation();closeAllMenus();moveWl('${w.id}',1)">↓ Sposta giù</div><div class="wl-context-item" onclick="event.stopPropagation();closeAllMenus();editWL('${w.id}')">✎ Modifica</div><div class="wl-context-item danger" onclick="event.stopPropagation();closeAllMenus();deleteWL('${w.id}')">✕ Elimina</div></div></div>
       </div>
