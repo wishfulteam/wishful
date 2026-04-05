@@ -570,6 +570,11 @@ body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);min
   <div class="modal">
     <div class="modal-handle"></div>
     <div class="modal-title" id="dModalTitle">Nuovo desiderio</div>
+    <div class="book-toggle-row" onclick="toggleBookFields()"><span>📖 È un libro?</span><div class="toggle" id="bookToggle" onclick="event.stopPropagation();toggleBookFields()"><div class="toggle-thumb"></div></div></div>
+    <div class="book-fields" id="bookFields">
+      <div class="field"><label>Autore</label><input type="text" id="dAuthor" placeholder="Es. Italo Calvino"></div>
+      <div class="field"><label>Editore</label><input type="text" id="dPublisher" placeholder="Es. Einaudi"></div>
+    </div>
     <div class="field">
       <label>Importa da link</label>
       <div class="fetch-box">
@@ -587,16 +592,11 @@ body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);min
         </div>
       </div>
       <div style="font-size:11px;color:var(--text3);margin-top:6px;line-height:1.6;">
-        Funziona con Amazon, IBS, Feltrinelli, Libraccio, Mondadori, ASOS, Zalando*, Mediaworld e altri.<br>
-        <span style="font-style:italic;">*alcuni siti limitano l'accesso automatico.</span>
+        Funziona con Amazon, IBS, Feltrinelli, Libraccio, Flaconi, ASOS, Mediaworld e altri.<br>
+        <span style="font-style:italic;">Alcuni siti potrebbero non essere supportati.</span>
       </div>
     </div>
-    <div class="book-toggle-row" onclick="toggleBookFields()"><span>📖 È un libro?</span><div class="toggle" id="bookToggle" onclick="event.stopPropagation();toggleBookFields()"><div class="toggle-thumb"></div></div></div>
     <div class="field"><label>Titolo *</label><input type="text" id="dName" placeholder="Es. Il barone rampante"></div>
-    <div class="book-fields" id="bookFields">
-      <div class="field"><label>Autore</label><input type="text" id="dAuthor" placeholder="Es. Italo Calvino"></div>
-      <div class="field"><label>Editore</label><input type="text" id="dPublisher" placeholder="Es. Einaudi"></div>
-    </div>
     <div class="field">
       <label>Immagine</label>
       <div class="img-upload-area" onclick="document.getElementById('dFileInput').click()">
