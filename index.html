@@ -659,6 +659,7 @@ body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);min
       <input type="text" id="profileUsername" placeholder="Es. laura" oninput="this.value=this.value.toLowerCase().replace(/[^a-z0-9_]/g,'');updateProfileUrlPreview()">
     </div>
     <div id="profileUrlPreview" style="font-size:12px;color:var(--text3);margin-top:-8px;margin-bottom:14px;"></div>
+    <div class="field"><label>Data di compleanno (opzionale)</label><input type="date" id="profileBirthday" style="color-scheme:light;"></div>
     <div class="field">
       <div class="toggle-row"><span>Profilo pubblico</span><div class="toggle" id="profileToggle" onclick="this.classList.toggle('on')"><div class="toggle-thumb"></div></div></div>
       <div style="font-size:11px;color:var(--text3);margin-top:6px;font-style:italic;line-height:1.5;">Se passi a profilo privato non potrai condividere le tue liste con altri.</div>
