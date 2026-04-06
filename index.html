@@ -912,7 +912,7 @@ async function changeEmail(){
   const {error}=await sb.auth.updateUser({email:newEmail});
   btn.disabled=false;btn.textContent='Invia conferma';
   if(error){err.textContent='Errore: '+error.message;return;}
-  err.style.color='#15803D';err.textContent='Conferma inviata! Apri la nuova email e clicca il link per completare il cambio.';
+  err.style.color='#15803D';err.textContent='Conferma inviata! Clicca il link nella nuova email E nella vecchia per completare il cambio.';
   setTimeout(()=>closeModal('overlayChangeEmail'),2500);
 }
 async function changePassword(){
