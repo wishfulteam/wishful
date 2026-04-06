@@ -675,7 +675,10 @@ body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);min
 <div class="overlay" id="overlayChangeEmail">
   <div class="modal">
     <div class="modal-handle"></div>
-    <div class="modal-title">Cambia email</div>
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+      <div class="modal-title" style="margin-bottom:0;">Cambia email</div>
+      <button onclick="closeModal('overlayChangeEmail')" style="width:30px;height:30px;border-radius:50%;border:1px solid var(--border);background:transparent;cursor:pointer;font-size:16px;color:var(--text2);display:flex;align-items:center;justify-content:center;">×</button>
+    </div>
     <p style="font-size:13px;color:var(--text2);margin-bottom:18px;line-height:1.6;">Inserisci il nuovo indirizzo email. Riceverai una conferma prima che venga aggiornato.</p>
     <div class="field"><label>Nuova email</label><input type="email" id="newEmail" placeholder="nuova@email.com"></div>
     <div class="auth-err" id="changeEmailErr"></div>
@@ -690,7 +693,10 @@ body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);min
 <div class="overlay" id="overlayChangePassword">
   <div class="modal">
     <div class="modal-handle"></div>
-    <div class="modal-title">Cambia password</div>
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+      <div class="modal-title" style="margin-bottom:0;">Cambia password</div>
+      <button onclick="closeModal('overlayChangePassword')" style="width:30px;height:30px;border-radius:50%;border:1px solid var(--border);background:transparent;cursor:pointer;font-size:16px;color:var(--text2);display:flex;align-items:center;justify-content:center;">×</button>
+    </div>
     <div class="field" style="position:relative;">
       <label>Password attuale</label>
       <input type="password" id="currentPasswordInput" placeholder="••••••••">
@@ -713,7 +719,10 @@ body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);min
 <div class="overlay" id="overlayAbout">
   <div class="modal">
     <div class="modal-handle"></div>
-    <div class="modal-title">Cos'è Listea</div>
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+      <div class="modal-title" style="margin-bottom:0;">Cos'è Listea</div>
+      <button onclick="closeModal('overlayAbout')" style="width:30px;height:30px;border-radius:50%;border:1px solid var(--border);background:transparent;cursor:pointer;font-size:16px;color:var(--text2);display:flex;align-items:center;justify-content:center;">×</button>
+    </div>
     <p style="font-size:13px;color:var(--text2);line-height:1.9;margin-bottom:14px;">Ci sono domande che si ripresentano puntualmente, ogni anno, ogni occasione: <em>cosa vuoi per Natale? Cosa regalo a mia sorella per il suo compleanno? Come faccio sorridere una persona a cui voglio bene?</em></p>
     <p style="font-size:13px;color:var(--text2);line-height:1.9;margin-bottom:14px;">Domande semplici, eppure difficili. Perché chi ama fare regali vuole sorprendere, non eseguire una lista della spesa. E chi ama riceverli vuole essere capito, non accontentato.</p>
     <p style="font-size:13px;color:var(--text2);line-height:1.9;margin-bottom:14px;">Listea nasce da qui — dalla convinzione che una gift card ti aiuta a raggiungere uno scopo senza sforzo, e senza commettere errori, ma un bel regalo dirà all'altra persona <em>"ho cercato la cosa perfetta per te."</em></p>
@@ -738,7 +747,10 @@ body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);min
 <div class="overlay" id="overlaySearch">
   <div class="modal">
     <div class="modal-handle"></div>
-    <div class="modal-title">Cerca utente</div>
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+      <div class="modal-title" style="margin-bottom:0;">Cerca utente</div>
+      <button onclick="closeModal('overlaySearch')" style="width:30px;height:30px;border-radius:50%;border:1px solid var(--border);background:transparent;cursor:pointer;font-size:16px;color:var(--text2);display:flex;align-items:center;justify-content:center;">×</button>
+    </div>
     <div class="field">
       <label>Username</label>
       <input type="text" id="searchUsername" placeholder="Es. laura" oninput="this.value=this.value.toLowerCase().replace(/[^a-z0-9_]/g,'')" onkeydown="if(event.key==='Enter')searchUser()">
