@@ -517,6 +517,7 @@ body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);min
       <a class="donate-btn" href="https://ko-fi.com/lexacarson" target="_blank" rel="noopener">Offri un caffè ☕</a>
     </div>
     <div class="logout-row" onclick="logout()">Esci dall'account</div>
+    <div style="text-align:center;padding:12px 20px 0;cursor:pointer;font-size:12px;color:var(--text3);text-decoration:underline;" onclick="openDeleteAccountModal()">Elimina account</div>
   </div>
 
   <nav class="bottom-nav">
@@ -739,6 +740,28 @@ body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);min
     </div>
     <div class="modal-actions" style="margin-top:24px;">
       <button class="btn-primary" onclick="document.getElementById('overlayAbout').classList.remove('open')">Chiudi</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL ELIMINA ACCOUNT -->
+<div class="overlay" id="overlayDeleteAccount">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+      <div class="modal-title" style="margin-bottom:0;">Elimina account</div>
+      <button onclick="closeModal('overlayDeleteAccount')" style="width:30px;height:30px;border-radius:50%;border:1px solid var(--border);background:transparent;cursor:pointer;font-size:16px;color:var(--text2);display:flex;align-items:center;justify-content:center;">×</button>
+    </div>
+    <p style="font-size:13px;color:var(--text2);line-height:1.8;margin-bottom:16px;">Questa azione è <strong>irreversibile</strong>. Verranno eliminati definitivamente il tuo account, tutte le wishlist e tutti i desideri.</p>
+    <div class="field" style="position:relative;">
+      <label>Conferma con la tua password</label>
+      <input type="password" id="deleteAccountPassword" placeholder="••••••••">
+      <span class="pw-eye" onclick="togglePwDelete()">👁</span>
+    </div>
+    <div class="auth-err" id="deleteAccountErr"></div>
+    <div class="modal-actions">
+      <button class="btn-secondary" onclick="closeModal('overlayDeleteAccount')">Annulla</button>
+      <button class="btn-primary" id="deleteAccountBtn" onclick="deleteAccount()" style="background:#DC2626;">Elimina definitivamente</button>
     </div>
   </div>
 </div>
@@ -1885,6 +1908,45 @@ async function skipOnboarding(){
   },{onConflict:'id'});
   userProfile={id:currentUser.id,display_name:currentUser.email.split('@')[0],is_public:false};
   showApp();
+}
+
+// ELIMINA ACCOUNT
+function openDeleteAccountModal(){
+  document.getElementById('deleteAccountPassword').value='';
+  document.getElementById('deleteAccountErr').textContent='';
+  document.getElementById('deleteAccountPassword').type='password';
+  document.getElementById('overlayDeleteAccount').classList.add('open');
+}
+function togglePwDelete(){
+  const inp=document.getElementById('deleteAccountPassword');
+  inp.type=inp.type==='password'?'text':'password';
+}
+async function deleteAccount(){
+  const password=document.getElementById('deleteAccountPassword').value;
+  const err=document.getElementById('deleteAccountErr');
+  if(!password){err.textContent='Inserisci la tua password';return;}
+  const btn=document.getElementById('deleteAccountBtn');
+  btn.disabled=true;btn.innerHTML='<span class="spinner"></span>Verifico...';
+  err.textContent='';
+  // verifica password
+  const {error:signInErr}=await sb.auth.signInWithPassword({email:currentUser.email,password});
+  if(signInErr){
+    btn.disabled=false;btn.textContent='Elimina definitivamente';
+    err.textContent='Password errata';return;
+  }
+  btn.innerHTML='<span class="spinner"></span>Eliminazione...';
+  // cancella tutti i dati
+  try{
+    await sb.rpc('delete_user_data');
+    await sb.auth.admin?.deleteUser(currentUser.id);
+  } catch(e){}
+  // sign out e redirect
+  await sb.auth.signOut();
+  currentUser=null;wls=[];desires=[];userProfile=null;newAvatarData='';
+  closeModal('overlayDeleteAccount');
+  hideAllViews();
+  document.getElementById('authView').style.display='block';
+  showToast('Account eliminato');
 }
 
 // CERCA UTENTE
